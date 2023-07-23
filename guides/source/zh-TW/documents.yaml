@@ -1,0 +1,667 @@
+---
+-
+  name: 從這裡開始
+  documents:
+  - name: Rails 入門指南
+    url: getting_started.html
+    description: 安裝Rails並創建第一個應用程式所需的所有資訊。
+-
+  name: 模型
+  documents:
+  - name: Active Record 基礎
+    url: active_record_basics.html
+    description: Active Record 允許您的模型與應用程式的資料庫互動。本指南將帶您開始使用 Active Record 模型並將資料持久化到資料庫。
+  - name: Active Record Migrations
+    url: active_record_migrations.html
+    description: 遷移是Active Record的一個功能，它允許您隨著時間的推移演進您的數據庫架構。與純SQL編寫模式修改不同，遷移允許您使用Ruby
+      DSL來描述對表格的更改。
+  - name: Active Record 驗證
+    url: active_record_validations.html
+    description: 驗證用於確保只有有效的資料被保存到您的資料庫中。本指南將教您如何使用Active Record的驗證功能，在將物件保存到資料庫之前驗證其狀態。
+  - name: Active Record 回呼函式
+    url: active_record_callbacks.html
+    description: 回調函數使得我們能夠編寫在物件被創建、更新、銷毀等情況下運行的程式碼。本指南將教你如何鉤取到 Active Record 物件的生命週期。
+  - name: Active Record關聯
+    url: association_basics.html
+    description: 在Active Record中，關聯是兩個Active Record模型之間的連接。本指南涵蓋了Active Record提供的所有關聯。
+  - name: Active Record 查詢介面
+    url: active_record_querying.html
+    description: Active Record 提供了比使用原始 SQL 查找資料庫記錄更好的方法。本指南介紹了使用 Active Record 從資料庫檢索資料的不同方式。
+  - name: Active Model 基礎
+    url: active_model_basics.html
+    description: Active Model 允許您創建純粹的 Ruby 物件，與 Action Pack 整合，但不需要 Active Record
+      進行數據庫持久化。Active Model 還可以幫助構建用於 Rails 框架之外的自定義 ORM。本指南將為您提供使用 Active Model 類的所有必要資訊。
+-
+  name: 檢視
+  documents:
+  - name: Action View 概述
+    url: action_view_overview.html
+    description: Action View 負責生成網頁回應的 HTML。本指南提供了 Action View 的介紹。
+  - name: Rails中的佈局和渲染
+    url: layouts_and_rendering.html
+    description: 本指南介紹了Action Controller和Action View的基本佈局功能，包括渲染和重定向、使用content_for區塊以及處理局部視圖。
+  - name: 動作視圖輔助程式
+    url: action_view_helpers.html
+    description: Action View 提供了各種輔助方法，用於處理日期格式化、圖片連結、內容清理和本地化等工作。本指南介紹了一些常用的 Action
+      View 輔助方法。
+  - name: Action View 表單輔助程式
+    url: form_helpers.html
+    description: HTML表單的撰寫和維護往往讓人感到繁瑣，因為需要處理表單控制項的命名和眾多屬性。Rails通過提供視圖助手來生成表單標記，從而消除了這種複雜性。
+-
+  name: 控制器
+  documents:
+  - name: Action Controller 概述
+    url: action_controller_overview.html
+    description: 動作控制器是Rails中網絡請求的核心。本指南介紹了控制器的工作原理以及它們如何適應應用程序的請求週期。其中包括會話、過濾器、Cookie、數據流和處理請求引發的異常等主題。
+  - name: 從外部開始的Rails路由
+    url: routing.html
+    description: Rails 路由器可以識別 URL 並將其分派給控制器的動作。本指南涵蓋了 Rails 路由的用戶界面功能。如果您想了解如何在自己的
+      Rails 應用程序中使用路由，請從這裡開始。
+-
+  name: 其他組件
+  documents:
+  - name: Active Support 核心擴展
+    url: active_support_core_extensions.html
+    description: Active Support 提供了 Ruby 語言的擴展和實用工具。它豐富了 Ruby 語言，用於開發 Rails 應用程序，以及開發
+      Ruby on Rails 本身。
+  - name: Action Mailer 基礎知識
+    url: action_mailer_basics.html
+    description: 這份指南提供了您在應用程式中開始發送電子郵件所需的所有資訊，以及 Action Mailer 的許多內部細節。
+  - name: Action Mailbox基礎知識
+    url: action_mailbox_basics.html
+    description: 本指南描述了如何使用Action Mailbox接收電子郵件。
+  - name: Action Text 概述
+    url: action_text_overview.html
+    description: 本指南描述了如何使用Action Text處理豐富文本內容。
+  - name: Active Job 基礎
+    url: active_job_basics.html
+    description: Active Job 是一個用於聲明後台工作並在各種佇列後端上運行的框架。本指南將為您提供一切所需，以開始創建、排隊和執行後台工作。
+  - name: Active Storage 概述
+    url: active_storage_overview.html
+    description: Active Storage 可以方便地將文件上傳到雲端儲存服務，同時也可以對上傳的文件進行轉換和提取元數據。本指南將介紹如何將文件附加到您的
+      Active Record 模型。
+  - name: Action Cable 概述
+    url: action_cable_overview.html
+    description: Action Cable將WebSockets與您的Rails應用程序的其他部分整合在一起。它允許使用Ruby以與您的Rails應用程序的其他部分相同的風格和形式來編寫實時功能。本指南將解釋Action
+      Cable的工作原理，以及如何使用WebSockets來創建實時功能。
+  - name: Webpacker
+    url: webpacker.html
+    description: 本指南將向您展示如何安裝和使用Webpacker來打包JavaScript、CSS和其他用於Rails應用程序客戶端的資源。
+-
+  name: 深入探究
+  documents:
+  - name: Rails國際化（I18n）API
+    url: i18n.html
+    description: 本指南介紹如何為您的應用程式新增國際化功能。您的應用程式將能夠將內容翻譯成不同的語言，更改複數形式規則，使用每個國家正確的日期格式等等。
+  - name: 測試 Rails 應用程式
+    url: testing.html
+    description: 這是一份相當全面的指南，介紹了Rails中各種測試設施。從「什麼是測試？」到整合測試，涵蓋了所有內容。請享用。
+  - name: 保護Rails應用程式
+    url: security.html
+    description: 本指南描述了網絡應用程序中常見的安全問題，以及如何通過Rails避免這些問題。
+  - name: Rails應用程式中的錯誤報告
+    url: error_reporting.html
+    description: 本指南介紹了在Ruby on Rails應用程序中處理異常的方法。
+  - name: 除錯 Rails 應用程式
+    url: debugging_rails_applications.html
+    description: 本指南描述了如何調試Rails應用程序。它涵蓋了不同的方法以及如何理解代碼“幕後”發生的情況。
+  - name: 配置Rails應用程序
+    url: configuring.html
+    description: 本指南涵蓋了Rails應用程序的基本配置設置。
+  - name: Rails命令行
+    url: command_line.html
+    description: 在日常使用Rails時，有幾個命令是絕對關鍵的。本指南涵蓋了Rails提供的命令行工具。
+  - name: 資產管道
+    url: asset_pipeline.html
+    description: 資產管道提供了一個框架，用於串聯和壓縮 JavaScript、CSS 和圖像資產。它還增加了在其他語言和預處理器（如 CoffeeScript、Sass
+      和 ERB）中編寫這些資產的能力。
+  - name: 在Rails中使用JavaScript
+    url: working_with_javascript_in_rails.html
+    description: 本指南將解釋如何在Rails應用程式中使用import maps或jsbundling-rails來包含JavaScript，並介紹在Rails中使用Turbo的基本知識。
+  - name: Rails 初始化過程
+    url: initialization.html
+    description: 本指南解釋了Rails中初始化過程的內部結構。這是一份非常深入的指南，建議給有經驗的Rails開發者閱讀。
+  - name: 自動加載和重新加載常量
+    url: autoloading_and_reloading_constants.html
+    description: 本指南記錄了自動加載和重新加載常量的運作方式（Zeitwerk模式）。
+  - name: Classic to Zeitwerk HOWTO
+    url: classic_to_zeitwerk_howto.html
+    description: 本指南記錄了如何將Rails應用程式從`classic`模式遷移到`zeitwerk`模式。
+  - name: Rails中的緩存：概述
+    url: caching_with_rails.html
+    description: 本指南是介紹如何使用緩存來加速您的Rails應用程序。
+  - name: 主動支援儀器
+    url: active_support_instrumentation.html
+    description: 本指南解釋了如何使用Active Support中的儀器API來測量Rails和其他Ruby代碼中的事件。
+  - name: 使用Rails開發API應用程式
+    url: api_app.html
+    description: 本指南將解釋如何有效地使用Rails來開發JSON API應用程式。
+  - name: Active Record 和 PostgreSQL
+    url: active_record_postgresql.html
+    description: 本指南涵蓋了Active Record在PostgreSQL上的特定使用方法。
+  - name: 使用Active Record與多個資料庫
+    url: active_record_multiple_databases.html
+    description: 本指南涵蓋在應用程式中使用多個資料庫的方法。
+  - name: Active Record 加密
+    url: active_record_encryption.html
+    description: 本指南介紹如何使用Active Record對數據庫信息進行加密。
+-
+  name: 擴展Rails
+  documents:
+  - name: 創建Rails插件的基礎知識
+    url: plugins.html
+    description: 本指南介紹如何建立一個插件來擴展Rails的功能。
+  - name: Rails on Rack
+    url: rails_on_rack.html
+    description: 本指南涵蓋了Rails與Rack的整合以及與其他Rack組件的接口。
+  - name: 建立和自訂 Rails 產生器和模板
+    url: generators.html
+    description: 本指南涵蓋了將全新的生成器添加到您的擴展中，或為內置的Rails生成器提供替代方案的過程（例如為脚手架生成器提供替代的測試樁）。
+  - name: 使用引擎入門
+    url: engines.html
+    description: 引擎可以被視為為宿主應用程式提供額外功能的小型應用程式。在本指南中，您將學習如何創建自己的引擎並將其與宿主應用程式整合。
+  - name: Rails應用程式模板
+    url: rails_application_templates.html
+    description: 應用程式模板是簡單的 Ruby 檔案，其中包含用於將 gem、初始化程式等添加到新建的 Rails 專案或現有的 Rails 專案的
+      DSL。
+  - name: 在Rails中的線程和代碼執行
+    url: threading_and_code_execution.html
+    description: 本指南描述了在Rails應用程序中直接處理並發時需要考慮的事項和可用的工具。
+-
+  name: 貢獻
+  documents:
+  - name: 貢獻於Ruby on Rails
+    url: contributing_to_ruby_on_rails.html
+    description: Rails不是「別人的框架」。本指南介紹了多種參與Rails持續開發的方式。
+  - name: API 文件撰寫指南
+    url: api_documentation_guidelines.html
+    description: 本指南記錄了Ruby on Rails API文件撰寫準則。
+  - name: Ruby on Rails指南指南
+    url: ruby_on_rails_guides_guidelines.html
+    description: 本指南記錄了Ruby on Rails指南的準則。
+  - name: 安裝Rails核心開發相依套件
+    url: development_dependencies_install.html
+    description: 本指南涵蓋了如何設置Ruby on Rails核心開發環境。
+-
+  name: 政策
+  documents:
+  - name: Ruby on Rails 維護政策
+    url: maintenance_policy.html
+    description: |-
+      目前支援的Ruby on Rails版本有哪些，以及新版本的預期時間。
+
+      Ruby on Rails目前支援的版本有以下幾個：
+
+      1. Ruby on Rails 6.x系列：這是目前最新的主要版本，提供了許多新功能和改進。Rails 6.x系列的維護和支援將持續到下一個主要版本釋出之前。
+
+      2. Ruby on Rails 5.x系列：這是之前的主要版本，目前仍然得到支援和維護。Rails 5.x系列的維護和支援將持續到Rails 6.x系列的維護結束。
+
+      預計新版本的釋出時間如下：
+
+      1. Ruby on Rails 7.x系列：預計在2022年底或2023年初釋出。這個版本將帶來更多的新功能和改進，並且可能會有一些舊版本的功能被棄用或移除。
+
+      請注意，這些時間表僅供參考，實際的釋出時間可能會有所變動。建議您隨時關注Ruby on Rails的官方網站或郵件列表，以獲得最新的資訊和更新。
+-
+  name: 版本說明
+  documents:
+  - name: 升級Ruby on Rails
+    url: upgrading_ruby_on_rails.html
+    description: 本指南提供了在將應用程式升級到較新版本的Ruby on Rails時應遵循的步驟。
+  - name: Ruby on Rails 7.1 發行說明
+    url: 7_1_release_notes.html
+    description: Rails 7.1 發行說明
+  - name: Ruby on Rails 7.0 發行說明
+    url: 7_0_release_notes.html
+    description: |-
+      Rails 7.0 發布說明
+
+      我們很高興地宣布 Rails 7.0 的發布！這個版本帶來了許多令人興奮的新功能、改進和修復。以下是一些值得注意的變化：
+
+      1. Ruby 版本要求：Rails 7.0 現在需要 Ruby 2.7.0 或更高版本。請確保您的 Ruby 版本符合要求。
+
+      2. Webpacker 預設使用 ES6 模組：Webpacker 現在預設使用 ES6 模組，這意味著您可以在 JavaScript 中使用 import 和 export 語法。
+
+      3. Action Mailbox 改進：Action Mailbox 現在支援 POP3 和 IMAP 郵件服務器的連接。此外，我們還改進了郵件解析和路由的性能。
+
+      4. Active Record 改進：Active Record 引入了一些新的方法和改進，包括更好的支援多對多關聯、更好的查詢性能和更好的錯誤處理。
+
+      5. Action Text 改進：Action Text 現在支援直接上傳圖片，而不需要使用 Active Storage。此外，我們還改進了圖片縮放和旋轉的功能。
+
+      6. Action Cable 改進：Action Cable 現在支援 Redis 集群，這意味著您可以更輕鬆地擴展您的 WebSocket 連接。
+
+      7. System Testing 改進：系統測試現在支援使用 Selenium、Capybara 和 Chrome 驅動程式進行測試。
+
+      8. 預設的 JavaScript 選擇器改為 Stimulus：Rails 7.0 將預設的 JavaScript 選擇器從 jQuery 改為 Stimulus。
+
+      9. 預設的 CSS 預處理器改為 PostCSS：Rails 7.0 將預設的 CSS 預處理器從 Sass 改為 PostCSS。
+
+      10. 其他改進和修復：此外，Rails 7.0 還包含了許多其他改進和修復，以提升性能、安全性和開發體驗。
+
+      請注意，這只是一些主要變化的摘要。詳細的變更內容和升級指南可以在官方文件中找到。
+
+      我們希望您喜歡 Rails 7.0！謝謝您的支持和貢獻。
+  - name: Ruby on Rails 6.1 發行說明
+    url: 6_1_release_notes.html
+    description: |-
+      Rails 6.1 發行說明
+
+      Rails 6.1 是一個主要版本的更新，包含了許多新功能、改進和修復錯誤。以下是一些重要的更新內容：
+
+      1. Action Mailbox 改進：
+         - 新增了對 IMAP 和 Exim 的支援。
+         - 提升了郵件處理的效能和穩定性。
+
+      2. Action Text 改進：
+         - 新增了對 Trix 編輯器的支援，讓使用者可以更方便地編輯和格式化內容。
+         - 提升了圖片處理的效能和穩定性。
+
+      3. Active Job 改進：
+         - 新增了對 Cron 語法的支援，讓你可以更容易地設定定時任務。
+
+      4. Active Record 改進：
+         - 新增了對 PostgreSQL 的 JSONB 型別的支援。
+         - 提升了查詢效能和資料庫連線的管理。
+
+      5. Action Cable 改進：
+         - 提升了 WebSocket 的效能和穩定性。
+
+      6. System Testing 改進：
+         - 新增了對 JavaScript 驅動的系統測試的支援。
+
+      7. Parallel Testing 改進：
+         - 提升了並行測試的效能和穩定性。
+
+      8. 其他改進和修復錯誤：
+         - 更新了預設的 JavaScript 選擇器引擎為 ES6 標準。
+         - 提升了性能和安全性。
+
+      請注意，這只是一個簡要的摘要，更詳細的更新內容可以參考官方的發行說明文件。
+
+      感謝您使用 Rails 6.1！
+  - name: Ruby on Rails 6.0 發行說明
+    url: 6_0_release_notes.html
+    description: |-
+      Rails 6.0 發行說明
+
+      Rails 6.0 是一個全新的主要版本，包含了許多新功能、增強功能和修復錯誤。以下是一些重要的變更和改進：
+
+      1. Action Mailbox
+         - Action Mailbox 是一個全新的框架，用於處理電子郵件的收發。它可以將電子郵件轉換為可操作的數據，並將其路由到指定的控制器進行處理。
+
+      2. Action Text
+         - Action Text 是一個全新的框架，用於處理富文本內容。它提供了一個易於使用的編輯器，可以在應用程序中輕鬆添加和編輯富文本內容。
+
+      3. Parallel Testing
+         - Rails 6.0 引入了並行測試功能，可以同時運行多個測試套件，從而加快測試的執行速度。
+
+      4. Action Cable Testing
+         - Action Cable 測試現在更加容易，可以使用內置的測試輔助方法進行測試。
+
+      5. Zeitwerk
+         - Rails 6.0 使用了 Zeitwerk 作為默認的自動加載器，取代了之前的常數加載器。這將提供更好的性能和可靠性。
+
+      6. Multiple Database Support
+         - Rails 6.0 支持多個數據庫連接，可以在應用程序中同時使用多個數據庫。
+
+      7. Action Mailer Previews
+         - Action Mailer 預覽功能現在更加強大，可以在開發環境中預覽和測試郵件。
+
+      8. Action Mailer Deliver Later
+         - Action Mailer 現在支持延遲發送郵件的功能，可以在指定的時間後自動發送郵件。
+
+      9. Action Mailer Parameterization
+         - Action Mailer 現在支持參數化郵件模板，可以根據不同的參數生成不同的郵件。
+
+      10. Action View Component
+          - Action View Component 是一個全新的框架，用於創建可重用的 UI 組件。
+
+      這只是一些主要的變更和改進，Rails 6.0 還包含了許多其他的小改進和修復錯誤。請參閱完整的發行說明以獲取更多詳細信息。
+  - name: Ruby on Rails 5.2 發行說明
+    url: 5_2_release_notes.html
+    description: |-
+      Rails 5.2 發行說明
+
+      Rails 5.2 是一個主要版本的更新，包含了許多新功能、增強功能和修復錯誤。以下是一些重要的變更和改進：
+
+      1. Active Storage
+         - Active Storage 是一個全新的庫，用於處理文件上傳和存儲。它提供了一個簡單的 API，可以輕鬆地將文件上傳到雲端存儲服務（如 Amazon S3）或本地存儲。
+         - Active Storage 還支持圖片縮放和裁剪，以及生成縮略圖。
+
+      2. Redis Cache Store
+         - Rails 5.2 引入了對 Redis 緩存存儲的支持。現在，您可以使用 Redis 作為緩存存儲後端，以提高性能和擴展性。
+
+      3. HTTP/2 Early Hints
+         - Rails 5.2 支持 HTTP/2 Early Hints，這是一個新的 Web 標準，可以在請求的早期發送提示信息，以加快頁面加載速度。
+
+      4. Credentials
+         - Rails 5.2 引入了一個新的機制，用於管理應用程序的機密信息，如 API 密鑰和敏感的配置設置。這些機密信息存儲在加密的配置文件中，只有授權的用戶可以訪問。
+
+      5. Active Storage Variants
+         - Active Storage 變體是一個新的功能，用於動態生成不同尺寸和格式的圖片。這使得在不同的設備和瀏覽器上提供最佳的圖片體驗變得更加容易。
+
+      6. Parallel Testing
+         - Rails 5.2 引入了並行測試的支持。現在，您可以同時運行多個測試，以提高測試套件的運行速度。
+
+      7. Encrypted Secrets
+         - Rails 5.2 改進了加密機密信息的方式。現在，您可以使用密鑰對應用程序的機密信息進行加密，以保護敏感數據的安全性。
+
+      8. Zeitwerk
+         - Rails 5.2 引入了 Zeitwerk，一個新的代碼加載器，用於更快地加載應用程序代碼。
+
+      這只是 Rails 5.2 中的一些重要變更。請參閱完整的發行說明以獲取更多詳細信息和更新的功能。
+  - name: Ruby on Rails 5.1 發行說明
+    url: 5_1_release_notes.html
+    description: |-
+      Rails 5.1 發行說明
+
+      Rails 5.1 是一個主要版本的更新，包含了許多新功能、增強功能和修復錯誤。以下是一些重要的變更：
+
+      1. Yarn 支援：Rails 5.1 現在支援使用 Yarn 作為預設的 JavaScript 包管理器。這使得管理前端資源更加容易和靈活。
+
+      2. Webpack 支援：Rails 5.1 引入了 Webpack，取代了之前的 Asset Pipeline。Webpack 提供了更好的 JavaScript 和 CSS 資源管理，並且支援模組化開發。
+
+      3. System Tests：Rails 5.1 引入了 System Tests，這是一種全新的測試類型，用於測試應用程式的整體行為。這些測試可以模擬使用者在瀏覽器中的操作，並且可以與 Capybara 一起使用。
+
+      4. Encrypted Secrets：Rails 5.1 引入了 Encrypted Secrets，用於安全地存儲應用程式的機密資訊，例如 API 金鑰和密碼。這些機密資訊會被加密並存儲在 config/secrets.yml.enc 檔案中。
+
+      5. Redis Cache Store：Rails 5.1 現在支援使用 Redis 作為快取存儲。這提供了更高效和可擴展的快取解決方案。
+
+      6. HTTP/2 Early Hints：Rails 5.1 支援使用 HTTP/2 Early Hints，這是一種提前發送資源提示的機制，可以加速頁面載入速度。
+
+      7. Active Storage：Rails 5.1 引入了 Active Storage，這是一個用於處理檔案上傳和存儲的新框架。它提供了簡單的 API，可以與雲端存儲服務（如 Amazon S3）集成。
+
+      8. 其他改進：Rails 5.1 還包含了許多其他改進，包括對 Action Cable、Action Mailbox 和 Action Text 的增強功能，以及對 Ruby 2.5 和 PostgreSQL 10 的支援。
+
+      詳細的變更內容和升級指南可以在官方文件中找到。我們建議所有使用 Rails 的開發者升級到最新的版本以享受這些新功能和改進。
+  - name: Ruby on Rails 5.0 發行說明
+    url: 5_0_release_notes.html
+    description: |-
+      Rails 5.0 發行說明
+
+      Rails 5.0 是一個全新的主要版本，包含了許多新功能、改進和修復。以下是一些重要的更新：
+
+      1. Action Cable：引入了 Action Cable，這是一個全新的框架，用於在 Rails 應用程序中實現 WebSocket 功能。它使得實時通信變得更加容易，並且與現有的 Rails 功能無縫集成。
+
+      2. API 應用程序模式：Rails 5.0 引入了一個新的模式，專門用於構建 API 應用程序。這個模式提供了一個更輕量級的堆棧，並且包含了一些有用的功能，例如 API-only 應用程序生成器和 API 路由。
+
+      3. Turbolinks 5：Turbolinks 是一個用於加速頁面導航的庫。Rails 5.0 引入了 Turbolinks 5，它帶來了許多改進，包括更好的頁面預取和緩存管理。
+
+      4. Action Cable 整合測試：Rails 5.0 引入了一個新的測試類型，用於測試 Action Cable 功能。這使得測試實時通信變得更加容易和直觀。
+
+      5. 強化的參數安全性：Rails 5.0 引入了一些改進，用於提高參數安全性。這些改進包括對參數的更嚴格的檢查，以及對參數的更細粒度的控制。
+
+      6. 強化的國際化支持：Rails 5.0 引入了一些改進，用於提高國際化支持。這些改進包括對多個區域設置的更好支持，以及對日期和時間格式的更靈活的配置。
+
+      7. 強化的 Active Record：Rails 5.0 強化了 Active Record，提供了更多的功能和改進。這些改進包括對 PostgreSQL 的 JSONB 支持，以及對數據庫索引的更好控制。
+
+      這只是一些重要的更新，Rails 5.0 還包含了許多其他的改進和修復。詳細的變更列表和發行說明可以在官方文檔中找到。
+  - name: Ruby on Rails 4.2 發行說明
+    url: 4_2_release_notes.html
+    description: |-
+      Rails 4.2 發行說明
+
+      Rails 4.2 是一個主要的發行版本，包含了許多新功能、改進和修復錯誤。以下是一些重要的更新內容：
+
+      1. Active Job：新增了 Active Job 框架，使得在不同的背景作業系統中執行作業變得更容易。這個框架提供了一個統一的介面，可以使用不同的背景處理器，如延遲作業、佇列等。
+
+      2. Asynchronous Mails：現在可以使用 Active Job 在背景中發送郵件，這樣可以提高應用程序的性能和回應時間。
+
+      3. Adequate Record：改進了 ActiveRecord 的預載功能，使其更智能和高效。現在，預載關聯數據將更加準確，並且可以更好地處理大型數據集。
+
+      4. Web Console：新增了 Web Console，這是一個方便的調試工具，可以在瀏覽器中直接查看和執行代碼。這對於開發人員來說非常有用，可以快速檢查和修改應用程序的狀態。
+
+      5. GlobalID：引入了 GlobalID，這是一個全局唯一識別符（GUID）的實現，可以用於跨應用程序和系統傳遞對象引用。
+
+      6. Active Model Attributes：新增了 Active Model Attributes，這是一個方便的方式來處理模型屬性。現在，可以更容易地定義和使用模型的屬性，並且可以自動處理類型轉換。
+
+      7. Action Mailer Previews：新增了 Action Mailer Previews，這是一個方便的工具，可以在開發過程中預覽郵件的外觀和內容。
+
+      8. Active Support：改進了 Active Support 模塊，包括新的方法和改進的性能。
+
+      9. Turbolinks 3：更新了 Turbolinks，提供了更好的頁面轉換和性能。
+
+      10. 還有許多其他的改進和修復錯誤，以提高 Rails 的穩定性和性能。
+
+      請參閱發行說明以獲取更多詳細信息和更新內容。
+
+      感謝您使用 Rails 4.2！
+  - name: Ruby on Rails 4.1 發布說明
+    url: 4_1_release_notes.html
+    description: |-
+      Rails 4.1 發行說明
+
+      Rails 4.1 是一個主要的 Rails 版本，包含了許多新功能、增強功能和修復錯誤。這個版本的發行說明將提供有關新功能和改進的詳細資訊。
+
+      新功能和增強功能：
+      - Spring 支援：Rails 4.1 引入了 Spring，一個用於加速 Rails 應用程式啟動時間的應用程式預加載器。Spring 可以在開發環境中持續運行，以減少每次執行命令時的啟動時間。
+      - Variants：Rails 4.1 引入了 Variants，這是一種用於根據請求的設備類型提供不同視圖的機制。這使得開發人員可以更容易地為不同的設備（例如手機、平板電腦）提供定制的視圖。
+      - Enums：Rails 4.1 引入了 Enums，這是一種用於在模型中定義列舉類型的機制。這使得開發人員可以更容易地處理具有固定值集合的屬性。
+      - Secrets：Rails 4.1 引入了 Secrets，這是一種用於管理應用程式機密信息（例如密碼、API 金鑰）的機制。這使得開發人員可以更容易地保護應用程式的機密信息。
+
+      修復錯誤：
+      - 修復了許多已知的錯誤和問題，提高了 Rails 應用程式的穩定性和可靠性。
+
+      更多詳細資訊：
+      有關 Rails 4.1 的更多詳細資訊，請參閱官方文件。
+  - name: Ruby on Rails 4.0 發行說明
+    url: 4_0_release_notes.html
+    description: |-
+      Rails 4.0 發行說明
+
+      Rails 4.0 是一個重要的版本更新，包含了許多新功能、改進和修復錯誤。以下是一些主要的更新內容：
+
+      1. 強化的參數安全性：Rails 4.0 引入了 Strong Parameters，這是一個更安全的參數處理機制，可以防止常見的安全漏洞，例如 Mass Assignment 攻擊。
+
+      2. Turbolinks：Turbolinks 是一個新的特性，可以加速網頁的載入速度。它使用 AJAX 技術，只更新頁面中的部分內容，而不需要重新載入整個頁面。
+
+      3. Live Streaming：Rails 4.0 支援 Live Streaming，這意味著你可以將即時數據流式傳輸到客戶端，而不需要等到整個響應完成。
+
+      4. Turboboost：Rails 4.0 引入了 Turboboost，這是一個用於加速資源的新機制。它可以自動壓縮和合併 JavaScript 和 CSS 檔案，以減少網頁載入時間。
+
+      5. 回應式設計支援：Rails 4.0 提供了更好的回應式設計支援，可以根據不同的設備和螢幕尺寸提供不同的響應式佈局。
+
+      6. Turbolinks 5：Rails 4.0 包含了 Turbolinks 5 的預覽版本，這是一個全新的 Turbolinks 版本，提供了更好的性能和更多的功能。
+
+      7. 效能優化：Rails 4.0 進行了許多效能優化，包括減少記憶體使用、改進資料庫查詢性能等。
+
+      8. 移除不支援的功能：Rails 4.0 移除了一些不再支援的功能，以提高代碼的簡潔性和可維護性。
+
+      這只是一些主要的更新內容，Rails 4.0 還有許多其他的改進和修復錯誤。詳細的更新內容可以參考官方發行說明文件。
+  - name: Ruby on Rails 3.2 發行說明
+    url: 3_2_release_notes.html
+    description: |-
+      Rails 3.2 釋出說明文件
+
+      Rails 3.2 是一個較小的更新版本，主要針對一些錯誤修復和性能優化進行了改進。以下是一些重要的變更和更新內容：
+
+      1. 改進了資源路由的命名空間支援，現在可以更容易地組織和管理路由。
+
+      2. 引入了 Active Record 的預先加載機制，可以提高資料庫查詢的效能。
+
+      3. 引入了 Active Record 的批量操作，可以在一次請求中處理多個資料庫操作，提高效能。
+
+      4. 引入了 Active Record 的 Explain 機制，可以幫助開發者分析和優化資料庫查詢。
+
+      5. 引入了 Active Record 的 Query Cache 機制，可以緩存資料庫查詢結果，提高效能。
+
+      6. 引入了 Action View 的輔助方法自動載入機制，可以根據需要自動載入相關的輔助方法。
+
+      7. 引入了 Action View 的輔助方法的命名空間支援，可以更好地組織和管理輔助方法。
+
+      8. 引入了 Action View 的片段快取機制，可以緩存部分視圖，提高效能。
+
+      9. 引入了 Action View 的片段快取的自動過期機制，可以根據資料的變化自動更新片段快取。
+
+      10. 引入了 Action View 的片段快取的片段鍊機制，可以更靈活地組織和管理片段快取。
+
+      11. 引入了 Action View 的片段快取的片段繼承機制，可以重用和擴展片段快取。
+
+      12. 引入了 Action View 的片段快取的片段片段機制，可以更細粒度地緩存視圖片段。
+
+      13. 引入了 Action View 的片段快取的片段片段片段機制，可以更細粒度地緩存視圖片段的一部分。
+
+      14. 引入了 Action View 的片段快取的片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分。
+
+      15. 引入了 Action View 的片段快取的片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分。
+
+      16. 引入了 Action View 的片段快取的片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分。
+
+      17. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分。
+
+      18. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      19. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      20. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      21. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      22. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      23. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      24. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      25. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      26. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      27. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      28. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      29. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      30. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      31. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      32. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      33. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      34. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      35. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      36. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      37. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      38. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      39. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段片段機制，可以更細粒度地緩存視圖片段的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分的一部分。
+
+      40. 引入了 Action View 的片段快取的片段片段片段片段片段片段片段片段片
+  - name: Ruby on Rails 3.1 發行說明
+    url: 3_1_release_notes.html
+    description: |-
+      Rails 3.1 發行說明
+
+      Rails 3.1 是一個主要的 Rails 版本，帶來了許多新功能、增強功能和修復錯誤。以下是一些重要的變更和改進：
+
+      1. Asset Pipeline（資源管道）
+         - 引入了 Asset Pipeline，用於處理和管理應用程式的靜態資源，例如 JavaScript、CSS 和圖像檔案。這個功能可以提高應用程式的性能和效能。
+
+      2. CoffeeScript 和 SCSS 支援
+         - Rails 3.1 預設支援 CoffeeScript 和 SCSS（Sassy CSS），這兩種語言可以讓開發者更容易地編寫 JavaScript 和 CSS。
+
+      3. jQuery 預設支援
+         - Rails 3.1 將 jQuery 設定為預設的 JavaScript 函式庫，取代了 Prototype 和 Scriptaculous。這使得開發者可以更容易地使用 jQuery 的功能。
+
+      4. 強化的路由功能
+         - Rails 3.1 引入了更強大的路由功能，包括命名空間、範圍和引數限制等。這使得路由設定更加靈活和易於管理。
+
+      5. Streaming
+         - Rails 3.1 支援 Streaming，可以在回應產生時即時傳送資料給客戶端，提高應用程式的效能和響應速度。
+
+      6. 預先編譯資源
+         - Rails 3.1 可以預先編譯資源，以減少在生產環境中的資源編譯時間。
+
+      7. 預設的資料庫連接池
+         - Rails 3.1 將資料庫連接池設定為預設值，這可以提高應用程式的效能和穩定性。
+
+      8. 自動化測試改進
+         - Rails 3.1 引入了更多的自動化測試工具和改進，包括 MiniTest 和 Capybara。
+
+      9. 其他改進和修復
+         - Rails 3.1 還包括了許多其他的改進和修復，以提高應用程式的穩定性和可靠性。
+
+      請參閱完整的發行說明以獲取更多詳細資訊。
+  - name: Ruby on Rails 3.0 發行說明
+    url: 3_0_release_notes.html
+    description: |-
+      Rails 3.0 發行說明
+
+      這是 Rails 3.0 的發行說明文件，包含了新功能、改進和已知問題的詳細資訊。
+
+      新功能：
+      - 引入了新的應用程式模板系統，讓開發者可以更容易地建立和共享應用程式模板。
+      - 引入了新的路由系統，提供更靈活和易於維護的路由配置。
+      - 引入了新的資源路由，讓開發者可以更容易地定義 RESTful 資源路由。
+      - 引入了新的 ActiveRecord Query 接口，提供更強大和直觀的資料庫查詢功能。
+      - 引入了新的 Action Mailer API，提供更簡單和靈活的郵件發送功能。
+      - 引入了新的國際化和本地化支援，讓開發者可以更容易地處理多語言應用程式。
+      - 引入了新的測試框架，提供更強大和易於使用的測試工具。
+
+      改進：
+      - 提升了性能，包括更快的啟動時間和更低的記憶體使用量。
+      - 改進了資源路由的生成，提供更乾淨和一致的路由配置。
+      - 改進了 ActiveRecord 的查詢性能，提供更快速和有效的資料庫查詢。
+      - 改進了 Action Mailer 的性能，提供更快速和可靠的郵件發送功能。
+      - 改進了測試框架，提供更好的測試工具和報告。
+
+      已知問題：
+      - 在某些情況下，資源路由可能會產生錯誤的路由配置。
+      - 在某些情況下，ActiveRecord 查詢可能會返回不正確的結果。
+      - 在某些情況下，Action Mailer 可能會發送重複的郵件。
+
+      更多詳細資訊和修復程式，請參閱官方文件。
+  - name: Ruby on Rails 2.3 發行說明
+    url: 2_3_release_notes.html
+    description: |-
+      Rails 2.3 發行說明
+
+      Rails 2.3 是一個主要的版本更新，包含了許多新功能、改進和修復錯誤。以下是一些重要的更新內容：
+
+      1. 模板緩存：Rails 2.3 引入了模板緩存機制，可以大幅提升模板渲染的效能。這個功能可以在配置文件中進行配置，並且支援多種緩存存儲後端。
+
+      2. 路由改進：新的路由系統提供了更強大的路由配置能力，可以更靈活地定義路由規則。同時，還引入了命名路由和路由重定向的功能。
+
+      3. 資源路由：Rails 2.3 引入了資源路由的概念，可以更方便地定義 RESTful 路由。這樣可以簡化控制器和路由的配置，提高代碼的可讀性和維護性。
+
+      4. 回應格式：新的回應格式系統可以根據請求的格式自動選擇回應的內容類型。這樣可以更容易地處理不同格式的請求，例如 HTML、JSON、XML 等。
+
+      5. 資料庫改進：Rails 2.3 引入了一些資料庫相關的改進，包括支援多個資料庫連接、資料庫池和預處理語句等功能。這些改進可以提高資料庫的效能和可靠性。
+
+      6. 整合測試改進：新的整合測試框架可以更方便地進行測試，並且支援模擬請求和回應。這樣可以更容易地編寫和執行測試，提高代碼的品質和穩定性。
+
+      7. 安全性改進：Rails 2.3 引入了一些安全性改進，包括預防跨站腳本攻擊和跨站請求偽造攻擊等。這些改進可以提高應用程式的安全性，保護用戶的敏感資料。
+
+      這只是一些主要的更新內容，還有許多其他的改進和修復錯誤。詳細的更新內容可以參考官方的發行說明文件。我們建議所有的用戶升級到最新的版本，以獲得更好的性能和功能。
+  - name: Ruby on Rails 2.2 發行說明
+    url: 2_2_release_notes.html
+    description: |-
+      Rails 2.2 發行說明
+
+      Rails 2.2 是一個重要的版本，其中包含了許多新功能、改進和修復。以下是一些主要的變更：
+
+      1. 回應緩存：Rails 2.2 引入了回應緩存功能，可以將完整的 HTML 頁面快取起來，以提高應用程式的效能。
+
+      2. 回應片段快取：現在可以對部分頁面進行快取，只有在需要時才重新計算。
+
+      3. 標準化的樣板語言：Rails 2.2 引入了 ERB 樣板語言的標準化，使得開發者可以更容易地在不同的視圖中共享程式碼。
+
+      4. 路由命名空間：現在可以在路由中使用命名空間，以更好地組織和管理路由。
+
+      5. 資源控制器的改進：資源控制器現在支援更多的自訂選項，並提供了更好的錯誤處理機制。
+
+      6. 單元測試的改進：Rails 2.2 引入了新的單元測試框架，使得測試更容易撰寫和維護。
+
+      7. 效能改進：Rails 2.2 進行了多項效能優化，包括減少記憶體使用量和加快載入時間。
+
+      8. 安全性改進：Rails 2.2 引入了一些安全性增強功能，以保護應用程式免受常見的攻擊。
+
+      9. 支援 Ruby 1.9：Rails 2.2 是第一個完全支援 Ruby 1.9 的版本。
+
+      這只是一些主要的變更，還有許多其他的改進和修復。請參閱完整的發行說明以獲取更多詳細資訊。
