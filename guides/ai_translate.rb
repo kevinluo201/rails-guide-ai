@@ -21,7 +21,7 @@ if file
   puts "Translate file: #{file} in #{end_t - start_t} seconds"
 else
   files = Dir['*'].reject { |f| File.directory?(f) } + Dir['epub/*']
-  files.sort! { |a, b| a.end_with?('.md') ? (a <=> b) : 1 }
+  files.sort! { |a, b| (a.end_with?('.md') ? 0 : 1) <=> (b.end_with?('.md') ? 0 : 1) }
   files.each do |file|
     start_t = Time.now
 
@@ -30,4 +30,8 @@ else
     end_t = Time.now
     puts "Translate file: #{file} in #{end_t - start_t} seconds"
   end
+
+  RailsGuides::AiTranslator.new(file: 'documents.yaml', target_language: target).translate_document_yaml
+end
+
 end
