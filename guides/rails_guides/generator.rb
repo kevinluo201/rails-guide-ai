@@ -192,7 +192,7 @@ module RailsGuides
       def check_fragment_identifiers(html, anchors)
         html.scan(/<a\s+href="#([^"]+)/).flatten.each do |fragment_identifier|
           next if fragment_identifier == "mainCol" # in layout, jumps to some DIV
-          unless anchors.member?(CGI.unescape(fragment_identifier))
+          if !anchors.member?(CGI.unescape(fragment_identifier)) && !anchors.member?(fragment_identifier)
             guess = DidYouMean::SpellChecker.new(dictionary: anchors).correct(fragment_identifier).first
             puts "*** BROKEN LINK: ##{fragment_identifier}, perhaps you meant ##{guess}."
           end
