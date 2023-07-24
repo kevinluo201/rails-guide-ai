@@ -14,6 +14,7 @@ module RailsGuides
     LANGUAGES = {
       'zh-TW' => "Traditional Chiense used in Taiwan(台灣繁體中文).",
       'pt-BR' => 'Brazilian Portuguese',
+      'fr' => 'French',
     }
     FILETYPE = {
       'md' => 'Markdown',
@@ -137,16 +138,16 @@ module RailsGuides
     def translate_document_yaml
       yaml = YAML.load_file(@file)
       new_yaml = []
-      title_prompt = "Translate the exact input to #{LANGUAGES[@target_language]}"
+      prompt = "Translate the exact input to #{LANGUAGES[@target_language]}"
       yaml.each_with_index do |block, index|
-        block['name'] = ai_translate(block['name'], system_prompt: title_prompt)
+        block['name'] = ai_translate(block['name'], system_prompt: prompt)
         block['documents'].map! do |document|
           filename = "#{@target_language}/#{document['url'].delete_suffix('.html')}.md"
           title = /^(.+)\n={3,}/.match(File.read(filename))[1]
           {
             'name' => title,
             'url' => document['url'],
-            'description' => ai_translate(document['description'])
+            'description' => ai_translate(document['description'], system_prompt: prompt)
           }
         end
 

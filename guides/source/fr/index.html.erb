@@ -1,0 +1,29 @@
+<% content_for :page_title, "Guides Ruby on Rails" %>
+<% content_for :description, "Guides Ruby on Rails" %>
+
+<% content_for :header_section do %>
+<%= render 'welcome' %>
+<% end %>
+
+<% content_for :index_section do %>
+<div id="subCol">
+  <dl>
+    <dt></dt>
+    <% unless @edge -%>
+      <dd class="kindle">Les Guides Rails sont également disponibles pour <%= link_to 'Kindle', @epub %>.</dd>
+    <% end -%>
+    <dd class="work-in-progress">Les guides marqués de cette icône sont actuellement en cours de travail et ne seront pas disponibles dans le menu de l'index des guides. Bien qu'ils soient encore utiles, ils peuvent contenir des informations incomplètes et même des erreurs. Vous pouvez aider en les examinant et en publiant vos commentaires et corrections.</dd>
+  </dl>
+</div>
+<% end %>
+
+<% documents_by_section.each do |section| %>
+  <h2><%= section['name'] %></h2>
+  <dl>
+    <% section['documents'].each do |document| %>
+      <%= guide(document['name'], document['url'], work_in_progress: document['work_in_progress']) do %>
+        <p><%= document['description'] %></p>
+      <% end %>
+    <% end %>
+  </dl>
+<% end %>
