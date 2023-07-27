@@ -1,0 +1,32 @@
+<h1>Ruby on Rails vadovai (<%= @edge ? @edge[0, 7] : @version %>)</h1>
+
+<% if @edge %>
+<p>
+  Tai yra <b>Edge vadovai</b>, pagrįsti <a href="https://github.com/rails/rails/tree/<%= @edge %>">main@<%= @edge[0, 7] %></a>.
+</p>
+<p>
+  Jei ieškote stabilios versijos vadovų, prašome patikrinti
+  <a href="https://guides.rubyonrails.org">https://guides.rubyonrails.org</a> vietoje.
+</p>
+<% else %>
+<p>
+  Tai nauji vadovai Rails 7.1 pagrįsti <a href="https://github.com/rails/rails/tree/<%= @version %>"><%= @version %></a>.
+  Šie vadovai skirti jums iš karto tapti produktyviais su Rails ir padėti jums suprasti, kaip visi komponentai tinka kartu.
+</p>
+<% end %>
+<p>
+Vadovai ankstesnėms versijoms:
+<a href="https://guides.rubyonrails.org/v7.0/" data-turbo="false">Rails 7.0</a>,
+<a href="https://guides.rubyonrails.org/v6.1/" data-turbo="false">Rails 6.1</a>,
+<a href="https://guides.rubyonrails.org/v6.0/" data-turbo="false">Rails 6.0</a>,
+<a href="https://guides.rubyonrails.org/v5.2/" data-turbo="false">Rails 5.2</a>,
+<a href="https://guides.rubyonrails.org/v5.1/" data-turbo="false">Rails 5.1</a>,
+<a href="https://guides.rubyonrails.org/v5.0/" data-turbo="false">Rails 5.0</a>,
+<a href="https://guides.rubyonrails.org/v4.2/" data-turbo="false">Rails 4.2</a>,
+<a href="https://guides.rubyonrails.org/v4.1/" data-turbo="false">Rails 4.1</a>,
+<a href="https://guides.rubyonrails.org/v4.0/" data-turbo="false">Rails 4.0</a>,
+<a href="https://guides.rubyonrails.org/v3.2/" data-turbo="false">Rails 3.2</a>,
+<a href="https://guides.rubyonrails.org/v3.1/" data-turbo="false">Rails 3.1</a>,
+<a href="https://guides.rubyonrails.org/v3.0/" data-turbo="false">Rails 3.0</a>, ir
+<a href="https://guides.rubyonrails.org/v2.3/" data-turbo="false">Rails 2.3</a>.
+</p>

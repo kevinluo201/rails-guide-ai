@@ -2,6 +2,7 @@
 
 require 'openai'
 require 'digest'
+require 'yaml'
 
 module RailsGuides
   class AiTranslator
@@ -12,9 +13,10 @@ module RailsGuides
 
     BUFFER_SIZE = 700
     LANGUAGES = {
-      'zh-TW' => "Traditional Chiense used in Taiwan(台灣繁體中文).",
+      'zh-TW' => "Traditional Chinese used in Taiwan(台灣繁體中文).",
       'pt-BR' => 'Brazilian Portuguese',
       'fr' => 'French',
+      'lt' => 'Lithuanian',
     }
     FILETYPE = {
       'md' => 'Markdown',
@@ -155,14 +157,6 @@ module RailsGuides
       end
 
       File.write(@target_file, YAML.dump(new_yaml))
-    end
-
-    def fix_links
-      file_f = File.readlines(@file)
-      target_file_f = File.readlines(@target_file)
-      stack = []
-      file_f.each_line do |line|
-      end
     end
 
     private

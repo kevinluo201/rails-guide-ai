@@ -7,13 +7,13 @@ Ce guide présente des techniques de débogage des applications Ruby on Rails.
 Après avoir lu ce guide, vous saurez :
 
 * Le but du débogage.
-* Comment identifier les problèmes et les problèmes dans votre application que vos tests n'identifient pas.
-* Les différentes façons de déboguer.
+* Comment identifier les problèmes et les erreurs dans votre application que vos tests ne détectent pas.
+* Les différentes méthodes de débogage.
 * Comment analyser la trace de la pile.
 
 --------------------------------------------------------------------------------
 
-Helpers de vue pour le débogage
+Aides à la visualisation pour le débogage
 --------------------------
 
 Une tâche courante consiste à inspecter le contenu d'une variable. Rails propose trois façons différentes de le faire :
@@ -24,7 +24,7 @@ Une tâche courante consiste à inspecter le contenu d'une variable. Rails propo
 
 ### `debug`
 
-L'helper `debug` renvoie une balise \<pre> qui affiche l'objet en utilisant le format YAML. Cela générera des données lisibles par l'homme à partir de n'importe quel objet. Par exemple, si vous avez ce code dans une vue :
+L'aide `debug` renvoie une balise \<pre> qui affiche l'objet en utilisant le format YAML. Cela générera des données lisibles par l'homme à partir de n'importe quel objet. Par exemple, si vous avez ce code dans une vue :
 
 ```html+erb
 <%= debug @article %>
@@ -34,7 +34,7 @@ L'helper `debug` renvoie une balise \<pre> qui affiche l'objet en utilisant le f
 </p>
 ```
 
-Vous verrez quelque chose comme ça :
+Vous verrez quelque chose comme ceci :
 
 ```yaml
 --- !ruby/object Article
@@ -53,7 +53,7 @@ Titre : Guide de débogage Rails
 
 ### `to_yaml`
 
-Alternativement, en appelant `to_yaml` sur n'importe quel objet, vous pouvez le convertir en YAML. Vous pouvez passer cet objet converti dans la méthode d'aide `simple_format` pour formater la sortie. C'est ainsi que `debug` fait sa magie.
+Alternativement, en appelant `to_yaml` sur n'importe quel objet, vous pouvez le convertir en YAML. Vous pouvez passer cet objet converti à la méthode d'aide `simple_format` pour formater la sortie. C'est ainsi que `debug` fait sa magie.
 
 ```html+erb
 <%= simple_format @article.to_yaml %>
@@ -63,7 +63,7 @@ Alternativement, en appelant `to_yaml` sur n'importe quel objet, vous pouvez le 
 </p>
 ```
 
-Le code ci-dessus affichera quelque chose comme ça :
+Le code ci-dessus affichera quelque chose comme ceci :
 
 ```yaml
 --- !ruby/object Article
@@ -81,7 +81,7 @@ Titre : Guide de débogage Rails
 
 ### `inspect`
 
-Une autre méthode utile pour afficher les valeurs des objets est `inspect`, surtout lorsqu'on travaille avec des tableaux ou des hachages. Cela affichera la valeur de l'objet sous forme de chaîne de caractères. Par exemple :
+Une autre méthode utile pour afficher les valeurs des objets est `inspect`, surtout lorsqu'il s'agit de tableaux ou de hachages. Cela affiche la valeur de l'objet sous forme de chaîne de caractères. Par exemple :
 
 ```html+erb
 <%= [1, 2, 3, 4, 5].inspect %>
@@ -99,43 +99,43 @@ Affichera :
 Titre : Guide de débogage Rails
 ```
 
-Le Logger
+Le journal
 ----------
 
-Il peut également être utile de sauvegarder des informations dans des fichiers journaux à l'exécution. Rails maintient un fichier journal distinct pour chaque environnement d'exécution.
+Il peut également être utile de sauvegarder des informations dans des fichiers journaux pendant l'exécution. Rails maintient un fichier journal distinct pour chaque environnement d'exécution.
 
-### Qu'est-ce que le Logger ?
+### Qu'est-ce que le journal ?
 
-Rails utilise la classe `ActiveSupport::Logger` pour écrire des informations de journal. D'autres enregistreurs, tels que `Log4r`, peuvent également être utilisés.
+Rails utilise la classe `ActiveSupport::Logger` pour écrire des informations de journal. D'autres journaux, tels que `Log4r`, peuvent également être utilisés.
 
-Vous pouvez spécifier un enregistreur alternatif dans `config/application.rb` ou tout autre fichier d'environnement, par exemple :
+Vous pouvez spécifier un journal alternatif dans `config/application.rb` ou tout autre fichier d'environnement, par exemple :
 
 ```ruby
 config.logger = Logger.new(STDOUT)
-config.logger = Log4r::Logger.new("Application Log")
+config.logger = Log4r::Logger.new("Journal d'application")
 ```
 
 Ou dans la section `Initializer`, ajoutez _n'importe lequel_ des éléments suivants
 
 ```ruby
 Rails.logger = Logger.new(STDOUT)
-Rails.logger = Log4r::Logger.new("Application Log")
+Rails.logger = Log4r::Logger.new("Journal d'application")
 ```
 
 CONSEIL : Par défaut, chaque journal est créé sous `Rails.root/log/` et le fichier journal est nommé d'après l'environnement dans lequel l'application s'exécute.
 
 ### Niveaux de journalisation
 
-Lorsqu'une information est journalisée, elle est imprimée dans le journal correspondant si le niveau de journalisation du message est égal ou supérieur au niveau de journalisation configuré. Si vous voulez connaître le niveau de journalisation actuel, vous pouvez appeler la méthode `Rails.logger.level`.
+Lorsqu'un message est journalisé, il est imprimé dans le journal correspondant si le niveau de journalisation du message est égal ou supérieur au niveau de journalisation configuré. Si vous voulez connaître le niveau de journalisation actuel, vous pouvez appeler la méthode `Rails.logger.level`.
 
-Les niveaux de journalisation disponibles sont : `:debug`, `:info`, `:warn`, `:error`, `:fatal` et `:unknown`, correspondant aux numéros de niveau de journalisation de 0 à 5, respectivement. Pour changer le niveau de journalisation par défaut, utilisez
-
+Les niveaux de journalisation disponibles sont : `:debug`, `:info`, `:warn`, `:error`, `:fatal`,
+et `:unknown`, correspondant aux numéros de niveau de journalisation de 0 à 5, respectivement. Pour changer le niveau de journalisation par défaut, utilisez
 ```ruby
-config.log_level = :warn # Dans n'importe quel fichier d'initialisation de l'environnement, ou
+config.log_level = :warn # Dans n'importe quel initialisateur d'environnement, ou
 Rails.logger.level = 0 # à tout moment
 ```
 
-Cela est utile lorsque vous souhaitez journaliser sous développement ou en pré-production sans inonder votre journal de production avec des informations inutiles.
+Cela est utile lorsque vous souhaitez enregistrer des journaux en développement ou en pré-production sans inonder votre journal de production avec des informations inutiles.
 
 CONSEIL : Le niveau de journalisation par défaut de Rails est `:debug`. Cependant, il est défini sur `:info` pour l'environnement `production` dans le fichier `config/environments/production.rb` généré par défaut.
 
@@ -145,8 +145,8 @@ Pour écrire dans le journal actuel, utilisez la méthode `logger.(debug|info|wa
 
 ```ruby
 logger.debug "Person attributes hash: #{@person.attributes.inspect}"
-logger.info "Processing the request..."
-logger.fatal "Terminating application, raised unrecoverable error!!!"
+logger.info "Traitement de la requête..."
+logger.fatal "Arrêt de l'application, erreur irrécupérable levée !!!"
 ```
 
 Voici un exemple d'une méthode instrumentée avec des journaux supplémentaires :
@@ -157,12 +157,12 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    logger.debug "New article: #{@article.attributes.inspect}"
-    logger.debug "Article should be valid: #{@article.valid?}"
+    logger.debug "Nouvel article : #{@article.attributes.inspect}"
+    logger.debug "L'article devrait être valide : #{@article.valid?}"
 
     if @article.save
-      logger.debug "The article was saved and now the user is going to be redirected..."
-      redirect_to @article, notice: 'Article was successfully created.'
+      logger.debug "L'article a été enregistré et maintenant l'utilisateur va être redirigé..."
+      redirect_to @article, notice: 'L\'article a été créé avec succès.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -178,62 +178,62 @@ end
 ```
 
 Voici un exemple du journal généré lorsque cette action du contrôleur est exécutée :
+
 ```
-Début de la requête POST "/articles" pour 127.0.0.1 à 2018-10-18 20:09:23 -0400
-Traitement par ArticlesController#create en tant qu'HTML
-  Paramètres: {"utf8"=>"✓", "authenticity_token"=>"XLveDrKzF1SwaiNRPTaMtkrsTzedtebPPkmxEFIU0ordLjICSnXsSNfrdMa4ccyBjuGwnnEiQhEoMN6H1Gtz3A==", "article"=>{"title"=>"Debugging Rails", "body"=>"J'apprends comment imprimer dans les journaux.", "published"=>"0"}, "commit"=>"Create Article"}
-Nouvel article: {"id"=>nil, "title"=>"Debugging Rails", "body"=>"J'apprends comment imprimer dans les journaux.", "published"=>false, "created_at"=>nil, "updated_at"=>nil}
-L'article devrait être valide: true
-   (0.0ms)  début de la transaction
+Started POST "/articles" for 127.0.0.1 at 2018-10-18 20:09:23 -0400
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XLveDrKzF1SwaiNRPTaMtkrsTzedtebPPkmxEFIU0ordLjICSnXsSNfrdMa4ccyBjuGwnnEiQhEoMN6H1Gtz3A==", "article"=>{"title"=>"Debugging Rails", "body"=>"I'm learning how to print in logs.", "published"=>"0"}, "commit"=>"Create Article"}
+Nouvel article : {"id"=>nil, "title"=>"Debugging Rails", "body"=>"I'm learning how to print in logs.", "published"=>false, "created_at"=>nil, "updated_at"=>nil}
+L'article devrait être valide : true
+   (0.0ms)  begin transaction
   ↳ app/controllers/articles_controller.rb:31
-  Création de l'article (0.5ms)  INSERT INTO "articles" ("title", "body", "published", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Debugging Rails"], ["body", "J'apprends comment imprimer dans les journaux."], ["published", 0], ["created_at", "2018-10-19 00:09:23.216549"], ["updated_at", "2018-10-19 00:09:23.216549"]]
+  Article Create (0.5ms)  INSERT INTO "articles" ("title", "body", "published", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Debugging Rails"], ["body", "I'm learning how to print in logs."], ["published", 0], ["created_at", "2018-10-19 00:09:23.216549"], ["updated_at", "2018-10-19 00:09:23.216549"]]
   ↳ app/controllers/articles_controller.rb:31
-   (2.3ms)  fin de la transaction
+   (2.3ms)  commit transaction
   ↳ app/controllers/articles_controller.rb:31
-L'article a été enregistré et l'utilisateur va maintenant être redirigé...
-Redirection vers http://localhost:3000/articles/1
-Terminé 302 Found en 4ms (ActiveRecord: 0.8ms)
+L'article a été enregistré et maintenant l'utilisateur va être redirigé...
+Redirigé vers http://localhost:3000/articles/1
+Completed 302 Found in 4ms (ActiveRecord: 0.8ms)
 ```
 
-Ajouter des journaux supplémentaires comme celui-ci facilite la recherche de comportements inattendus ou inhabituels dans vos journaux. Si vous ajoutez des journaux supplémentaires, assurez-vous d'utiliser de manière sensée les niveaux de journalisation pour éviter de remplir vos journaux de production avec des informations triviales inutiles.
+Ajouter des journaux supplémentaires comme celui-ci facilite la recherche de comportements inattendus ou inhabituels dans vos journaux. Si vous ajoutez des journaux supplémentaires, veillez à utiliser de manière sensée les niveaux de journalisation pour éviter de remplir vos journaux de production avec des informations triviales inutiles.
 
 ### Journaux de requêtes verbeux
 
-Lorsque vous examinez la sortie des requêtes de base de données dans les journaux, il n'est peut-être pas immédiatement clair pourquoi plusieurs requêtes de base de données sont déclenchées lorsqu'une seule méthode est appelée :
+Lorsque vous regardez la sortie des requêtes de base de données dans les journaux, il n'est peut-être pas immédiatement clair pourquoi plusieurs requêtes de base de données sont déclenchées lorsqu'une seule méthode est appelée :
 
 ```
 irb(main):001:0> Article.pamplemousse
-  Chargement de l'article (0.4ms)  SELECT "articles".* FROM "articles"
-  Chargement du commentaire (0.2ms)  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 1]]
-  Chargement du commentaire (0.1ms)  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 2]]
-  Chargement du commentaire (0.1ms)  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 3]]
-=> #<Comment id: 2, author: "1", body: "Eh bien, en fait...", article_id: 1, created_at: "2018-10-19 00:56:10", updated_at: "2018-10-19 00:56:10">
+  Article Load (0.4ms)  SELECT "articles".* FROM "articles"
+  Comment Load (0.2ms)  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 1]]
+  Comment Load (0.1ms)  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 2]]
+  Comment Load (0.1ms)  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 3]]
+=> #<Comment id: 2, author: "1", body: "Well, actually...", article_id: 1, created_at: "2018-10-19 00:56:10", updated_at: "2018-10-19 00:56:10">
 ```
 
-Après avoir exécuté `ActiveRecord.verbose_query_logs = true` dans la session `bin/rails console` pour activer les journaux de requêtes verbeux et exécuté à nouveau la méthode, il devient évident quelle seule ligne de code génère tous ces appels de base de données distincts :
+Après avoir exécuté `ActiveRecord.verbose_query_logs = true` dans la session `bin/rails console` pour activer les journaux de requêtes verbeux et exécuter à nouveau la méthode, il devient évident quelle ligne de code génère tous ces appels de base de données distincts :
 
 ```
 irb(main):003:0> Article.pamplemousse
-  Chargement de l'article (0.2ms)  SELECT "articles".* FROM "articles"
+  Article Load (0.2ms)  SELECT "articles".* FROM "articles"
   ↳ app/models/article.rb:5
-  Chargement du commentaire (0.1ms)  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 1]]
+  Comment Load (0.1ms)  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 1]]
   ↳ app/models/article.rb:6
-  Chargement du commentaire (0.1ms)  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 2]]
+  Comment Load (0.1ms)  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 2]]
   ↳ app/models/article.rb:6
-  Chargement du commentaire (0.1ms)  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 3]]
+  Comment Load (0.1ms)  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 3]]
   ↳ app/models/article.rb:6
-=> #<Comment id: 2, author: "1", body: "Eh bien, en fait...", article_id: 1, created_at: "2018-10-19 00:56:10", updated_at: "2018-10-19 00:56:10">
+=> #<Comment id: 2, author: "1", body: "Well, actually...", article_id: 1, created_at: "2018-10-19 00:56:10", updated_at: "2018-10-19 00:56:10">
 ```
-
-Sous chaque instruction de base de données, vous pouvez voir des flèches pointant vers le nom de fichier source spécifique (et le numéro de ligne) de la méthode qui a entraîné un appel de base de données. Cela peut vous aider à identifier et résoudre les problèmes de performance causés par les requêtes N+1 : des requêtes de base de données uniques qui génèrent plusieurs requêtes supplémentaires.
+Sous chaque instruction de base de données, vous pouvez voir des flèches pointant vers le nom du fichier source spécifique (et le numéro de ligne) de la méthode qui a entraîné un appel à la base de données. Cela peut vous aider à identifier et résoudre les problèmes de performance causés par les requêtes N+1 : des requêtes uniques qui génèrent plusieurs requêtes supplémentaires.
 
 Les journaux de requêtes verbeux sont activés par défaut dans les journaux de l'environnement de développement après Rails 5.2.
 
-AVERTISSEMENT : Nous déconseillons l'utilisation de ce paramètre dans les environnements de production. Il repose sur la méthode `Kernel#caller` de Ruby, qui a tendance à allouer beaucoup de mémoire pour générer des traces d'appels de méthode. Utilisez plutôt des balises de journalisation des requêtes (voir ci-dessous).
+AVERTISSEMENT : Nous déconseillons l'utilisation de ce paramètre dans les environnements de production. Il repose sur la méthode `Kernel#caller` de Ruby, qui a tendance à allouer beaucoup de mémoire pour générer des traces d'appels de méthode. Utilisez plutôt des balises de journal de requête (voir ci-dessous).
 
-### Journaux de mise en file d'attente verbeux
+### Journaux d'enfilement verbeux
 
-Similaire aux "Journaux de requêtes verbeux" ci-dessus, permet d'afficher les emplacements sources des méthodes qui mettent en file d'attente des tâches en arrière-plan.
+Similairement aux "Journaux de requêtes verbeux" ci-dessus, cela permet d'afficher les emplacements sources des méthodes qui mettent en file d'attente des tâches en arrière-plan.
 
 Il est activé par défaut en développement. Pour l'activer dans d'autres environnements, ajoutez dans `application.rb` ou dans n'importe quel initialiseur d'environnement :
 
@@ -243,10 +243,10 @@ config.active_job.verbose_enqueue_logs = true
 
 Comme les journaux de requêtes verbeux, il n'est pas recommandé de l'utiliser dans les environnements de production.
 
-Commentaires de requêtes SQL
+Commentaires de requête SQL
 ------------------
 
-Les instructions SQL peuvent être commentées avec des balises contenant des informations d'exécution, telles que le nom du contrôleur ou de la tâche, pour retracer les requêtes problématiques à la zone de l'application qui a généré ces instructions. Cela est utile lorsque vous enregistrez des requêtes lentes (par exemple, [MySQL](https://dev.mysql.com/doc/refman/en/slow-query-log.html), [PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-MIN-DURATION-STATEMENT)), que vous visualisez les requêtes en cours d'exécution ou pour les outils de traçage de bout en bout.
+Les instructions SQL peuvent être commentées avec des balises contenant des informations d'exécution, telles que le nom du contrôleur ou de la tâche, pour retracer les requêtes problématiques jusqu'à la zone de l'application qui a généré ces instructions. Cela est utile lorsque vous enregistrez des requêtes lentes (par exemple, [MySQL](https://dev.mysql.com/doc/refman/en/slow-query-log.html), [PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-MIN-DURATION-STATEMENT)), que vous visualisez les requêtes en cours d'exécution ou pour les outils de traçage de bout en bout.
 
 Pour l'activer, ajoutez dans `application.rb` ou dans n'importe quel initialiseur d'environnement :
 
@@ -257,51 +257,51 @@ config.active_record.query_log_tags_enabled = true
 Par défaut, le nom de l'application, le nom et l'action du contrôleur, ou le nom de la tâche sont enregistrés. Le format par défaut est [SQLCommenter](https://open-telemetry.github.io/opentelemetry-sqlcommenter/). Par exemple :
 
 ```
-Chargement de l'article (0.2ms)  SELECT "articles".* FROM "articles" /*application='Blog',controller='articles',action='index'*/
+Article Load (0.2ms)  SELECT "articles".* FROM "articles" /*application='Blog',controller='articles',action='index'*/
 
-Mise à jour de l'article (0.3ms)  UPDATE "articles" SET "title" = ?, "updated_at" = ? WHERE "posts"."id" = ? /*application='Blog',job='ImproveTitleJob'*/  [["title", "Improved Rails debugging guide"], ["updated_at", "2022-10-16 20:25:40.091371"], ["id", 1]]
+Article Update (0.3ms)  UPDATE "articles" SET "title" = ?, "updated_at" = ? WHERE "posts"."id" = ? /*application='Blog',job='ImproveTitleJob'*/  [["title", "Improved Rails debugging guide"], ["updated_at", "2022-10-16 20:25:40.091371"], ["id", 1]]
 ```
 
 Le comportement de [`ActiveRecord::QueryLogs`](https://api.rubyonrails.org/classes/ActiveRecord/QueryLogs.html) peut être modifié pour inclure tout ce qui aide à relier les points de la requête SQL, tels que les identifiants de demande et de tâche pour les journaux d'application, les identifiants de compte et de locataire, etc.
+
 ### Journalisation avec balises
 
-Lors de l'exécution d'applications multi-utilisateurs et multi-comptes, il est souvent utile de pouvoir filtrer les journaux à l'aide de règles personnalisées. `TaggedLogging` dans Active Support vous permet de le faire en ajoutant des balises aux lignes de journal avec des sous-domaines, des identifiants de requête et tout ce qui peut faciliter le débogage de telles applications.
+Lors de l'exécution d'applications multi-utilisateurs et multi-comptes, il est souvent utile de pouvoir filtrer les journaux à l'aide de règles personnalisées. `TaggedLogging` dans Active Support vous permet de le faire en apposant des balises sur les lignes de journal, telles que les sous-domaines, les identifiants de demande, et tout ce qui peut faciliter le débogage de telles applications.
 
 ```ruby
 logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
-logger.tagged("BCX") { logger.info "Stuff" }                            # Journalise "[BCX] Stuff"
-logger.tagged("BCX", "Jason") { logger.info "Stuff" }                   # Journalise "[BCX] [Jason] Stuff"
-logger.tagged("BCX") { logger.tagged("Jason") { logger.info "Stuff" } } # Journalise "[BCX] [Jason] Stuff"
+logger.tagged("BCX") { logger.info "Stuff" }                            # Enregistre "[BCX] Stuff"
+logger.tagged("BCX", "Jason") { logger.info "Stuff" }                   # Enregistre "[BCX] [Jason] Stuff"
+logger.tagged("BCX") { logger.tagged("Jason") { logger.info "Stuff" } } # Enregistre "[BCX] [Jason] Stuff"
 ```
 
 ### Impact des journaux sur les performances
 
-La journalisation aura toujours un impact minime sur les performances de votre application Rails, en particulier lors de la journalisation sur disque. De plus, il y a quelques subtilités :
+La journalisation aura toujours un impact minime sur les performances de votre application Rails, en particulier lorsqu'elle est enregistrée sur disque. De plus, il y a quelques subtilités :
 
 L'utilisation du niveau `:debug` aura un impact plus important sur les performances que `:fatal`, car un plus grand nombre de chaînes sont évaluées et écrites dans la sortie du journal (par exemple, le disque).
 
-Un autre piège potentiel est le nombre trop élevé d'appels à `Logger` dans votre code :
+Un autre écueil potentiel est le nombre trop élevé d'appels à `Logger` dans votre code :
 
 ```ruby
 logger.debug "Person attributes hash: #{@person.attributes.inspect}"
 ```
 
-Dans l'exemple ci-dessus, il y aura un impact sur les performances même si le niveau de sortie autorisé n'inclut pas le débogage. La raison en est que Ruby doit évaluer ces chaînes, ce qui inclut l'instanciation de l'objet `String` assez lourd et l'interpolation des variables.
-
-Il est donc recommandé de passer des blocs aux méthodes du journal, car ils ne sont évalués que si le niveau de sortie est le même que celui autorisé, ou s'il est inclus dans ce niveau (c'est-à-dire un chargement différé). Le même code réécrit serait :
+Dans l'exemple ci-dessus, il y aura un impact sur les performances même si le niveau de sortie autorisé n'inclut pas le débogage. La raison en est que Ruby doit évaluer ces chaînes, ce qui inclut l'instanciation de l'objet `String` plutôt lourd et l'interpolation des variables.
+Par conséquent, il est recommandé de passer des blocs aux méthodes du journalisateur, car ils ne sont évalués que si le niveau de sortie est identique à celui autorisé ou inclus dans le niveau autorisé (c'est-à-dire un chargement différé). Le même code réécrit serait :
 
 ```ruby
 logger.debug { "Person attributes hash: #{@person.attributes.inspect}" }
 ```
 
-Le contenu du bloc, et donc l'interpolation des chaînes, n'est évalué que si le débogage est activé. Ces économies de performances ne sont vraiment perceptibles qu'avec de grandes quantités de journalisation, mais c'est une bonne pratique à adopter.
+Le contenu du bloc, et donc l'interpolation de chaîne, n'est évalué que si le mode de débogage est activé. Ces économies de performances ne sont vraiment perceptibles qu'avec de grandes quantités de journalisation, mais c'est une bonne pratique à adopter.
 
 INFO : Cette section a été rédigée par [Jon Cairns dans une réponse sur Stack Overflow](https://stackoverflow.com/questions/16546730/logging-in-rails-is-there-any-performance-hit/16546935#16546935) et est sous licence [cc by-sa 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 Débogage avec la gemme `debug`
 ------------------------------
 
-Lorsque votre code se comporte de manière inattendue, vous pouvez essayer d'imprimer des journaux ou de les afficher dans la console pour diagnostiquer le problème. Malheureusement, il arrive que ce type de suivi des erreurs ne soit pas efficace pour trouver la cause profonde d'un problème. Lorsque vous avez réellement besoin de plonger dans votre code source en cours d'exécution, le débogueur est votre meilleur compagnon.
+Lorsque votre code se comporte de manière inattendue, vous pouvez essayer d'imprimer des journaux ou de les afficher dans la console pour diagnostiquer le problème. Malheureusement, il arrive que ce type de suivi d'erreur ne soit pas efficace pour trouver la cause profonde d'un problème. Lorsque vous avez réellement besoin de plonger dans votre code source en cours d'exécution, le débogueur est votre meilleur compagnon.
 
 Le débogueur peut également vous aider si vous souhaitez en savoir plus sur le code source de Rails mais ne savez pas par où commencer. Il vous suffit de déboguer n'importe quelle requête vers votre application et d'utiliser ce guide pour apprendre comment passer du code que vous avez écrit au code sous-jacent de Rails.
 
@@ -309,7 +309,7 @@ Rails 7 inclut la gemme `debug` dans le `Gemfile` des nouvelles applications gé
 
 ### Entrer dans une session de débogage
 
-Par défaut, une session de débogage commencera après que la bibliothèque `debug` ait été requise, ce qui se produit lorsque votre application démarre. Mais ne vous inquiétez pas, la session n'interférera pas avec votre application.
+Par défaut, une session de débogage démarre après que la bibliothèque `debug` est requise, ce qui se produit lorsque votre application démarre. Mais ne vous inquiétez pas, la session n'interférera pas avec votre application.
 
 Pour entrer dans la session de débogage, vous pouvez utiliser `binding.break` et ses alias : `binding.b` et `debugger`. Les exemples suivants utiliseront `debugger` :
 
@@ -377,13 +377,13 @@ Vous pouvez également utiliser les commandes `p` ou `pp` pour évaluer des expr
 
 En plus de l'évaluation directe, le débogueur vous aide également à collecter une grande quantité d'informations grâce à différentes commandes, telles que :
 
-- `info` (ou `i`) - Informations sur la trame actuelle.
-- `backtrace` (ou `bt`) - Trace arrière (avec des informations supplémentaires).
+- `info` (ou `i`) - Informations sur le cadre actuel.
+- `backtrace` (ou `bt`) - Trace de la pile (avec des informations supplémentaires).
 - `outline` (ou `o`, `ls`) - Méthodes disponibles, constantes, variables locales et variables d'instance dans la portée actuelle.
 
 #### La commande `info`
 
-`info` fournit un aperçu des valeurs des variables locales et d'instance visibles à partir de la trame actuelle.
+`info` fournit un aperçu des valeurs des variables locales et d'instance qui sont visibles depuis le cadre actuel.
 
 ```rb
 (rdbg) info    # commande
@@ -403,7 +403,7 @@ En plus de l'évaluation directe, le débogueur vous aide également à collecte
 
 #### La commande `backtrace`
 
-Lorsqu'elle est utilisée sans options, `backtrace` liste toutes les trames de la pile :
+Lorsqu'elle est utilisée sans options, `backtrace` liste tous les cadres de la pile :
 
 ```rb
 =>#0    PostsController#index at ~/projects/rails-guide-example/app/controllers/posts_controller.rb:7
@@ -418,21 +418,21 @@ Lorsqu'elle est utilisée sans options, `backtrace` liste toutes les trames de l
   ..... et plus
 ```
 
-Chaque trame est accompagnée de :
+Chaque cadre est accompagné de :
 
-- Identifiant de la trame
+- Identifiant du cadre
 - Emplacement de l'appel
 - Informations supplémentaires (par exemple, arguments de bloc ou de méthode)
 
 Cela vous donnera une bonne idée de ce qui se passe dans votre application. Cependant, vous remarquerez probablement que :
 
-- Il y a trop de trames (généralement plus de 50 dans une application Rails).
-- La plupart des trames proviennent de Rails ou d'autres bibliothèques que vous utilisez.
+- Il y a trop de cadres (généralement plus de 50 dans une application Rails).
+- La plupart des cadres proviennent de Rails ou d'autres bibliothèques que vous utilisez.
 
-La commande `backtrace` propose 2 options pour vous aider à filtrer les trames :
+La commande `backtrace` propose 2 options pour vous aider à filtrer les cadres :
 
-- `backtrace [num]` - affiche uniquement `num` nombres de trames, par exemple `backtrace 10`.
-- `backtrace /pattern/` - affiche uniquement les trames dont l'identifiant ou l'emplacement correspond au motif, par exemple `backtrace /MyModel/`.
+- `backtrace [num]` - affiche uniquement `num` nombres de cadres, par exemple `backtrace 10`.
+- `backtrace /pattern/` - affiche uniquement les cadres dont l'identifiant ou l'emplacement correspond au motif, par exemple `backtrace /MyModel/`.
 
 Il est également possible d'utiliser ces options ensemble : `backtrace [num] /pattern/`.
 
@@ -482,31 +482,19 @@ Il existe de nombreuses façons d'insérer et de déclencher un point d'arrêt d
   - `break <Class#method>` ou `break <Class.method>` - définit un point d'arrêt sur `Class#method` ou `Class.method`
   - `break <expr>.<method>` - définit un point d'arrêt sur la méthode `<method>` du résultat de `<expr>`.
 - `catch <Exception>` - définit un point d'arrêt qui s'arrêtera lorsque `Exception` sera levée
-- `watch <@ivar>` - définit un point d'arrêt
-```rb
-(rdbg) c    # commande continue
-[23, 32] in ~/projects/rails-guide-example/app/controllers/posts_controller.rb
-    23|   def create
-    24|     @post = Post.new(post_params)
-    25|     debugger
-    26|
-    27|     respond_to do |format|
-=>  28|       if @post.save
-    29|         format.html { redirect_to @post, notice: "Post was successfully created." }
-    30|         format.json { render :show, status: :created, location: @post }
-    31|       else
-    32|         format.html { render :new, status: :unprocessable_entity }
-=>#0    block {|format=#<ActionController::MimeResponds::Collec...|} in create at ~/projects/rails-guide-example/app/controllers/posts_controller.rb:28
-  #1    ActionController::MimeResponds#respond_to(mimes=[]) at ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/actionpack-7.0.0.alpha2/lib/action_controller/metal/mime_responds.rb:205
-  # et 74 frames (utilisez la commande `bt' pour afficher toutes les frames)
+- `watch <@ivar>` - définit un point d'arrêt qui s'arrêtera lorsque le résultat de la variable d'instance `@ivar` de l'objet actuel est modifié (c'est lent)
+Et pour les supprimer, vous pouvez utiliser :
 
-Arrêt à #0  BP - Ligne  /Users/st0012/projects/rails-guide-example/app/controllers/posts_controller.rb:28 (ligne)
-```
+- `delete` (ou `del`)
+  - `delete` - supprimer tous les points d'arrêt
+  - `delete <num>` - supprimer le point d'arrêt avec l'identifiant `num`
 
-Définir un point d'arrêt sur un appel de méthode donné - par exemple `b @post.save`.
+#### La commande `break`
+
+**Définir un point d'arrêt sur un numéro de ligne spécifié - par exemple `b 28`**
 
 ```rb
-[20, 29] in ~/projects/rails-guide-example/app/controllers/posts_controller.rb
+[20, 29] dans ~/projects/rails-guide-example/app/controllers/posts_controller.rb
     20|   end
     21|
     22|   # POST /posts or /posts.json
@@ -517,9 +505,50 @@ Définir un point d'arrêt sur un appel de méthode donné - par exemple `b @pos
     27|     respond_to do |format|
     28|       if @post.save
     29|         format.html { redirect_to @post, notice: "Post was successfully created." }
-=>#0    PostsController#create at ~/projects/rails-guide-example/app/controllers/posts_controller.rb:25
-  #1    ActionController::BasicImplicitRender#send_action(method="create", args=[]) at ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/actionpack-7.0.0.alpha2/lib/action_controller/metal/basic_implicit_render.rb:6
-  # et 72 frames (utilisez la commande `bt' pour afficher toutes les frames)
+=>#0    PostsController#create dans ~/projects/rails-guide-example/app/controllers/posts_controller.rb:25
+  #1    ActionController::BasicImplicitRender#send_action(method="create", args=[]) dans ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/actionpack-7.0.0.alpha2/lib/action_controller/metal/basic_implicit_render.rb:6
+  # et 72 frames (utilisez la commande `bt' pour tous les frames)
+(rdbg) b 28    # commande break
+#0  BP - Ligne  /Users/st0012/projects/rails-guide-example/app/controllers/posts_controller.rb:28 (ligne)
+```
+
+```rb
+(rdbg) c    # commande continue
+[23, 32] dans ~/projects/rails-guide-example/app/controllers/posts_controller.rb
+    23|   def create
+    24|     @post = Post.new(post_params)
+    25|     debugger
+    26|
+    27|     respond_to do |format|
+=>  28|       if @post.save
+    29|         format.html { redirect_to @post, notice: "Post was successfully created." }
+    30|         format.json { render :show, status: :created, location: @post }
+    31|       else
+    32|         format.html { render :new, status: :unprocessable_entity }
+=>#0    block {|format=#<ActionController::MimeResponds::Collec...|} dans create dans ~/projects/rails-guide-example/app/controllers/posts_controller.rb:28
+  #1    ActionController::MimeResponds#respond_to(mimes=[]) dans ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/actionpack-7.0.0.alpha2/lib/action_controller/metal/mime_responds.rb:205
+  # et 74 frames (utilisez la commande `bt' pour tous les frames)
+
+Arrêt à #0  BP - Ligne  /Users/st0012/projects/rails-guide-example/app/controllers/posts_controller.rb:28 (ligne)
+```
+
+Définir un point d'arrêt sur un appel de méthode donné - par exemple `b @post.save`.
+
+```rb
+[20, 29] dans ~/projects/rails-guide-example/app/controllers/posts_controller.rb
+    20|   end
+    21|
+    22|   # POST /posts or /posts.json
+    23|   def create
+    24|     @post = Post.new(post_params)
+=>  25|     debugger
+    26|
+    27|     respond_to do |format|
+    28|       if @post.save
+    29|         format.html { redirect_to @post, notice: "Post was successfully created." }
+=>#0    PostsController#create dans ~/projects/rails-guide-example/app/controllers/posts_controller.rb:25
+  #1    ActionController::BasicImplicitRender#send_action(method="create", args=[]) dans ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/actionpack-7.0.0.alpha2/lib/action_controller/metal/basic_implicit_render.rb:6
+  # et 72 frames (utilisez la commande `bt' pour tous les frames)
 (rdbg) b @post.save    # commande break
 #0  BP - Méthode  @post.save à /Users/st0012/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/activerecord-7.0.0.alpha2/lib/active_record/suppressor.rb:43
 
@@ -527,7 +556,7 @@ Définir un point d'arrêt sur un appel de méthode donné - par exemple `b @pos
 
 ```rb
 (rdbg) c    # commande continue
-[39, 48] in ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/activerecord-7.0.0.alpha2/lib/active_record/suppressor.rb
+[39, 48] dans ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/activerecord-7.0.0.alpha2/lib/active_record/suppressor.rb
     39|         SuppressorRegistry.suppressed[name] = previous_state
     40|       end
     41|     end
@@ -538,16 +567,57 @@ Définir un point d'arrêt sur un appel de méthode donné - par exemple `b @pos
     46|
     47|     def save!(**) # :nodoc:
     48|       SuppressorRegistry.suppressed[self.class.name] ? true : super
-=>#0    ActiveRecord::Suppressor#save(#arg_rest=nil) at ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/activerecord-7.0.0.alpha2/lib/active_record/suppressor.rb:44
-  #1    block {|format=#<ActionController::MimeResponds::Collec...|} in create at ~/projects/rails-guide-example/app/controllers/posts_controller.rb:28
-  # et 75 frames (utilisez la commande `bt' pour afficher toutes les frames)
+=>#0    ActiveRecord::Suppressor#save(#arg_rest=nil) dans ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/activerecord-7.0.0.alpha2/lib/active_record/suppressor.rb:44
+  #1    block {|format=#<ActionController::MimeResponds::Collec...|} dans create dans ~/projects/rails-guide-example/app/controllers/posts_controller.rb:28
+  # et 75 frames (utilisez la commande `bt' pour tous les frames)
 
 Arrêt à #0  BP - Méthode  @post.save à /Users/st0012/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/activerecord-7.0.0.alpha2/lib/active_record/suppressor.rb:43
 ```
 
 #### La commande `catch`
 
-Arrêtez-vous lorsqu'une exception est levée - par exemple `catch ActiveRecord::RecordInvalid`.
+Arrêter lorsqu'une exception est levée - par exemple `catch ActiveRecord::RecordInvalid`.
+
+```rb
+[20, 29] dans ~/projects/rails-guide-example/app/controllers/posts_controller.rb
+    20|   end
+    21|
+    22|   # POST /posts or /posts.json
+    23|   def create
+    24|     @post = Post.new(post_params)
+=>  25|     debugger
+    26|
+    27|     respond_to do |format|
+    28|       if @post.save!
+    29|         format.html { redirect_to @post, notice: "Post was successfully created." }
+=>#0    PostsController#create dans ~/projects/rails-guide-example/app/controllers/posts_controller.rb:25
+  #1    ActionController::BasicImplicitRender#send_action(method="create", args=[]) dans ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/actionpack-7.0.0.alpha2/lib/action_controller/metal/basic_implicit_render.rb:6
+  # et 72 frames (utilisez la commande `bt' pour tous les frames)
+(rdbg) catch ActiveRecord::RecordInvalid    # commande
+#1  BP - Catch  "ActiveRecord::RecordInvalid"
+```
+
+```rb
+(rdbg) c    # commande continue
+[75, 84] dans ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/activerecord-7.0.0.alpha2/lib/active_record/validations.rb
+    75|     def default_validation_context
+    76|       new_record? ? :create : :update
+    77|     end
+    78|
+    79|     def raise_validation_error
+=>  80|       raise(RecordInvalid.new(self))
+    81|     end
+    82|
+    83|     def perform_validations(options = {})
+    84|       options[:validate] == false || valid?(options[:context])
+=>#0    ActiveRecord::Validations#raise_validation_error dans ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/activerecord-7.0.0.alpha2/lib/active_record/validations.rb:80
+  #1    ActiveRecord::Validations#save!(options={}) dans ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/activerecord-7.0.0.alpha2/lib/active_record/validations.rb:53
+  # et 88 frames (utilisez la commande `bt' pour tous les frames)
+
+Arrêt à #1  BP - Catch  "ActiveRecord::RecordInvalid"
+#### La commande `watch`
+
+Arrêtez-vous lorsque la variable d'instance est modifiée - par exemple, `watch @_response_body`.
 
 ```rb
 [20, 29] in ~/projects/rails-guide-example/app/controllers/posts_controller.rb
@@ -563,26 +633,46 @@ Arrêtez-vous lorsqu'une exception est levée - par exemple `catch ActiveRecord:
     29|         format.html { redirect_to @post, notice: "Post was successfully created." }
 =>#0    PostsController#create at ~/projects/rails-guide-example/app/controllers/posts_controller.rb:25
   #1    ActionController::BasicImplicitRender#send_action(method="create", args=[]) at ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/actionpack-7.0.0.alpha2/lib/action_controller/metal/basic_implicit_render.rb:6
-  # et 72 frames (utilisez la commande `bt' pour afficher toutes les frames)
-(rdbg) catch ActiveRecord::RecordInvalid    # commande
-#1  BP - Catch  "ActiveRecord::RecordInvalid"
+  # et 72 frames (utilisez la commande `bt' pour tous les frames)
+(rdbg) watch @_response_body    # commande
+#0  BP - Watch  #<PostsController:0x00007fce69ca5320> @_response_body =
 ```
 
 ```rb
 (rdbg) c    # commande continue
-[75, 84] in ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/activerecord-7.0.0.alpha2/lib/active_record/validations.rb
-    75|     def default_validation_context
-    76|       new_record? ? :create : :update
-    77|     end
-    78|
-    79|     def raise_validation_error
-=>  80|       raise(RecordInvalid.new(self))
-    81|     end
-    82|
-    83|     def perform_validations(options = {})
-    84|       options[:validate] == false || valid?(options[:context])
-=>#0    ActiveRecord::Validations#raise_validation_error at ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0
-Veuillez noter que les 3 premières options : `do:`, `pre:` et `if:` sont également disponibles pour les instructions de débogage que nous avons mentionnées précédemment. Par exemple :
+[173, 182] in ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/actionpack-7.0.0.alpha2/lib/action_controller/metal.rb
+   173|       body = [body] unless body.nil? || body.respond_to?(:each)
+   174|       response.reset_body!
+   175|       return unless body
+   176|       response.body = body
+   177|       super
+=> 178|     end
+   179|
+   180|     # Tests if render or redirect has already happened.
+   181|     def performed?
+   182|       response_body || response.committed?
+=>#0    ActionController::Metal#response_body=(body=["<html><body>You are being <a href=\"ht...) at ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/actionpack-7.0.0.alpha2/lib/action_controller/metal.rb:178 #=> ["<html><body>You are being <a href=\"ht...
+  #1    ActionController::Redirecting#redirect_to(options=#<Post id: 13, title: "qweqwe", content:..., response_options={:allow_other_host=>false}) at ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/actionpack-7.0.0.alpha2/lib/action_controller/metal/redirecting.rb:74
+  # et 82 frames (utilisez la commande `bt' pour tous les frames)
+
+Arrêté par #0  BP - Watch  #<PostsController:0x00007fce69ca5320> @_response_body =  -> ["<html><body>You are being <a href=\"http://localhost:3000/posts/13\">redirected</a>.</body></html>"]
+(rdbg)
+```
+
+#### Options de point d'arrêt
+
+En plus des différents types de points d'arrêt, vous pouvez également spécifier des options pour réaliser des flux de travail de débogage plus avancés. Actuellement, le débogueur prend en charge 4 options :
+
+- `do: <cmd ou expr>` - lorsque le point d'arrêt est déclenché, exécutez la commande/expression donnée et continuez le programme :
+  - `break Foo#bar do: bt` - lorsque `Foo#bar` est appelé, affichez les frames de la pile
+- `pre: <cmd ou expr>` - lorsque le point d'arrêt est déclenché, exécutez la commande/expression donnée avant de vous arrêter :
+  - `break Foo#bar pre: info` - lorsque `Foo#bar` est appelé, affichez les variables environnantes avant de vous arrêter.
+- `if: <expr>` - le point d'arrêt s'arrête uniquement si le résultat de `<expr>` est vrai :
+  - `break Post#save if: params[:debug]` - s'arrête à `Post#save` si `params[:debug]` est également vrai
+- `path: <path_regexp>` - le point d'arrêt s'arrête uniquement si l'événement qui le déclenche (par exemple, un appel de méthode) se produit à partir du chemin donné :
+  - `break Post#save if: app/services/a_service` - s'arrête à `Post#save` si l'appel de méthode se produit dans une méthode correspondant à l'expression régulière Ruby `/app\/services\/a_service/`.
+
+Veuillez noter également que les 3 premières options : `do:`, `pre:` et `if:` sont également disponibles pour les instructions de débogage que nous avons mentionnées précédemment. Par exemple :
 
 ```rb
 [2, 11] in ~/projects/rails-guide-example/app/controllers/posts_controller.rb
@@ -613,7 +703,6 @@ Veuillez noter que les 3 premières options : `do:`, `pre:` et `if:` sont égale
 @posts = #<ActiveRecord::Relation [#<Post id: 2, title: "qweqwe", content: "qweqwe", created_at: "...
 @rendered_format = nil
 ```
-
 #### Programmez votre flux de travail de débogage
 
 Avec ces options, vous pouvez scripter votre flux de travail de débogage en une seule ligne comme ceci :
@@ -646,10 +735,10 @@ Ensuite, le débogueur exécutera la commande scriptée et insérera le point d'
   # et 88 frames (utilisez la commande `bt' pour tous les frames)
 ```
 
-Une fois que le point d'arrêt catch est déclenché, il affiche les frames de la pile
+Une fois que le point d'arrêt catch est déclenché, il affichera les frames de la pile
 
 ```rb
-Arrêt par #0  BP - Catch  "ActiveRecord::RecordInvalid"
+Stop by #0  BP - Catch  "ActiveRecord::RecordInvalid"
 
 (rdbg:catch) bt 10
 =>#0    ActiveRecord::Validations#raise_validation_error at ~/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/activerecord-7.0.0.alpha2/lib/active_record/validations.rb:80
@@ -686,53 +775,53 @@ Ou dans une vue :
 ```html+erb
 <% console %>
 
-<h2>Nouvel article</h2>
+<h2>Nouveau message</h2>
 ```
 
-Cela rendra une console dans votre vue. Vous n'avez pas besoin de vous soucier de l'emplacement de l'appel `console` ; il ne sera pas rendu à l'endroit de son invocation, mais à côté de votre contenu HTML.
+Cela rendra une console dans votre vue. Vous n'avez pas besoin de vous soucier de l'emplacement de l'appel `console` ; il ne sera pas rendu à l'endroit de son invocation mais à côté de votre contenu HTML.
 
 La console exécute du code Ruby pur : vous pouvez définir et instancier des classes personnalisées, créer de nouveaux modèles et inspecter des variables.
 
-REMARQUE : Une seule console peut être rendue par requête. Sinon, `web-console` lèvera une erreur lors de la deuxième invocation de `console`.
+NOTE : Une seule console peut être rendue par requête. Sinon, `web-console` lèvera une erreur lors de la deuxième invocation de `console`.
 
 ### Inspection des variables
 
-Vous pouvez invoquer `instance_variables` pour lister toutes les variables d'instance disponibles dans votre contexte. Si vous souhaitez lister toutes les variables locales, vous pouvez le faire avec `local_variables`.
+Vous pouvez invoquer `instance_variables` pour lister toutes les variables d'instance disponibles dans votre contexte. Si vous voulez lister toutes les variables locales, vous pouvez le faire avec `local_variables`.
 
 ### Paramètres
 
 * `config.web_console.allowed_ips` : Liste autorisée d'adresses IPv4 ou IPv6 et de réseaux (par défaut : `127.0.0.1/8, ::1`).
-* `config.web_console.whiny_requests` : Enregistre un message lorsqu'un rendu de console est empêché (par défaut : `true`).
+* `config.web_console.whiny_requests` : Enregistrer un message lorsqu'un rendu de console est empêché (par défaut : `true`).
 
-Comme `web-console` évalue du code Ruby pur à distance sur le serveur, ne l'utilisez pas en production.
+Étant donné que `web-console` évalue du code Ruby pur à distance sur le serveur, ne l'utilisez pas en production.
 
 Débogage des fuites de mémoire
 ------------------------------
 
-Une application Ruby (sur Rails ou non) peut avoir des fuites de mémoire, que ce soit dans le code Ruby ou au niveau du code C.
+Une application Ruby (sur Rails ou non) peut avoir des fuites de mémoire, soit dans le code Ruby, soit au niveau du code C.
 
 Dans cette section, vous apprendrez comment trouver et corriger de telles fuites en utilisant des outils tels que Valgrind.
 
 ### Valgrind
 
-[Valgrind](http://valgrind.org/) est une application permettant de détecter les fuites de mémoire et les conditions de concurrence basées sur le C.
+[Valgrind](http://valgrind.org/) est une application permettant de détecter les fuites de mémoire et les conditions de concurrence basées sur C.
 
 Il existe des outils Valgrind qui peuvent détecter automatiquement de nombreux bugs de gestion de la mémoire et des threads, et profiler vos programmes en détail. Par exemple, si une extension C dans l'interpréteur appelle `malloc()` mais n'appelle pas correctement `free()`, cette mémoire ne sera pas disponible tant que l'application ne se termine pas.
-
 Pour plus d'informations sur l'installation de Valgrind et son utilisation avec Ruby, consultez [Valgrind and Ruby](https://blog.evanweaver.com/2008/02/05/valgrind-and-ruby/) par Evan Weaver.
 
 ### Trouver une fuite de mémoire
 
-Il existe un excellent article sur la détection et la correction des fuites de mémoire chez Derailed, [que vous pouvez lire ici](https://github.com/schneems/derailed_benchmarks#is-my-app-leaking-memory).
-Plugins pour le débogage
----------------------
+Il existe un excellent article sur la détection et la correction des fuites de mémoire sur Derailed, [que vous pouvez lire ici](https://github.com/schneems/derailed_benchmarks#is-my-app-leaking-memory).
+
+Plugins de débogage
+-------------------
 
 Il existe quelques plugins Rails pour vous aider à trouver des erreurs et déboguer votre application. Voici une liste de plugins utiles pour le débogage :
 
-* [Query Trace](https://github.com/ruckus/active-record-query-trace/tree/master) Ajoute une trace d'origine de requête à vos journaux.
+* [Query Trace](https://github.com/ruckus/active-record-query-trace/tree/master) Ajoute une trace d'origine des requêtes à vos journaux.
 * [Exception Notifier](https://github.com/smartinez87/exception_notification/tree/master) Fournit un objet mailer et un ensemble de modèles par défaut pour envoyer des notifications par e-mail lorsque des erreurs se produisent dans une application Rails.
 * [Better Errors](https://github.com/charliesome/better_errors) Remplace la page d'erreur standard de Rails par une nouvelle contenant plus d'informations contextuelles, comme le code source et l'inspection des variables.
-* [RailsPanel](https://github.com/dejan/rails_panel) Extension Chrome pour le développement Rails qui met fin à la surveillance du fichier development.log. Obtenez toutes les informations sur les requêtes de votre application Rails dans le navigateur - dans le panneau Outils de développement. Fournit un aperçu des temps de db/rendering/total, de la liste des paramètres, des vues rendues et plus encore.
+* [RailsPanel](https://github.com/dejan/rails_panel) Extension Chrome pour le développement Rails qui met fin à la surveillance du fichier development.log. Obtenez toutes les informations sur les requêtes de votre application Rails dans le navigateur - dans le panneau Outils de développement. Fournit des informations sur les temps d'exécution de la base de données/du rendu/total, la liste des paramètres, les vues rendues et plus encore.
 * [Pry](https://github.com/pry/pry) Une alternative à IRB et une console de développement en temps d'exécution.
 
 Références

@@ -1,0 +1,29 @@
+<% content_for :page_title, "Ruby on Rails vadovai" %>
+<% content_for :description, "Ruby on Rails vadovai" %>
+
+<% content_for :header_section do %>
+<%= render 'welcome' %>
+<% end %>
+
+<% content_for :index_section do %>
+<div id="subCol">
+  <dl>
+    <dt></dt>
+    <% unless @edge -%>
+      <dd class="kindle">Rails vadovai taip pat yra prieinami <%= link_to 'Kindle', @epub %>.</dd>
+    <% end -%>
+    <dd class="work-in-progress">Vadovai, pažymėti šiuo piktograma, šiuo metu yra darbuojami ir nebus prieinami vadovų indekso meniu. Nors jie vis tiek yra naudingi, jie gali turėti nepilną informaciją ir net klaidas. Jūs galite padėti peržiūrėdami juos ir pateikdami savo komentarus ir pataisymus.</dd>
+  </dl>
+</div>
+<% end %>
+
+<% documents_by_section.each do |section| %>
+  <h2><%= section['name'] %></h2>
+  <dl>
+    <% section['documents'].each do |document| %>
+      <%= guide(document['name'], document['url'], work_in_progress: document['work_in_progress']) do %>
+        <p><%= document['description'] %></p>
+      <% end %>
+    <% end %>
+  </dl>
+<% end %>

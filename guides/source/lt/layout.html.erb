@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= yield(:page_title) %></title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css" data-turbo-track="reload">
+  <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+  <link rel="stylesheet" type="text/css" href="stylesheets/highlight.css" data-turbo-track="reload">
+  <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+  <script src="javascripts/@hotwired--turbo.js" data-turbo-track="reload"></script>
+  <script src="javascripts/clipboard.js" data-turbo-track="reload"></script>
+  <script src="javascripts/guides.js" data-turbo-track="reload"></script>
+  <meta property="og:title" content="<%= yield(:page_title) %>" />
+  <meta name="description" content="<%= yield(:description) %>" />
+  <meta property="og:description" content="<%= yield(:description) %>" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Ruby on Rails vadovai" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/4223" />
+  <meta property="og:type" content="website" />
+</head>
+<body dir="<%= @direction %>" class="guide">
+  <% if badge_version = @edge ? "edge" : @version %>
+  <div>
+    <div id="version-badge"><%= badge_version %></div>
+  </div>
+  <% end %>
+  <div id="topNav">
+    <div class="wrapper">
+      <strong class="more-info-label">Daugiau informacijos <a href="https://rubyonrails.org/">rubyonrails.org:</a> </strong>
+      <span class="red-button more-info-button">
+        Daugiau apie Ruby on Rails
+      </span>
+      <ul class="more-info-links s-hidden">
+        <li class="more-info"><a href="https://rubyonrails.org/blog">Blogas</a></li>
+        <li class="more-info"><a href="https://guides.rubyonrails.org/">Vadovai</a></li>
+        <li class="more-info"><a href="https://api.rubyonrails.org/">API</a></li>
+        <li class="more-info"><a href="https://discuss.rubyonrails.org/">Forumas</a></li>
+        <li class="more-info"><a href="https://github.com/rails/rails">Prisidėkite prie GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="header">
+    <div class="wrapper clearfix">
+      <div class="header-logo"><a href="index.html" title="Grįžti į pagrindinį puslapį">Guides.rubyonrails.org</a></div>
+      <ul class="nav">
+        <li><a class="nav-item" href="index.html">Pagrindinis</a></li>
+        <li class="guides-index guides-index-large">
+          <a href="index.html" id="guidesMenu" class="guides-index-item nav-item">Vadovų indeksas</a>
+          <div id="guides" class="clearfix" style="display: none;">
+            <hr />
+            <dl class="guides-section-container">
+              <% documents_by_section.each do |section| %>
+                <div class="guides-section">
+                  <dt><%= section['name'] %></dt>
+                  <% finished_documents(section['documents']).each do |document| %>
+                  <dd><a href="<%= document['url'] %>"><%= document['name'] %></a></dd>
+                  <% end %>
+                </div>
+              <% end %>
+            </dl>
+          </div>
+        </li>
+        <li><a class="nav-item" href="contributing_to_ruby_on_rails.html">Prisidėti</a></li>
+        <li class="guides-index guides-index-small">
+          <select class="guides-index-item nav-item">
+            <option value="index.html">Vadovų indeksas</option>
+            <% docs_for_menu.each do |section| %>
+              <optgroup label="<%= section['name'] %>">
+                <% finished_documents(section['documents']).each do |document| %>
+                  <option value="<%= document['url'] %>"><%= document['name'] %></option>
+                <% end %>
+              </optgroup>
+            <% end %>
+          </select>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr class="hide" />
+
+  <div id="feature">
+    <div class="wrapper">
+      <%= yield :header_section %>
+
+      <%= yield :index_section %>
+    </div>
+  </div>
+
+  <div id="container">
+    <div class="wrapper">
+      <div id="mainCol">
+        <%= yield %>
+
+        <h3>Atsiliepimai</h3>
+        <p>
+          Jūs esate skatinami padėti pagerinti šio vadovo kokybę.
+        </p>
+        <p>
+          Prašome prisidėti, jei pastebite rašybos klaidų ar faktinių klaidų.
+          Norėdami pradėti, galite perskaityti mūsų <%= link_to 'dokumentacijos prisidėjimo', 'https://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html#contributing-to-the-rails-documentation' %> skyrių.
+        </p>
+        <p>
+          Taip pat gali būti nepilnos informacijos arba informacijos, kuri nėra atnaujinta.
+          Prašome pridėti bet kokią trūkstamą dokumentaciją pagrindiniam. Patikrinkite
+          <%= link_to 'Edge vadovus', 'https://edgeguides.rubyonrails.org' %> pirmiausia, ar
+          problemas jau išspręsta arba ne pagrindinėje šakoje.
+          Patikrinkite <%= link_to 'Ruby on Rails vadovų gaires', 'ruby_on_rails_guides_guidelines.html' %>
+          dėl stiliaus ir konvencijų.
+        </p>
+        <p>
+          Jei dėl kokios nors priežasties pastebite kažką, ką reikia ištaisyti, bet negalite patys tai pataisyti, prašome
+          <%= link_to 'pranešti apie problemą', 'https://github.com/rails/rails/issues' %>.
+        </p>
+        <p>Ir galiausiai, bet ne mažiau svarbu, bet koks diskusijos dėl Ruby on Rails
+          dokumentacijos yra labai laukiamos <%= link_to 'oficialiame Ruby on Rails forume', 'https://discuss.rubyonrails.org/c/rubyonrails-docs' %>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hide" />
+  <div id="footer">
+    <div class="wrapper">
+      <%= render 'license' %>
+    </div>
+  </div>
+</body>
+</html>
