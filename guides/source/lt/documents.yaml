@@ -1,0 +1,302 @@
+---
+- name: Pradėkite čia
+  documents:
+  - name: Pradėkite su Rails
+    url: getting_started.html
+    description: Viskas, ko jums reikia žinoti, kad įdiegtumėte Rails ir sukurtumėte
+      savo pirmąją programą.
+- name: Modeliai
+  documents:
+  - name: 'Aktyvusis įrašas: pagrindai'
+    url: active_record_basics.html
+    description: Active Record leidžia jūsų modeliams sąveikauti su programos duomenų
+      baze. Šis vadovas padės jums pradėti naudoti Active Record modelius ir išsaugoti
+      duomenis į duomenų bazę.
+  - name: Aktyvusis įrašo migracijos
+    url: active_record_migrations.html
+    description: Migracijos yra Active Record funkcija, kuri leidžia jums evoliucionuoti
+      duomenų bazės schemą laikui bėgant. Vietoje to, kad rašytumėte schemos modifikacijas
+      grynais SQL, migracijos leidžia jums naudoti Ruby DSL, kad aprašytumėte pakeitimus
+      savo lentelėse.
+  - name: Aktyvusis įrašo patikrinimas
+    url: active_record_validations.html
+    description: Validacijos naudojamos tam, kad užtikrintų, jog į jūsų duomenų bazę
+      būtų įrašomi tik teisingi duomenys. Šis vadovas moko, kaip patikrinti objektų
+      būseną prieš juos įrašant į duomenų bazę, naudojant Active Record validacijų
+      funkciją.
+  - name: Aktyviųjų įrašų atgaliniai kvietimai
+    url: active_record_callbacks.html
+    description: Atgalinės iškvietimai leidžia rašyti kodą, kuris bus vykdomas kiekvieną
+      kartą, kai objektas yra sukurtas, atnaujinamas, sunaikinamas ir t.t. Šis vadovas
+      moko, kaip prisijungti prie šio objekto gyvavimo ciklo veiksmų su Active Record
+      objektais.
+  - name: Aktyvusis įrašo asociacijos
+    url: association_basics.html
+    description: Active Record'e asociacija yra ryšys tarp dviejų Active Record modelių.
+      Šis vadovas apima visas asociacijas, kurias teikia Active Record.
+  - name: Aktyvusis įrašo užklausos sąsaja
+    url: active_record_querying.html
+    description: Vietoje naudojimo žalią SQL norint rasti duomenų bazės įrašus, Active
+      Record teikia geresnius būdus atlikti tas pačias operacijas. Šis vadovas apima
+      skirtingus būdus gauti duomenis iš duomenų bazės naudojant Active Record.
+  - name: Aktyvaus modelio pagrindai
+    url: active_model_basics.html
+    description: Active Model leidžia jums kurti paprastus Ruby objektus, kurie integruojasi
+      su Action Pack, bet nereikalauja Active Record duomenų bazės išliekamumui. Active
+      Model taip pat padeda kurti pasirinktinius ORMs, skirtus naudoti už Rails karkaso
+      ribų. Šis vadovas suteikia viską, ko jums reikia, norint pradėti naudoti Active
+      Model klases.
+- name: Pareiškimai
+  documents:
+  - name: Veiksmo peržiūros apžvalga
+    url: action_view_overview.html
+    description: Veiksmo rodinys atsakingas už HTML generavimą interneto atsakymams.
+      Šis vadovas suteikia įvadą į Veiksmo rodinį.
+  - name: Maketavimas ir atvaizdavimas „Rails“
+    url: layouts_and_rendering.html
+    description: Šis vadovas apima pagrindines Action Controller ir Action View išdėstymo
+      funkcijas, įskaitant atvaizdavimą ir nukreipimą, naudojant content_for blokus
+      ir dirbant su daliniais.
+  - name: Veiksmų peržiūros pagalbininkai
+    url: action_view_helpers.html
+    description: Veiksmo peržiūra turi pagalbinius įrankius, skirtus viskam nuo datos
+      formatavimo ir nuorodų į paveikslėlius, iki turinio dezinfekavimo ir lokalizavimo.
+      Šis vadovas pristato keletą dažniau naudojamų Veiksmo peržiūros pagalbinių įrankių.
+  - name: Veiksmo peržiūros formos pagalbininkai
+    url: form_helpers.html
+    description: HTML formos gali greitai tapti nuobodžios rašyti ir palaikyti dėl
+      poreikio tvarkyti formos valdiklio pavadinimą ir jo daugybę atributų. "Rails"
+      pašalina šią sudėtingumą, teikdamas vaizdo pagalbininkus, skirtus generuoti
+      formos žymėjimą.
+- name: Valdikliai
+  documents:
+  - name: Veiksmų valdiklio apžvalga
+    url: action_controller_overview.html
+    description: Veiksmų valdikliai yra pagrindinė internetinio užklausos dalis „Rails“
+      karkase. Šis vadovas aprašo, kaip veikia valdikliai ir kaip jie įsijungia į
+      jūsų programos užklausos ciklą. Jame aptariamos sesijos, filtrai, slapukai,
+      duomenų srautai ir kaip tvarkyti užklausos metu iškeltus išimtis, tarp kitų
+      temų.
+  - name: Rails maršrutizavimas iš išorės į vidų
+    url: routing.html
+    description: Rails maršrutizatorius atpažįsta URL adresus ir nukreipia juos į
+      valdiklio veiksmą. Šis vadovas apima Rails maršrutizavimo vartotojui matomas
+      funkcijas. Jei norite suprasti, kaip naudoti maršrutizavimą savo pačiame Rails
+      aplikacijoje, pradėkite čia.
+- name: Kiti komponentai
+  documents:
+  - name: Aktyvusis palaikymas - pagrindiniai plėtiniai
+    url: active_support_core_extensions.html
+    description: Active Support teikia Ruby kalbos plėtinius ir įrankius. Jis papildo
+      Ruby kalbą, skirtą „Rails“ programų kūrimui, taip pat ir Ruby on Rails pačiam
+      kūrimui.
+  - name: Veiksmų siuntimo pagrindai
+    url: action_mailer_basics.html
+    description: Šis vadovas suteikia jums viską, ko jums reikia pradėti siųsti el.
+      laiškus iš savo programos ir daugybę Action Mailer vidinių funkcijų.
+  - name: Veiksmų pašto dėžutės pagrindai
+    url: action_mailbox_basics.html
+    description: Šis vadovas aprašo, kaip naudoti Action Mailbox gauti el. laiškus.
+  - name: Action Text apžvalga
+    url: action_text_overview.html
+    description: Šis vadovas aprašo, kaip naudoti Action Text, kad būtų galima tvarkyti
+      turtingo formato turinį.
+  - name: Aktyvios užduoties pagrindai
+    url: active_job_basics.html
+    description: Aktyvus darbas yra karkasas, skirtas deklaruoti fono darbus ir juos
+      paleisti įvairiose eilės pagrindinėse sistemose. Šis vadovas suteikia jums viską,
+      ko jums reikia pradėti kurti, įtraukti į eilę ir vykdyti fono darbus.
+  - name: Aktyvaus saugojimo apžvalga
+    url: active_storage_overview.html
+    description: Aktyvus saugojimas palengvina failų įkėlimą į debesų saugojimo paslaugą,
+      transformuoja įkėlimus ir išgauna metaduomenis. Šis vadovas aprašo, kaip pridėti
+      failus prie jūsų aktyviųjų įrašų modelių.
+  - name: Action Cable apžvalga
+    url: action_cable_overview.html
+    description: Veiksmo kabelis integruoja WebSocket su visomis jūsų „Rails“ programos
+      dalimis. Tai leidžia rašyti realaus laiko funkcijas „Ruby“ kalba taip pat, kaip
+      ir visą jūsų „Rails“ programą. Šis vadovas paaiškina, kaip veikia veiksmo kabelis
+      ir kaip naudoti WebSocket, kad sukurtumėte realaus laiko funkcijas.
+  - name: Webpacker
+    url: webpacker.html
+    description: Šis vadovas parodys, kaip įdiegti ir naudoti Webpacker, kad supakuotumėte
+      JavaScript, CSS ir kitus turinius kliento pusėje savo Rails aplikacijoje.
+- name: Giliau kasant
+  documents:
+  - name: Rails Internationalizacijos (I18n) API
+    url: i18n.html
+    description: Šis vadovas aprašo, kaip pridėti internacionalizaciją prie savo programų.
+      Jūsų programa galės išversti turinį į skirtingas kalbas, keisti daugiskaitos
+      taisykles, naudoti teisingus datos formatavimus kiekvienai šaliai ir t.t.
+  - name: Rails aplikacijų testavimas
+    url: testing.html
+    description: Tai yra gana išsamus vadovas apie įvairias testavimo priemones „Rails“
+      karkase. Jame aptariama viskas nuo „Kas yra testas?“ iki integracinio testavimo.
+      Mėgaukitės.
+  - name: Rails aplikacijų saugumas
+    url: security.html
+    description: Šis vadovas aprašo dažnai pasitaikančius saugumo problemas interneto
+      aplikacijose ir kaip jų išvengti naudojant Rails.
+  - name: Klaidų pranešimai „Rails“ programose
+    url: error_reporting.html
+    description: Šis vadovas pristato būdus, kaip valdyti išimtis, kurios atsiranda
+      Ruby on Rails programose.
+  - name: Rails aplikacijų derinimas
+    url: debugging_rails_applications.html
+    description: Šis vadovas aprašo, kaip derinti Rails aplikacijas. Jis apima skirtingus
+      būdus, kaip tai pasiekti, ir kaip suprasti, kas vyksta "užkulisiuose" jūsų kodo.
+  - name: Konfigūruojant „Rails“ aplikacijas
+    url: configuring.html
+    description: Šis vadovas apima pagrindinius konfigūracijos nustatymus „Rails“
+      programai.
+  - name: Rails Komandinė eilutė
+    url: command_line.html
+    description: Yra keletas komandų, kurios yra absoliučiai būtinos jūsų kasdieniam
+      „Rails“ naudojimui. Šis vadovas apima komandinės eilutės įrankius, kurie yra
+      pateikiami „Rails“.
+  - name: Turtinio turto linija
+    url: asset_pipeline.html
+    description: Turtinio aktyvų linija teikia pagrindą sujungti ir sumažinti arba
+      suspausti JavaScript, CSS ir vaizdo aktyvus. Ji taip pat suteikia galimybę rašyti
+      šiuos aktyvus kitomis kalbomis ir pirmaujančiomis programomis, tokiomis kaip
+      CoffeeScript, Sass ir ERB.
+  - name: Dirbant su JavaScript „Rails“
+    url: working_with_javascript_in_rails.html
+    description: Šis vadovas paaiškina, kaip naudoti importavimo žemėlapius arba jsbundling-rails,
+      kad įtrauktumėte „JavaScript“ į „Rails“ programas ir aptartumėte pagrindinius
+      darbą su „Turbo“ „Rails“ aspektus.
+  - name: Rails Inicializacijos Procesas
+    url: initialization.html
+    description: Šis vadovas paaiškina Rails inicializacijos proceso vidinius veiksmus.
+      Tai yra labai išsamus vadovas, rekomenduojamas patyrusiems Rails programuotojams.
+  - name: Automašinų įkėlimas ir perkrovimas
+    url: autoloading_and_reloading_constants.html
+    description: Šis vadovas dokumentuoja, kaip veikia automatinis įkėlimas ir konstantų
+      perkrovimas (Zeitwerk režime).
+  - name: Klasikinio režimo pereinamasis prie Zeitwerk HOWTO
+    url: classic_to_zeitwerk_howto.html
+    description: Šis vadovas dokumentuoja, kaip perkelti Rails aplikacijas iš `classic`
+      į `zeitwerk` režimą.
+  - name: 'Podėliavimas su Rails: Apžvalga'
+    url: caching_with_rails.html
+    description: Šis vadovas yra įvadas į jūsų "Rails" aplikacijos pagreitinimą su
+      talpinimu.
+  - name: Aktyvusis palaikymo instrumentavimas
+    url: active_support_instrumentation.html
+    description: Šis vadovas paaiškina, kaip naudoti instrumentavimo API, esantį Active
+      Support, norint matuoti įvykius Rails ir kitame Ruby kode.
+  - name: Naudodami „Rails“ API programoms
+    url: api_app.html
+    description: Šis vadovas paaiškina, kaip efektyviai naudoti Rails kurti JSON API
+      programą.
+  - name: Aktyvusis įrašas ir PostgreSQL
+    url: active_record_postgresql.html
+    description: Šis vadovas apima PostgreSQL specifinį Active Record naudojimą.
+  - name: Kelių duomenų bazių naudojimas su Active Record
+    url: active_record_multiple_databases.html
+    description: Šis vadovas aprašo, kaip naudoti kelias duomenų bazes savo aplikacijoje.
+  - name: Aktyvusis įrašo šifravimas
+    url: active_record_encryption.html
+    description: Šis vadovas aprašo, kaip užšifruoti savo duomenų bazės informaciją
+      naudojant Active Record.
+- name: Išplėsti Rails
+  documents:
+  - name: Rails pluginų pagrindai
+    url: plugins.html
+    description: Šis vadovas aprašo, kaip sukurti įskiepį, kuris išplečia Rails funkcionalumą.
+  - name: Rails ant Rack
+    url: rails_on_rack.html
+    description: Šis vadovas apima Rails integraciją su Rack ir sąveiką su kitais
+      Rack komponentais.
+  - name: Kuriamas ir pritaikomas „Rails“ generatoriai ir šablonai
+    url: generators.html
+    description: Šis vadovas aprėpia naujo generatoriaus pridėjimo procesą prie jūsų
+      plėtinio arba alternatyvos teikimą įmontuoto Rails generatoriaus elementui (pvz.,
+      alternatyvių testavimo šablonų teikimas šablonų generatoriui).
+  - name: Pradėkime su varikliais
+    url: engines.html
+    description: Varikliai gali būti laikomi miniatiūrinėmis programomis, kurios suteikia
+      papildomą funkcionalumą savo pagrindinėms programoms. Šiame vadove sužinosite,
+      kaip sukurti savo pačių variklį ir jį integruoti su pagrindine programa.
+  - name: Rails aplikacijų šablonai
+    url: rails_application_templates.html
+    description: Programos šablonai yra paprasti Ruby failai, kuriuose yra DSL (Domain
+      Specific Language) pridėtiems gemams, inicializavimo failams ir kt., į jūsų
+      naujai sukurtą Rails projektą arba esamą Rails projektą.
+  - name: Gijimo ir kodo vykdymas „Rails“
+    url: threading_and_code_execution.html
+    description: Šis vadovas aprašo svarstymus ir įrankius, kurie yra naudojami tiesiogiai
+      dirbant su konkurencija „Rails“ programoje.
+- name: Prisidedant
+  documents:
+  - name: Prisidėjimas prie Ruby on Rails
+    url: contributing_to_ruby_on_rails.html
+    description: Rails nėra "kito žmogaus karkasas". Šis vadovas apima įvairias būdas,
+      kaip galite dalyvauti nuolatinėje Rails plėtros veikloje.
+  - name: API Dokumentacijos Gairės
+    url: api_documentation_guidelines.html
+    description: Šis vadovas dokumentuoja Ruby on Rails API dokumentacijos gaires.
+  - name: Ruby on Rails Gidų gairės
+    url: ruby_on_rails_guides_guidelines.html
+    description: Šis vadovas dokumentuoja Ruby on Rails vadovų gaires.
+  - name: Įdiegiant "Rails Core" plėtros priklausomybes
+    url: development_dependencies_install.html
+    description: Šis vadovas aprašo, kaip sukurti aplinką Ruby on Rails pagrindiniam
+      programiniam įrangos kūrimui.
+- name: Politikos
+  documents:
+  - name: Ruby on Rails priežiūros politika
+    url: maintenance_policy.html
+    description: Kokios versijos Ruby on Rails šiuo metu palaikomos, ir kada galima
+      tikėtis naujų versijų.
+- name: Išleidimo pastabos
+  documents:
+  - name: Ruby on Rails atnaujinimas
+    url: upgrading_ruby_on_rails.html
+    description: Šis vadovas pateikia žingsnius, kurie turi būti laikomi atnaujinant
+      jūsų programinę įrangą iki naujesnės Ruby on Rails versijos.
+  - name: Ruby on Rails 7.1 Išleidimo pastabos
+    url: 7_1_release_notes.html
+    description: Leidimo pastabos dėl Rails 7.1.
+  - name: Ruby on Rails 7.0 Išleidimo Pastabos
+    url: 7_0_release_notes.html
+    description: Išleidimo pastabos Rails 7.0 versijai.
+  - name: Ruby on Rails 6.1 Išleidimo pastabos
+    url: 6_1_release_notes.html
+    description: Išleidimo pastabos Rails 6.1.
+  - name: Ruby on Rails 6.0 Išleidimo Pastabos
+    url: 6_0_release_notes.html
+    description: Išleidimo pastabos Rails 6.0 versijai.
+  - name: Ruby on Rails 5.2 Išleidimo pastabos
+    url: 5_2_release_notes.html
+    description: Išleidimo pastabos Rails 5.2.
+  - name: Ruby on Rails 5.1 Išleidimo pastabos
+    url: 5_1_release_notes.html
+    description: Išleidimo pastabos Rails 5.1.
+  - name: Ruby on Rails 5.0 Išleidimo pastabos
+    url: 5_0_release_notes.html
+    description: Išleidimo pastabos Rails 5.0 versijai.
+  - name: Ruby on Rails 4.2 Išleidimo pastabos
+    url: 4_2_release_notes.html
+    description: Išleidimo pastabos Rails 4.2.
+  - name: Ruby on Rails 4.1 Išleidimo pastabos
+    url: 4_1_release_notes.html
+    description: Išleidimo pastabos dėl Rails 4.1.
+  - name: Ruby on Rails 4.0 Išleidimo pastabos
+    url: 4_0_release_notes.html
+    description: Išleidimo pastabos Rails 4.0.
+  - name: Ruby on Rails 3.2 Išleidimo pastabos
+    url: 3_2_release_notes.html
+    description: Išleidimo pastabos Rails 3.2.
+  - name: Ruby on Rails 3.1 Išleidimo pastabos
+    url: 3_1_release_notes.html
+    description: Išleidimo pastabos Rails 3.1.
+  - name: Ruby on Rails 3.0 Išleidimo pastabos
+    url: 3_0_release_notes.html
+    description: Išleidimo pastabos Rails 3.0.
+  - name: Ruby on Rails 2.3 Išleidimo pastabos
+    url: 2_3_release_notes.html
+    description: Išleidimo pastabos Rails 2.3 versijai.
+  - name: Ruby on Rails 2.2 Išleidimo Pastabos
+    url: 2_2_release_notes.html
+    description: Išleidimo pastabos Rails 2.2 versijai.

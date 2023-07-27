@@ -1580,7 +1580,7 @@ assert_select_email do
 end
 ```
 
-Testavimo pagalbininkai
+Testavimo pagalbininkai(fixed)
 -----------------------
 
 Pagalbininkas yra paprastas modulis, kuriame galite apibrėžti metodus, kurie yra prieinami jūsų rodiniuose.
