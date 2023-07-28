@@ -1,0 +1,32 @@
+<h1>Guias do Ruby on Rails (<%= @edge ? @edge[0, 7] : @version %>)</h1>
+
+<% if @edge %>
+<p>
+  Estes são os <b>Guias Edge</b>, baseados em <a href="https://github.com/rails/rails/tree/<%= @edge %>">main@<%= @edge[0, 7] %></a>.
+</p>
+<p>
+  Se você está procurando pelos guias da versão estável, por favor, verifique
+  <a href="https://guides.rubyonrails.org">https://guides.rubyonrails.org</a> em vez disso.
+</p>
+<% else %>
+<p>
+  Estes são os novos guias para o Rails 7.1 baseados em <a href="https://github.com/rails/rails/tree/<%= @version %>"><%= @version %></a>.
+  Estes guias foram projetados para torná-lo imediatamente produtivo com o Rails e ajudá-lo a entender como todas as peças se encaixam.
+</p>
+<% end %>
+<p>
+Os guias para versões anteriores:
+<a href="https://guides.rubyonrails.org/v7.0/" data-turbo="false">Rails 7.0</a>,
+<a href="https://guides.rubyonrails.org/v6.1/" data-turbo="false">Rails 6.1</a>,
+<a href="https://guides.rubyonrails.org/v6.0/" data-turbo="false">Rails 6.0</a>,
+<a href="https://guides.rubyonrails.org/v5.2/" data-turbo="false">Rails 5.2</a>,
+<a href="https://guides.rubyonrails.org/v5.1/" data-turbo="false">Rails 5.1</a>,
+<a href="https://guides.rubyonrails.org/v5.0/" data-turbo="false">Rails 5.0</a>,
+<a href="https://guides.rubyonrails.org/v4.2/" data-turbo="false">Rails 4.2</a>,
+<a href="https://guides.rubyonrails.org/v4.1/" data-turbo="false">Rails 4.1</a>,
+<a href="https://guides.rubyonrails.org/v4.0/" data-turbo="false">Rails 4.0</a>,
+<a href="https://guides.rubyonrails.org/v3.2/" data-turbo="false">Rails 3.2</a>,
+<a href="https://guides.rubyonrails.org/v3.1/" data-turbo="false">Rails 3.1</a>,
+<a href="https://guides.rubyonrails.org/v3.0/" data-turbo="false">Rails 3.0</a> e
+<a href="https://guides.rubyonrails.org/v2.3/" data-turbo="false">Rails 2.3</a>.
+</p>

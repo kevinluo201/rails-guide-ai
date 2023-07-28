@@ -1,0 +1,24 @@
+<% content_for :page_title do %>
+Guias do Ruby on Rails
+<% end %>
+
+<h1>Índice</h1>
+<div id="toc">
+  <ul><li><a href="welcome.html">Bem-vindo</a></li></ul>
+
+  <% documents_by_section.each_with_index do |section, i| %>
+    <h3><%= "#{i + 1}." %> <%= section['name'] %></h3>
+    <ul>
+      <% section['documents'].each do |document| %>
+        <li>
+          <a href="<%= document['url'] %>"><%= document['name'] %></a>
+          <% if document['work_in_progress']%>(WIP)<% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<hr />
+<ul>
+  <li><a href="copyright.html">Direitos Autorais e Licença</a></li>
+</ul>
+</div>

@@ -1,0 +1,310 @@
+---
+- name: Comece aqui
+  documents:
+  - name: Começando com o Rails
+    url: getting_started.html
+    description: Tudo o que você precisa saber para instalar o Rails e criar sua primeira
+      aplicação.
+- name: Modelos
+  documents:
+  - name: Noções básicas do Active Record
+    url: active_record_basics.html
+    description: Active Record permite que seus modelos interajam com o banco de dados
+      da aplicação. Este guia irá te ajudar a começar com modelos Active Record e
+      persistência no banco de dados.
+  - name: Migrações do Active Record
+    url: active_record_migrations.html
+    description: As migrações são uma funcionalidade do Active Record que permite
+      evoluir o esquema do seu banco de dados ao longo do tempo. Em vez de escrever
+      modificações de esquema em SQL puro, as migrações permitem que você use uma
+      DSL Ruby para descrever as alterações em suas tabelas.
+  - name: Validações do Active Record
+    url: active_record_validations.html
+    description: As validações são usadas para garantir que apenas dados válidos sejam
+      salvos em seu banco de dados. Este guia ensina como validar o estado dos objetos
+      antes de serem inseridos no banco de dados, usando o recurso de validações do
+      Active Record.
+  - name: Callbacks do Active Record
+    url: active_record_callbacks.html
+    description: Callbacks tornam possível escrever código que será executado sempre
+      que um objeto for criado, atualizado, destruído, etc. Este guia ensina como
+      se conectar a esse ciclo de vida do objeto de objetos Active Record.
+  - name: Associações do Active Record
+    url: association_basics.html
+    description: No Active Record, uma associação é uma conexão entre dois modelos
+      Active Record. Este guia abrange todas as associações fornecidas pelo Active
+      Record.
+  - name: Interface de Consulta do Active Record
+    url: active_record_querying.html
+    description: Em vez de usar SQL bruto para encontrar registros de banco de dados,
+      o Active Record fornece maneiras melhores de realizar as mesmas operações. Este
+      guia aborda diferentes maneiras de recuperar dados do banco de dados usando
+      o Active Record.
+  - name: Noções básicas do Active Model
+    url: active_model_basics.html
+    description: Active Model permite que você crie objetos Ruby simples que se integram
+      com o Action Pack, mas não precisam do Active Record para persistência no banco
+      de dados. Active Model também ajuda a construir ORMs personalizados para uso
+      fora do framework Rails. Este guia fornece tudo o que você precisa para começar
+      a usar classes Active Model.
+- name: Visualizações
+  documents:
+  - name: Visão Geral do Action View
+    url: action_view_overview.html
+    description: Action View é responsável por gerar o HTML para respostas web. Este
+      guia fornece uma introdução ao Action View.
+  - name: Layouts e Renderização no Rails
+    url: layouts_and_rendering.html
+    description: Este guia abrange os recursos básicos de layout do Action Controller
+      e Action View, incluindo renderização e redirecionamento, uso de blocos content_for
+      e trabalho com parciais.
+  - name: Helpers de Visualização de Ação
+    url: action_view_helpers.html
+    description: O Action View possui helpers para lidar com tudo, desde a formatação
+      de datas e a criação de links para imagens, até a sanitização e localização
+      de conteúdo. Este guia apresenta alguns dos helpers mais comuns do Action View.
+  - name: Action View Form Helpers
+    url: form_helpers.html
+    description: Os formulários HTML podem se tornar rapidamente tediosos de escrever
+      e manter devido à necessidade de lidar com a nomenclatura dos controles do formulário
+      e seus inúmeros atributos. O Rails elimina essa complexidade fornecendo ajudantes
+      de visualização para gerar a marcação do formulário.
+- name: Controladores
+  documents:
+  - name: Visão Geral do Action Controller
+    url: action_controller_overview.html
+    description: Os Controladores de Ação são o núcleo de uma solicitação web no Rails.
+      Este guia aborda como os controladores funcionam e como eles se encaixam no
+      ciclo de solicitação da sua aplicação. Ele inclui sessões, filtros, cookies,
+      streaming de dados e lidar com exceções geradas por uma solicitação, entre outros
+      tópicos.
+  - name: Roteamento do Rails de fora para dentro
+    url: routing.html
+    description: O roteador do Rails reconhece URLs e as envia para uma ação do controlador.
+      Este guia aborda as funcionalidades voltadas para o usuário do roteamento do
+      Rails. Se você deseja entender como usar o roteamento em suas próprias aplicações
+      Rails, comece por aqui.
+- name: Outros componentes
+  documents:
+  - name: Extensões Principais do Active Support
+    url: active_support_core_extensions.html
+    description: Active Support fornece extensões e utilitários para a linguagem Ruby.
+      Ele enriquece a linguagem Ruby para o desenvolvimento de aplicações Rails e
+      para o desenvolvimento do próprio Ruby on Rails.
+  - name: Noções básicas do Action Mailer
+    url: action_mailer_basics.html
+    description: Este guia fornece tudo o que você precisa para começar a enviar e-mails
+      a partir do seu aplicativo, e muitos detalhes internos do Action Mailer.
+  - name: Noções básicas do Action Mailbox
+    url: action_mailbox_basics.html
+    description: Este guia descreve como usar o Action Mailbox para receber emails.
+  - name: Visão geral do Action Text
+    url: action_text_overview.html
+    description: Este guia descreve como usar o Action Text para lidar com conteúdo
+      de texto rico.
+  - name: Noções básicas do Active Job
+    url: active_job_basics.html
+    description: Active Job é um framework para declarar trabalhos em segundo plano
+      e fazê-los rodar em uma variedade de backends de fila. Este guia fornece tudo
+      o que você precisa para começar a criar, enfileirar e executar trabalhos em
+      segundo plano.
+  - name: Visão geral do Active Storage
+    url: active_storage_overview.html
+    description: O Active Storage facilita o upload de arquivos para um serviço de
+      armazenamento em nuvem, transformando uploads e extraindo metadados. Este guia
+      aborda como anexar arquivos aos seus modelos Active Record.
+  - name: Visão geral do Action Cable
+    url: action_cable_overview.html
+    description: Action Cable integra WebSockets com o restante da sua aplicação Rails.
+      Ele permite que recursos em tempo real sejam escritos em Ruby no mesmo estilo
+      e formato que o restante da sua aplicação Rails. Este guia explica como o Action
+      Cable funciona e como usar WebSockets para criar recursos em tempo real.
+  - name: Webpacker
+    url: webpacker.html
+    description: Este guia irá mostrar como instalar e usar o Webpacker para empacotar
+      JavaScript, CSS e outros recursos para o lado do cliente da sua aplicação Rails.
+- name: Aprofundando-se mais
+  documents:
+  - name: API de Internacionalização (I18n) do Rails
+    url: i18n.html
+    description: Este guia aborda como adicionar internacionalização às suas aplicações.
+      Sua aplicação será capaz de traduzir conteúdo para diferentes idiomas, alterar
+      regras de pluralização, usar formatos de data corretos para cada país, e assim
+      por diante.
+  - name: Testando Aplicações Rails
+    url: testing.html
+    description: Este é um guia bastante abrangente sobre os vários recursos de teste
+      no Rails. Ele abrange tudo, desde 'O que é um teste?' até Testes de Integração.
+      Aproveite.
+  - name: Segurança de Aplicações Rails
+    url: security.html
+    description: Este guia descreve problemas comuns de segurança em aplicações web
+      e como evitá-los com o Rails.
+  - name: Relatório de Erros em Aplicações Rails
+    url: error_reporting.html
+    description: Este guia apresenta maneiras de gerenciar exceções que ocorrem em
+      aplicações Ruby on Rails.
+  - name: Depurando Aplicações Rails
+    url: debugging_rails_applications.html
+    description: Este guia descreve como depurar aplicações Rails. Ele abrange as
+      diferentes maneiras de fazer isso e como entender o que está acontecendo "nos
+      bastidores" do seu código.
+  - name: Configurando Aplicações Rails
+    url: configuring.html
+    description: Este guia abrange as configurações básicas de configuração para uma
+      aplicação Rails.
+  - name: A Linha de Comando do Rails
+    url: command_line.html
+    description: Existem alguns comandos que são absolutamente essenciais para o uso
+      diário do Rails. Este guia abrange as ferramentas de linha de comando fornecidas
+      pelo Rails.
+  - name: O Pipeline de Ativos
+    url: asset_pipeline.html
+    description: O pipeline de ativos fornece uma estrutura para concatenar e minificar
+      ou compactar ativos JavaScript, CSS e imagens. Ele também adiciona a capacidade
+      de escrever esses ativos em outros idiomas e pré-processadores, como CoffeeScript,
+      Sass e ERB.
+  - name: Trabalhando com JavaScript no Rails
+    url: working_with_javascript_in_rails.html
+    description: Este guia explica como usar import maps ou jsbundling-rails para
+      incluir JavaScript em aplicações Rails, e aborda os conceitos básicos de trabalhar
+      com Turbo no Rails.
+  - name: O Processo de Inicialização do Rails
+    url: initialization.html
+    description: Este guia explica os detalhes internos do processo de inicialização
+      no Rails. É um guia extremamente detalhado e recomendado para desenvolvedores
+      avançados do Rails.
+  - name: Autoloading e Recarregamento de Constantes
+    url: autoloading_and_reloading_constants.html
+    description: Este guia documenta como o carregamento automático e o recarregamento
+      de constantes funcionam (modo Zeitwerk).
+  - name: Guia de migração do modo "classic" para o modo "zeitwerk"
+    url: classic_to_zeitwerk_howto.html
+    description: Este guia documenta como migrar aplicações Rails do modo `classic`
+      para o modo `zeitwerk`.
+  - name: 'Caching com Rails: Uma Visão Geral'
+    url: caching_with_rails.html
+    description: Este guia é uma introdução para acelerar sua aplicação Rails com
+      cache.
+  - name: Instrumentação do Active Support
+    url: active_support_instrumentation.html
+    description: Este guia explica como usar a API de instrumentação dentro do Active
+      Support para medir eventos dentro do Rails e outros códigos Ruby.
+  - name: Usando Rails para Aplicações Apenas de API
+    url: api_app.html
+    description: Este guia explica como usar o Rails de forma eficaz para desenvolver
+      uma aplicação de API JSON.
+  - name: Active Record e PostgreSQL
+    url: active_record_postgresql.html
+    description: Este guia aborda o uso específico do PostgreSQL com o Active Record.
+  - name: Múltiplos Bancos de Dados com Active Record
+    url: active_record_multiple_databases.html
+    description: Este guia aborda o uso de múltiplos bancos de dados em sua aplicação.
+  - name: Criptografia do Active Record
+    url: active_record_encryption.html
+    description: Este guia aborda a criptografia das informações do seu banco de dados
+      usando o Active Record.
+- name: Estendendo o Rails
+  documents:
+  - name: Os Conceitos Básicos de Criação de Plugins Rails
+    url: plugins.html
+    description: Este guia aborda como construir um plugin para estender a funcionalidade
+      do Rails.
+  - name: Rails no Rack
+    url: rails_on_rack.html
+    description: Este guia aborda a integração do Rails com o Rack e a interface com
+      outros componentes do Rack.
+  - name: Criando e Personalizando Geradores e Modelos Rails
+    url: generators.html
+    description: Este guia aborda o processo de adicionar um novo gerador à sua extensão
+      ou fornecer uma alternativa a um elemento de um gerador embutido do Rails (como
+      fornecer stubs de teste alternativos para o gerador de scaffold).
+  - name: Introdução aos Engines
+    url: engines.html
+    description: Motores podem ser considerados aplicativos em miniatura que fornecem
+      funcionalidades adicionais às suas aplicações hospedeiras. Neste guia, você
+      aprenderá como criar seu próprio motor e integrá-lo a uma aplicação hospedeira.
+  - name: Modelos de Aplicativos Rails
+    url: rails_application_templates.html
+    description: Os modelos de aplicação são arquivos Ruby simples contendo DSL para
+      adicionar gems, inicializadores, etc. ao seu projeto Rails recém-criado ou a
+      um projeto Rails existente.
+  - name: Threading e Execução de Código no Rails
+    url: threading_and_code_execution.html
+    description: Este guia descreve as considerações necessárias e as ferramentas
+      disponíveis ao trabalhar diretamente com concorrência em uma aplicação Rails.
+- name: Contribuindo
+  documents:
+  - name: Contribuindo para o Ruby on Rails
+    url: contributing_to_ruby_on_rails.html
+    description: Rails não é "o framework de outra pessoa". Este guia abrange uma
+      variedade de maneiras pelas quais você pode se envolver no desenvolvimento contínuo
+      do Rails.
+  - name: Diretrizes de Documentação de API
+    url: api_documentation_guidelines.html
+    description: Este guia documenta as diretrizes de documentação da API do Ruby
+      on Rails.
+  - name: Diretrizes do Guia Ruby on Rails
+    url: ruby_on_rails_guides_guidelines.html
+    description: Este guia documenta as diretrizes dos guias do Ruby on Rails.
+  - name: Instalando as Dependências Principais de Desenvolvimento do Rails
+    url: development_dependencies_install.html
+    description: Este guia aborda como configurar um ambiente para o desenvolvimento
+      central do Ruby on Rails.
+- name: Políticas
+  documents:
+  - name: Política de Manutenção para Ruby on Rails
+    url: maintenance_policy.html
+    description: Quais versões do Ruby on Rails estão atualmente suportadas e quando
+      esperar novas versões.
+- name: Notas de Lançamento
+  documents:
+  - name: Atualizando o Ruby on Rails
+    url: upgrading_ruby_on_rails.html
+    description: Este guia fornece os passos a serem seguidos ao atualizar suas aplicações
+      para uma versão mais recente do Ruby on Rails.
+  - name: Ruby on Rails 7.1 Notas de Lançamento
+    url: 7_1_release_notes.html
+    description: Notas de lançamento para o Rails 7.1.
+  - name: Ruby on Rails 7.0 Notas de Lançamento
+    url: 7_0_release_notes.html
+    description: Notas de lançamento para o Rails 7.0.
+  - name: Notas de Lançamento do Ruby on Rails 6.1
+    url: 6_1_release_notes.html
+    description: Notas de lançamento para o Rails 6.1.
+  - name: Notas de lançamento do Ruby on Rails 6.0
+    url: 6_0_release_notes.html
+    description: Notas de lançamento para o Rails 6.0.
+  - name: Notas de lançamento do Ruby on Rails 5.2
+    url: 5_2_release_notes.html
+    description: Notas de lançamento para o Rails 5.2.
+  - name: Notas de lançamento do Ruby on Rails 5.1
+    url: 5_1_release_notes.html
+    description: Notas de lançamento para o Rails 5.1.
+  - name: Ruby on Rails 5.0 Notas de Lançamento
+    url: 5_0_release_notes.html
+    description: Notas de lançamento para o Rails 5.0.
+  - name: Ruby on Rails 4.2 Notas de Lançamento
+    url: 4_2_release_notes.html
+    description: Notas de lançamento para o Rails 4.2.
+  - name: Ruby on Rails 4.1 Notas de Lançamento
+    url: 4_1_release_notes.html
+    description: Notas de lançamento para o Rails 4.1.
+  - name: Ruby on Rails 4.0 Notas de Lançamento
+    url: 4_0_release_notes.html
+    description: Notas de lançamento para o Rails 4.0.
+  - name: Ruby on Rails 3.2 Notas de Lançamento
+    url: 3_2_release_notes.html
+    description: Notas de lançamento para Rails 3.2.
+  - name: Ruby on Rails 3.1 Notas de Lançamento
+    url: 3_1_release_notes.html
+    description: Notas de lançamento para o Rails 3.1.
+  - name: Notas de lançamento do Ruby on Rails 3.0
+    url: 3_0_release_notes.html
+    description: Notas de lançamento para o Rails 3.0.
+  - name: Ruby on Rails 2.3 Notas de Lançamento
+    url: 2_3_release_notes.html
+    description: Notas de lançamento para o Rails 2.3.
+  - name: Ruby on Rails 2.2 Notas de Lançamento
+    url: 2_2_release_notes.html
+    description: Notas de lançamento para o Rails 2.2.
