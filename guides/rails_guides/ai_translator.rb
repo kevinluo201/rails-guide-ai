@@ -4,55 +4,77 @@ require 'openai'
 require 'digest'
 require 'yaml'
 
+class ExceedTokensLimitError < StandardError;end
+
 module RailsGuides
   class AiTranslator
     OPENAI_ACCESS_TOKEN = ENV['OPENAI_ACCESS_TOKEN']
     OPENAI_MODEL = "gpt-3.5-turbo"
     OPENAI_TEMPERATURE = 0.2
     OPENAI_REQUEST_TIMEOUT = 360
+    OPENAI_MAX_TOKENS = 4096
 
-    BUFFER_SIZE = 700
     LANGUAGES = {
       'zh-TW' => "Traditional Chinese used in Taiwan(台灣繁體中文).",
       'pt-BR' => 'Brazilian Portuguese',
       'fr' => 'French',
       'lt' => 'Lithuanian',
+      'zh-CN' => 'Simplified Chinese',
     }
     FILETYPE = {
       'md' => 'Markdown',
       'erb' => 'Embeded Ruby XML',
     }
 
-    def initialize(file:, target_language:, skippable: true)
+    def initialize(target_language:, buffer_size: 700)
       @client = OpenAI::Client.new(
         access_token: OPENAI_ACCESS_TOKEN,
         request_timeout: OPENAI_REQUEST_TIMEOUT,
       )
-      @file = file
-      @file_ext = file.split('.').last
       @target_language = target_language
-      @target_file = "#{target_language}/#{file}"
-      @system_prompt = "Translate the technical document to #{LANGUAGES[target_language]} without adding any new content."
-      @skippable = skippable
+      @buffer_size = buffer_size
     end
 
-    def translate
-      if @file_ext == 'md'
-        translate_markdown
-      else
-        translate_file
+    def translate_files(files)
+      current_buffer_size = @buffer_size
+
+      while files.length > 0 && current_buffer_size > 0
+        files.dup.each do |file|
+          if translate_file(file, buffer_size: current_buffer_size)
+            files.delete(file)
+          end
+        end
+
+        if files.length > 0
+          current_buffer_size -= 100
+          raise 'Buffer size too small' if current_buffer_size <= 0
+          puts "Current buffer size: #{current_buffer_size}"
+        end
       end
     end
 
-    def translate_file
-      puts 'Start translate file: ' + @file + ' ...'
+    def translate_file(file, buffer_size: @buffer_size, force_update: false)
+      if file.end_with?('.md')
+        translate_markdown(file, buffer_size: buffer_size, force_update: force_update)
+      else
+        translate_plain_file(file)
+      end
+
+      true
+    rescue ExceedTokensLimitError => e
+      puts "Exceed Token Limit: #{OPENAI_MAX_TOKENS}"
+      false
+    end
+
+    def translate_plain_file(file)
+      puts 'Start translate file: ' + file + ' ...'
       start_t = Time.now
 
       buffer = []
       result = ''
-      File.readlines(@file).each do |line|
-        if line == "\n" && buffer.join.split.length > BUFFER_SIZE
-          translated_text = ai_translate(buffer.join)
+      File.readlines(file).each do |line|
+        if line == "\n" && buffer.join.split.length > @buffer_size
+          translated_text = ai_translate(buffer.join)[:text]
           result += translated_text + "\n"
           buffer = []
         else
@@ -61,19 +83,19 @@ module RailsGuides
       end
 
       if buffer.length > 0
-        translated_text = ai_translate(buffer.join)
+        translated_text = ai_translate(buffer.join)[:text]
         result += translated_text
       end
 
-      File.open(@target_file, 'w') { |f| f << result }
+      File.open(target_file(file), 'w') { |f| f << result }
 
       end_t = Time.now
-      puts "Translate file: #{@file} in #{end_t - start_t} seconds"
+      puts "Translate file: #{file} in #{end_t - start_t} seconds"
     end
 
-    def translate_markdown
-      if @skippable && no_update_needed?
-        puts 'Skip translate file: ' + @file
+    def translate_markdown(file, buffer_size: @buffer_size, force_update: false)
+      if !force_update && no_update_needed?(file)
+        puts 'Skip translate file: ' + file
         return
       end
 
@@ -81,18 +103,22 @@ module RailsGuides
       buffer = []
       result = ''
       links = []
-      puts 'Start translate markdown file: ' + @file + ' ...'
+      puts 'Start translate markdown file: ' + file + ' ...'
 
-      File.readlines(@file).each do |line|
-        if /DO NOT READ THIS FILE ON GITHUB,/ =~ line
-          result += (line.chomp + ", original file md5: #{file_md5(@file)}\n")
-        elsif /^\[\S+\]: \S+$/ =~ line
+      File.readlines(file).each do |line|
+        if line.include?('DO NOT READ THIS FILE ON GITHUB')
+          result += (line.chomp + ", original file md5: #{file_md5(file)}\n")
+        elsif /^\[\S+\]: \S+$/.match?(line)
           links << line
-        elsif /```/ =~ line
+        elsif line.include?('```')
           buffer << line
           state = state == :codeblock ? :readline : :codeblock
-        elsif line == "\n" && state == :readline && buffer.join.split.length > BUFFER_SIZE
-          translated_text = ai_translate(buffer.join)
+        elsif line == "\n" && state == :readline && buffer.join.split.length > buffer_size
+          response = ai_translate(buffer.join)
+
+          raise ExceedTokensLimitError if response[:tokens] >= OPENAI_MAX_TOKENS
+
+          translated_text = response[:text]
           result += translated_text + "\n"
           buffer = []
         else
@@ -101,7 +127,7 @@ module RailsGuides
       end
 
       if buffer.length > 0
-        translated_text = ai_translate(buffer.join)
+        translated_text = ai_translate(buffer.join)[:text]
         result += translated_text
       end
 
@@ -110,20 +136,20 @@ module RailsGuides
         result += link
       end
 
-      File.open(@target_file, 'w') { |f| f << result }
+      File.open(target_file(file), 'w') { |f| f << result }
 
-      puts 'Finish translate markdown file: ' + @file
+      puts 'Finish translate markdown file: ' + file
     end
 
     def ai_translate(text, system_prompt: nil)
-      @system_prompt = system_prompt if system_prompt
+      system_prompt ||= "Translate the technical document to #{LANGUAGES[@target_language]} without adding any new content."
 
       loop do
         response = @client.chat(
           parameters: {
             model: OPENAI_MODEL,
             messages: [
-              { role: 'system', content: @system_prompt },
+              { role: 'system', content: system_prompt },
               { role: 'user', content: text },
             ],
             temperature: OPENAI_TEMPERATURE,
@@ -132,31 +158,35 @@ module RailsGuides
           # do nothing
         else
           puts "total tokens: #{response['usage']['total_tokens']}"
-          return response['choices'][0]['message']['content']
+          return {
+            text: response['choices'][0]['message']['content'],
+            tokens: response['usage']['total_tokens'],
+          }
         end
       end
     end
 
-    def translate_document_yaml
-      yaml = YAML.load_file(@file)
+    def generate_document_yaml
+      file = 'documents.yaml'
+      yaml = YAML.load_file(file)
       new_yaml = []
       prompt = "Translate the exact input to #{LANGUAGES[@target_language]}"
       yaml.each_with_index do |block, index|
-        block['name'] = ai_translate(block['name'], system_prompt: prompt)
+        block['name'] = ai_translate(block['name'], system_prompt: prompt)[:text]
         block['documents'].map! do |document|
           filename = "#{@target_language}/#{document['url'].delete_suffix('.html')}.md"
           title = /^(.+)\n={3,}/.match(File.read(filename))[1]
           {
             'name' => title,
             'url' => document['url'],
-            'description' => ai_translate(document['description'], system_prompt: prompt)
+            'description' => ai_translate(document['description'], system_prompt: prompt)[:text]
           }
         end
 
         new_yaml << block
       end
 
-      File.write(@target_file, YAML.dump(new_yaml))
+      File.write(target_file(file), YAML.dump(new_yaml))
     end
 
     private
@@ -165,11 +195,16 @@ module RailsGuides
       Digest::MD5.file(file).hexdigest
     end
 
-    def no_update_needed?
-      return false unless File.exist?(@target_file)
+    def target_file(file)
+      "#{@target_language}/#{file}"
+    end
 
-      original_file_md5 = File.open(@target_file, &:readline).chomp.split('original file md5: ').last
-      original_file_md5 == file_md5(@file)
+    def no_update_needed?(file)
+      t_file = target_file(file)
+      return false unless File.exist?(t_file)
+
+      original_file_md5 = File.open(t_file, &:readline).chomp.split('original file md5: ').last
+      original_file_md5 == file_md5(file)
 
     rescue EOFError
       false

@@ -4,34 +4,30 @@ $:.unshift __dir__
 
 require 'fileutils'
 require 'rails_guides/ai_translator.rb'
-require 'rails_guides/post_translate_tasks.rb'
 
-target = ARGV[0] || 'zh-TW'
+target = ARGV[0]
 Dir.chdir("source")
 
 if !File.exist?("#{target}/epub")
   FileUtils.mkdir_p("#{target}/epub")
 end
 
+translator = RailsGuides::AiTranslator.new(target_language: target)
 file = ARGV[1]
 if file
-  start_t = Time.now
-  RailsGuides::AiTranslator.new(file: file, target_language: target, skippable: false).translate
-  end_t = Time.now
-  puts "Translate file: #{file} in #{end_t - start_t} seconds"
+  translator.translate_file(file, force_update: true)
 else
   files = Dir['*'].reject { |f| File.directory?(f) } + Dir['epub/*']
-  files.sort! { |a, b| (a.end_with?('.md') ? 0 : 1) <=> (b.end_with?('.md') ? 0 : 1) }
-  files.each do |file|
-    start_t = Time.now
-
-    RailsGuides::AiTranslator.new(file: file, target_language: target).translate
-
-    end_t = Time.now
-    puts "Translate file: #{file} in #{end_t - start_t} seconds"
+  files.delete('documents.yaml')
+  files.sort! do |a, b|
+    if a.end_with?('.md') && !b.end_with?('.md')
+      -1
+    elsif !a.end_with?('.md') && b.end_with?('.md')
+      1
+    else
+      a <=> b
+    end
   end
-
-  RailsGuides::AiTranslator.new(file: 'documents.yaml', target_language: target).translate_document_yaml
-end
-
+  translator.translate_files(files)
+  translator.generate_document_yaml
 end
