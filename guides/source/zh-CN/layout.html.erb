@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= yield(:page_title) %></title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css" data-turbo-track="reload">
+  <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+  <link rel="stylesheet" type="text/css" href="stylesheets/highlight.css" data-turbo-track="reload">
+  <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+  <script src="javascripts/@hotwired--turbo.js" data-turbo-track="reload"></script>
+  <script src="javascripts/clipboard.js" data-turbo-track="reload"></script>
+  <script src="javascripts/guides.js" data-turbo-track="reload"></script>
+  <meta property="og:title" content="<%= yield(:page_title) %>" />
+  <meta name="description" content="<%= yield(:description) %>" />
+  <meta property="og:description" content="<%= yield(:description) %>" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Ruby on Rails Guides" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/4223" />
+  <meta property="og:type" content="website" />
+</head>
+<body dir="<%= @direction %>" class="guide">
+  <% if badge_version = @edge ? "edge" : @version %>
+  <div>
+    <div id="version-badge"><%= badge_version %></div>
+  </div>
+  <% end %>
+  <div id="topNav">
+    <div class="wrapper">
+      <strong class="more-info-label">更多信息请访问 <a href="https://rubyonrails.org/">rubyonrails.org:</a> </strong>
+      <span class="red-button more-info-button">
+        更多 Ruby on Rails
+      </span>
+      <ul class="more-info-links s-hidden">
+        <li class="more-info"><a href="https://rubyonrails.org/blog">博客</a></li>
+        <li class="more-info"><a href="https://guides.rubyonrails.org/">指南</a></li>
+        <li class="more-info"><a href="https://api.rubyonrails.org/">API</a></li>
+        <li class="more-info"><a href="https://discuss.rubyonrails.org/">论坛</a></li>
+        <li class="more-info"><a href="https://github.com/rails/rails">在 GitHub 上贡献</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="header">
+    <div class="wrapper clearfix">
+      <div class="header-logo"><a href="index.html" title="返回首页">Guides.rubyonrails.org</a></div>
+      <ul class="nav">
+        <li><a class="nav-item" href="index.html">首页</a></li>
+        <li class="guides-index guides-index-large">
+          <a href="index.html" id="guidesMenu" class="guides-index-item nav-item">指南索引</a>
+          <div id="guides" class="clearfix" style="display: none;">
+            <hr />
+            <dl class="guides-section-container">
+              <% documents_by_section.each do |section| %>
+                <div class="guides-section">
+                  <dt><%= section['name'] %></dt>
+                  <% finished_documents(section['documents']).each do |document| %>
+                  <dd><a href="<%= document['url'] %>"><%= document['name'] %></a></dd>
+                  <% end %>
+                </div>
+              <% end %>
+            </dl>
+          </div>
+        </li>
+        <li><a class="nav-item" href="contributing_to_ruby_on_rails.html">贡献</a></li>
+        <li class="guides-index guides-index-small">
+          <select class="guides-index-item nav-item">
+            <option value="index.html">指南索引</option>
+            <% docs_for_menu.each do |section| %>
+              <optgroup label="<%= section['name'] %>">
+                <% finished_documents(section['documents']).each do |document| %>
+                  <option value="<%= document['url'] %>"><%= document['name'] %></option>
+                <% end %>
+              </optgroup>
+            <% end %>
+          </select>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr class="hide" />
+
+  <div id="feature">
+    <div class="wrapper">
+      <%= yield :header_section %>
+
+      <%= yield :index_section %>
+    </div>
+  </div>
+
+  <div id="container">
+    <div class="wrapper">
+      <div id="mainCol">
+        <%= yield %>
+
+        <h3>反馈</h3>
+        <p>
+          欢迎您帮助改进本指南的质量。
+        </p>
+        <p>
+          如果您发现任何拼写错误或事实错误，请贡献您的意见。
+          要开始，请阅读我们的 <%= link_to '文档贡献', 'https://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html#contributing-to-the-rails-documentation' %> 部分。
+        </p>
+        <p>
+          您还可能会发现不完整的内容或过时的内容。
+          请为主要内容添加任何缺失的文档。请先检查 <%= link_to 'Edge 指南', 'https://edgeguides.rubyonrails.org' %>，以验证问题是否已经修复或尚未修复。
+          请参阅 <%= link_to 'Ruby on Rails 指南准则', 'ruby_on_rails_guides_guidelines.html' %> 以了解样式和规范。
+        </p>
+        <p>
+          如果您发现需要修复但无法自行修复的问题，请
+          <%= link_to '提交问题', 'https://github.com/rails/rails/issues' %>。
+        </p>
+        <p>最后但同样重要的是，欢迎您在 <%= link_to '官方 Ruby on Rails 论坛', 'https://discuss.rubyonrails.org/c/rubyonrails-docs' %> 上讨论有关 Ruby on Rails 文档的任何问题。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hide" />
+  <div id="footer">
+    <div class="wrapper">
+      <%= render 'license' %>
+    </div>
+  </div>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W87986DT8E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-W87986DT8E');
+  </script>
+</body>
+</html>

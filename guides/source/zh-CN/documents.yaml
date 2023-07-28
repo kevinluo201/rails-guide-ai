@@ -1,0 +1,227 @@
+---
+- name: 开始这里
+  documents:
+  - name: Rails 入门指南
+    url: getting_started.html
+    description: 安装Rails和创建第一个应用程序所需的所有信息。
+- name: 模型
+  documents:
+  - name: Active Record 基础知识
+    url: active_record_basics.html
+    description: Active Record允许您的模型与应用程序的数据库进行交互。本指南将帮助您开始使用Active Record模型并将数据持久化到数据库中。
+  - name: Active Record迁移
+    url: active_record_migrations.html
+    description: 迁移是Active Record的一个功能，它允许您随着时间的推移演变数据库模式。与纯SQL编写模式修改不同，迁移允许您使用Ruby
+      DSL描述对表的更改。
+  - name: Active Record验证
+    url: active_record_validations.html
+    description: 验证用于确保只有有效的数据保存到数据库中。本指南教你如何使用Active Record的验证功能，在对象进入数据库之前验证其状态。
+  - name: Active Record回调
+    url: active_record_callbacks.html
+    description: 回调函数使得我们能够编写代码，以便在对象创建、更新、销毁等情况下运行。本指南将教你如何钩入Active Record对象的生命周期。
+  - name: Active Record关联
+    url: association_basics.html
+    description: 在Active Record中，关联是两个Active Record模型之间的连接。本指南涵盖了Active Record提供的所有关联。
+  - name: Active Record查询接口
+    url: active_record_querying.html
+    description: 与使用原始SQL查找数据库记录不同，Active Record提供了更好的方法来执行相同的操作。本指南介绍了使用Active Record从数据库中检索数据的不同方法。
+  - name: Active Model基础知识
+    url: active_model_basics.html
+    description: Active Model允许您创建纯Ruby对象，与Action Pack集成，但不需要Active Record进行数据库持久化。Active
+      Model还帮助构建用于Rails框架之外的自定义ORM。本指南为您提供了开始使用Active Model类所需的一切。
+- name: 观点
+  documents:
+  - name: Action View 概述
+    url: action_view_overview.html
+    description: Action View负责生成Web响应的HTML。本指南介绍了Action View的基本知识。
+  - name: Rails中的布局和渲染
+    url: layouts_and_rendering.html
+    description: 本指南涵盖了Action Controller和Action View的基本布局特性，包括渲染和重定向、使用content_for块以及使用部分视图。
+  - name: Action View Helpers
+    url: action_view_helpers.html
+    description: Action View具有处理从格式化日期和链接到图像，到清理和本地化内容的辅助函数。本指南介绍了一些常见的Action View辅助函数。
+  - name: Action View表单助手
+    url: form_helpers.html
+    description: HTML表单的编写和维护往往变得繁琐，因为需要处理表单控件的命名和众多属性。Rails通过提供视图助手来简化这个复杂性，用于生成表单标记。
+- name: 控制器
+  documents:
+  - name: Action Controller 概述
+    url: action_controller_overview.html
+    description: Action Controllers是Rails中Web请求的核心。本指南介绍了控制器的工作原理以及它们如何适应应用程序的请求周期。它包括会话、过滤器、Cookie、数据流和处理请求引发的异常等主题。
+  - name: 从外部开始的Rails路由
+    url: routing.html
+    description: Rails路由器识别URL并将其分派到控制器的动作。本指南涵盖了Rails路由的用户界面功能。如果您想了解如何在自己的Rails应用程序中使用路由，请从这里开始。
+- name: 其他组件
+  documents:
+  - name: Active Support核心扩展
+    url: active_support_core_extensions.html
+    description: Active Support 提供了 Ruby 语言的扩展和实用工具。它丰富了 Ruby 语言，用于开发 Rails 应用程序，以及用于开发
+      Ruby on Rails 本身。
+  - name: Action Mailer基础知识
+    url: action_mailer_basics.html
+    description: 本指南为您提供了一切您需要开始从应用程序发送电子邮件的内容，以及Action Mailer的许多内部细节。
+  - name: Action Mailbox基础知识
+    url: action_mailbox_basics.html
+    description: 本指南介绍了如何使用Action Mailbox接收电子邮件。
+  - name: Action Text概述
+    url: action_text_overview.html
+    description: 本指南介绍了如何使用Action Text处理富文本内容。
+  - name: Active Job基础知识
+    url: active_job_basics.html
+    description: Active Job是一个用于声明后台作业并在各种队列后端上运行它们的框架。本指南为您提供了一切所需，以便开始创建、入队和执行后台作业。
+  - name: Active Storage概述
+    url: active_storage_overview.html
+    description: Active Storage便于将文件上传到云存储服务，转换上传文件并提取元数据。本指南介绍了如何将文件附加到您的Active Record模型上。
+  - name: Action Cable 概述
+    url: action_cable_overview.html
+    description: Action Cable将WebSockets与您的Rails应用程序的其他部分集成在一起。它允许以与您的Rails应用程序的其他部分相同的风格和形式使用Ruby编写实时功能。本指南将解释Action
+      Cable的工作原理，并介绍如何使用WebSockets创建实时功能。
+  - name: Webpacker
+    url: webpacker.html
+    description: 这个指南将向您展示如何安装和使用Webpacker来打包JavaScript、CSS和其他资源，以供Rails应用程序的客户端使用。
+- name: 深入挖掘
+  documents:
+  - name: Rails国际化（I18n）API
+    url: i18n.html
+    description: 本指南介绍了如何为您的应用程序添加国际化功能。您的应用程序将能够将内容翻译成不同的语言，更改复数规则，为每个国家使用正确的日期格式等等。
+  - name: 测试Rails应用程序
+    url: testing.html
+    description: 这是一个相当全面的指南，介绍了Rails中的各种测试设施。它涵盖了从“什么是测试？”到集成测试的所有内容。希望你喜欢。
+  - name: 保护Rails应用程序的安全性
+    url: security.html
+    description: 本指南描述了Web应用程序中常见的安全问题以及如何使用Rails避免这些问题。
+  - name: Rails应用程序中的错误报告
+    url: error_reporting.html
+    description: 这个指南介绍了如何处理在Ruby on Rails应用程序中发生的异常的方法。
+  - name: 调试Rails应用程序
+    url: debugging_rails_applications.html
+    description: 本指南描述了如何调试Rails应用程序。它涵盖了不同的调试方法以及如何理解代码“幕后”发生的情况。
+  - name: 配置Rails应用程序
+    url: configuring.html
+    description: 本指南涵盖了Rails应用程序的基本配置设置。
+  - name: Rails命令行
+    url: command_line.html
+    description: 有几个命令对于你日常使用Rails是非常关键的。本指南涵盖了Rails提供的命令行工具。
+  - name: 资产管道
+    url: asset_pipeline.html
+    description: 资产管道提供了一个框架，用于合并和压缩 JavaScript、CSS 和图像资产。它还增加了在其他语言和预处理器（如 CoffeeScript、Sass
+      和 ERB）中编写这些资产的能力。
+  - name: 在Rails中使用JavaScript
+    url: working_with_javascript_in_rails.html
+    description: 本指南解释了如何在Rails应用程序中使用import maps或jsbundling-rails来包含JavaScript，并介绍了在Rails中使用Turbo的基础知识。
+  - name: Rails 初始化过程
+    url: initialization.html
+    description: 这个指南解释了Rails初始化过程中的内部工作原理。这是一个非常深入的指南，建议给高级Rails开发者阅读。
+  - name: 自动加载和重新加载常量
+    url: autoloading_and_reloading_constants.html
+    description: 这个指南记录了自动加载和重新加载常量的工作方式（Zeitwerk模式）。
+  - name: Classic to Zeitwerk HOWTO
+    url: classic_to_zeitwerk_howto.html
+    description: 本指南记录了如何将Rails应用程序从`classic`模式迁移到`zeitwerk`模式。
+  - name: Rails缓存：概述
+    url: caching_with_rails.html
+    description: 这个指南是关于如何使用缓存来加速你的Rails应用程序的介绍。
+  - name: Active Support仪表盘
+    url: active_support_instrumentation.html
+    description: 本指南解释了如何在Active Support中使用仪器API来测量Rails和其他Ruby代码中的事件。
+  - name: 使用Rails构建API应用程序
+    url: api_app.html
+    description: 本指南将解释如何有效地使用Rails开发JSON API应用程序。
+  - name: Active Record和PostgreSQL
+    url: active_record_postgresql.html
+    description: 本指南涵盖了Active Record在PostgreSQL中的特定用法。
+  - name: 使用Active Record的多个数据库
+    url: active_record_multiple_databases.html
+    description: 本指南介绍了在应用程序中使用多个数据库的方法。
+  - name: Active Record加密
+    url: active_record_encryption.html
+    description: 本指南涵盖了使用Active Record加密数据库信息的方法。
+- name: 扩展Rails
+  documents:
+  - name: 创建Rails插件的基础知识
+    url: plugins.html
+    description: 本指南介绍了如何构建一个插件来扩展Rails的功能。
+  - name: Rails on Rack
+    url: rails_on_rack.html
+    description: 本指南涵盖了Rails与Rack的集成以及与其他Rack组件的接口。
+  - name: 创建和自定义Rails生成器和模板
+    url: generators.html
+    description: 本指南涵盖了向您的扩展添加全新生成器的过程，或者为内置的Rails生成器的某个元素提供替代方案（例如为脚手架生成器提供替代的测试存根）。
+  - name: 使用引擎入门
+    url: engines.html
+    description: 引擎可以被视为为宿主应用程序提供额外功能的微型应用程序。在本指南中，您将学习如何创建自己的引擎并将其与宿主应用程序集成。
+  - name: Rails应用模板
+    url: rails_application_templates.html
+    description: 应用程序模板是简单的Ruby文件，其中包含用于向新创建的Rails项目或现有的Rails项目添加gems、初始化程序等的DSL。
+  - name: Rails中的线程和代码执行
+    url: threading_and_code_execution.html
+    description: 本指南描述了在Rails应用程序中直接处理并发时需要考虑的问题和可用的工具。
+- name: 贡献
+  documents:
+  - name: 贡献到Ruby on Rails
+    url: contributing_to_ruby_on_rails.html
+    description: Rails不是“别人的框架”。本指南涵盖了多种参与Rails持续开发的方式。
+  - name: API文档指南
+    url: api_documentation_guidelines.html
+    description: 本指南记录了Ruby on Rails API文档编写准则。
+  - name: Ruby on Rails指南指南
+    url: ruby_on_rails_guides_guidelines.html
+    description: 这个指南记录了Ruby on Rails指南的准则。
+  - name: 安装Rails核心开发依赖项
+    url: development_dependencies_install.html
+    description: 本指南涵盖了如何为Ruby on Rails核心开发设置环境。
+- name: 政策
+  documents:
+  - name: Ruby on Rails维护策略
+    url: maintenance_policy.html
+    description: 目前支持的Ruby on Rails版本有哪些，以及何时可以期待新版本的发布。
+- name: 发布说明
+  documents:
+  - name: 升级Ruby on Rails
+    url: upgrading_ruby_on_rails.html
+    description: 本指南提供了升级应用程序到较新版本的Ruby on Rails时应遵循的步骤。
+  - name: Ruby on Rails 7.1 发布说明
+    url: 7_1_release_notes.html
+    description: Rails 7.1 发布说明
+  - name: Ruby on Rails 7.0 发布说明
+    url: 7_0_release_notes.html
+    description: Rails 7.0 发布说明
+  - name: Ruby on Rails 6.1 发布说明
+    url: 6_1_release_notes.html
+    description: Rails 6.1 发布说明
+  - name: Ruby on Rails 6.0 发布说明
+    url: 6_0_release_notes.html
+    description: Rails 6.0 发布说明
+  - name: Ruby on Rails 5.2 发布说明
+    url: 5_2_release_notes.html
+    description: Rails 5.2发布说明。
+  - name: Ruby on Rails 5.1 发布说明
+    url: 5_1_release_notes.html
+    description: Rails 5.1 发布说明
+  - name: Ruby on Rails 5.0 发布说明
+    url: 5_0_release_notes.html
+    description: Rails 5.0发布说明。
+  - name: Ruby on Rails 4.2 发布说明
+    url: 4_2_release_notes.html
+    description: Rails 4.2 发布说明
+  - name: Ruby on Rails 4.1 发布说明
+    url: 4_1_release_notes.html
+    description: Rails 4.1 发布说明
+  - name: Ruby on Rails 4.0 发布说明
+    url: 4_0_release_notes.html
+    description: Rails 4.0 发布说明。
+  - name: Ruby on Rails 3.2 发布说明
+    url: 3_2_release_notes.html
+    description: Rails 3.2 发布说明
+  - name: Ruby on Rails 3.1 发布说明
+    url: 3_1_release_notes.html
+    description: Rails 3.1 发布说明
+  - name: Ruby on Rails 3.0 发布说明
+    url: 3_0_release_notes.html
+    description: Rails 3.0 发布说明
+  - name: Ruby on Rails 2.3 发布说明
+    url: 2_3_release_notes.html
+    description: Rails 2.3 发布说明
+  - name: Ruby on Rails 2.2 发布说明
+    url: 2_2_release_notes.html
+    description: Rails 2.2 发布说明

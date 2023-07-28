@@ -1,0 +1,48 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="RailsGuides">
+ <metadata xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dc:identifier id="RailsGuides" opf:scheme="uuid"><%= @uuid %></dc:identifier>
+  <dc:title>Ruby on Rails指南（<%= @version || "main@#{@edge[0, 7]}" %>）</dc:title>
+  <dc:language>en</dc:language>
+  <dc:creator>Ruby on Rails</dc:creator>
+  <dc:publisher>Ruby on Rails</dc:publisher>
+  <dc:subject>参考</dc:subject>
+  <dc:date><%= Time.now.strftime('%Y-%m-%dT%H:%M:%SZ') %></dc:date>
+  <dc:description>这些指南旨在让您立即熟悉Rails，并帮助您了解所有组件如何配合使用。</dc:description>
+  <meta name="cover" content="cover"/>
+</metadata>
+
+<manifest>
+  <!-- HTML内容文件[必需] -->
+  <% documents_flat.each do |document| %>
+    <item id="<%= document['url'] %>" media-type="application/xhtml+xml" href="<%= document['url'] %>" />
+  <% end %>
+
+  <% %w{toc.html welcome.html copyright.html}.each do |url| %>
+    <item id="<%= url %>" media-type="application/xhtml+xml" href="<%= url %>" />
+  <% end %>
+
+  <item id="toc" media-type="application/x-dtbncx+xml" href="toc.ncx"/>
+
+  <item id="cover" media-type="image/jpeg" href="images/rails_guides_kindle_cover.jpg"/>
+  <item id="stylesheet" href="stylesheets/epub.css" media-type="text/css"/>
+
+   <!-- 图片 -->
+   <% all_images.each do |image| %>
+   <item id="<%= image %>" media-type="image/<%= image.split('.').last %>" href="<%= image %>" />
+   <% end %>
+</manifest>
+
+<spine toc="toc">
+  <itemref idref="toc.html" />
+  <itemref idref="welcome.html" />
+  <itemref idref="copyright.html" />
+  <% documents_flat.each do |document| %>
+    <itemref idref="<%= document['url'] %>" />
+  <% end %>
+</spine>
+
+<guide>
+	<reference type="toc" title="目录" href="toc.html"></reference>
+</guide>
+</package>
