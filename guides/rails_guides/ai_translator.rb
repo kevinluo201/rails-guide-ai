@@ -4,7 +4,7 @@ require 'openai'
 require 'digest'
 require 'yaml'
 
-class ExceedTokensLimitError < StandardError;end
+class ExceedTokensLimitError < StandardError; end
 
 module RailsGuides
   class AiTranslator
@@ -18,6 +18,7 @@ module RailsGuides
       'zh-TW' => "Traditional Chinese used in Taiwan(台灣繁體中文).",
       'pt-BR' => 'Brazilian Portuguese',
       'fr' => 'French',
+      'th' => 'Thai',
       'lt' => 'Lithuanian',
       'zh-CN' => 'Simplified Chinese',
     }

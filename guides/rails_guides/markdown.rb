@@ -54,11 +54,10 @@ module RailsGuides
       def dom_id_text(text)
         escaped_chars = Regexp.escape('\\/`*_{}[]()#+-.!:,;|&<>^~=\'"')
 
-        dom_id = text.downcase.gsub(/\?/, "-questionmark")
-                              .gsub(/!/, "-bang")
-                              .gsub(/[#{escaped_chars}]+/, " ").strip
-                              .gsub(/\s+/, "-")
-        CGI.escape(dom_id)
+        text.downcase.gsub(/\?/, "-questionmark")
+                     .gsub(/!/, "-bang")
+                     .gsub(/[#{escaped_chars}]+/, " ").strip
+                     .gsub(/\s+/, "-")
       end
 
       def engine
@@ -139,6 +138,7 @@ module RailsGuides
 
           @index = html_fragment(engine.render(raw_index)).tap do |doc|
             doc.at("ol")[:class] = "chapters"
+            doc.at("ol")['data-turbo'] = "false"
           end.to_html
 
           @index = <<-INDEX.html_safe
