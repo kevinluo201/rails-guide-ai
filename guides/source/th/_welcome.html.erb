@@ -1,0 +1,32 @@
+<h1>คู่มือ Ruby on Rails (<%= @edge ? @edge[0, 7] : @version %>)</h1>
+
+<% if @edge %>
+<p>
+  นี่คือ <b>คู่มือ Edge</b> ที่อ้างอิงจาก <a href="https://github.com/rails/rails/tree/<%= @edge %>">main@<%= @edge[0, 7] %></a> 
+</p>
+<p>
+  หากคุณกำลังมองหาคู่มือสำหรับเวอร์ชันที่เสถียร โปรดตรวจสอบที่
+  <a href="https://guides.rubyonrails.org">https://guides.rubyonrails.org</a> แทน
+</p>
+<% else %>
+<p>
+  นี่คือคู่มือใหม่สำหรับ Rails 7.1 ที่อ้างอิงจาก <a href="https://github.com/rails/rails/tree/<%= @version %>"><%= @version %></a> 
+  คู่มือเหล่านี้ถูกออกแบบให้คุณสามารถใช้งานกับ Rails ได้ทันที และช่วยให้คุณเข้าใจว่าส่วนประกอบต่างๆ ทำงานร่วมกันอย่างไร
+</p>
+<% end %>
+<p>
+คู่มือสำหรับเวอร์ชันก่อนหน้า:
+<a href="https://guides.rubyonrails.org/v7.0/" data-turbo="false">Rails 7.0</a>,
+<a href="https://guides.rubyonrails.org/v6.1/" data-turbo="false">Rails 6.1</a>,
+<a href="https://guides.rubyonrails.org/v6.0/" data-turbo="false">Rails 6.0</a>,
+<a href="https://guides.rubyonrails.org/v5.2/" data-turbo="false">Rails 5.2</a>,
+<a href="https://guides.rubyonrails.org/v5.1/" data-turbo="false">Rails 5.1</a>,
+<a href="https://guides.rubyonrails.org/v5.0/" data-turbo="false">Rails 5.0</a>,
+<a href="https://guides.rubyonrails.org/v4.2/" data-turbo="false">Rails 4.2</a>,
+<a href="https://guides.rubyonrails.org/v4.1/" data-turbo="false">Rails 4.1</a>,
+<a href="https://guides.rubyonrails.org/v4.0/" data-turbo="false">Rails 4.0</a>,
+<a href="https://guides.rubyonrails.org/v3.2/" data-turbo="false">Rails 3.2</a>,
+<a href="https://guides.rubyonrails.org/v3.1/" data-turbo="false">Rails 3.1</a>,
+<a href="https://guides.rubyonrails.org/v3.0/" data-turbo="false">Rails 3.0</a>, และ
+<a href="https://guides.rubyonrails.org/v2.3/" data-turbo="false">Rails 2.3</a>
+</p>

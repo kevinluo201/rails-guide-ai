@@ -4,18 +4,18 @@
 
 จุดเด่นใน Rails 7.0:
 
-* ต้องใช้ Ruby 2.7.0+ ขึ้นไป, แนะนำให้ใช้ Ruby 3.0+ 
+* ต้องใช้ Ruby 2.7.0+ ขึ้นไป, และแนะนำให้ใช้ Ruby 3.0+ 
 
 --------------------------------------------------------------------------------
 
 การอัปเกรดไปยัง Rails 7.0
 ----------------------
 
-หากคุณกำลังอัปเกรดแอปพลิเคชันที่มีอยู่อยู่ ควรมีการทดสอบที่ดีก่อนที่จะเริ่มต้น คุณควรอัปเกรดเป็น Rails 6.1 ก่อนหากคุณยังไม่ได้ทำ และตรวจสอบให้แน่ใจว่าแอปพลิเคชันของคุณยังทำงานได้ตามที่คาดหวังก่อนที่จะพยายามอัปเดตไปยัง Rails 7.0 มีรายการสิ่งที่ควรระวังเมื่ออัปเกรดใน
+หากคุณกำลังอัปเกรดแอปพลิเคชันที่มีอยู่อยู่แล้ว ควรมีการทดสอบที่ดีก่อนที่จะเริ่มต้น คุณควรอัปเกรดไปยัง Rails 6.1 ก่อนหากคุณยังไม่ได้ทำ และตรวจสอบให้แน่ใจว่าแอปพลิเคชันของคุณยังทำงานได้ตามที่คาดหวังก่อนที่จะพยายามอัปเดตไปยัง Rails 7.0 มีรายการสิ่งที่ควรระวังเมื่ออัปเกรดใน
 [การอัปเกรด Ruby on Rails](upgrading_ruby_on_rails.html#upgrading-from-rails-6-1-to-rails-7-0)
 คู่มือ
 
-คุณสมบัติหลัก
+คุณลักษณะหลัก
 --------------
 
 Railties
@@ -25,15 +25,15 @@ Railties
 
 ### การลบ
 
-*   ลบ `config` ที่ถูกยกเลิกใน `dbconsole`.
+*   ลบ `config` ที่ถูกเลิกใช้ใน `dbconsole`.
 
 ### การเลิกใช้
 
 ### การเปลี่ยนแปลงที่สำคัญ
 
-*   Sprockets เป็นความลับที่เลือกได้
+*   Sprockets เป็นลักษณะที่เลือกได้แล้ว
 
-    แพ็กเกจ `rails` ไม่ได้ขึ้นอยู่กับ `sprockets-rails` อีกต่อไป หากแอปพลิเคชันของคุณยังต้องการใช้ Sprockets
+    เจม `rails` ไม่ได้ขึ้นอยู่กับ `sprockets-rails` อีกต่อไป หากแอปพลิเคชันของคุณยังต้องการใช้ Sprockets
     ตรวจสอบให้แน่ใจว่าเพิ่ม `sprockets-rails` เข้าไปใน Gemfile ของคุณ
 
     ```
@@ -58,13 +58,13 @@ Action Pack
 
 ### การลบ
 
-*   ลบ `ActionDispatch::Response.return_only_media_type_on_content_type` ที่ถูกยกเลิก.
+*   ลบ `ActionDispatch::Response.return_only_media_type_on_content_type` ที่ถูกเลิกใช้.
 
-*   ลบ `Rails.config.action_dispatch.hosts_response_app` ที่ถูกยกเลิก.
+*   ลบ `Rails.config.action_dispatch.hosts_response_app` ที่ถูกเลิกใช้.
 
-*   ลบ `ActionDispatch::SystemTestCase#host!` ที่ถูกยกเลิก.
+*   ลบ `ActionDispatch::SystemTestCase#host!` ที่ถูกเลิกใช้.
 
-*   ลบการสนับสนุนที่ถูกยกเลิกในการส่ง `fixture_file_upload` ที่เกี่ยวข้องกับ `fixture_path`.
+*   ลบการสนับสนุนที่ถูกเลิกใช้ในการส่ง `fixture_file_upload` ที่เกี่ยวข้องกับ `fixture_path`.
 
 ### การเลิกใช้
 
@@ -77,19 +77,19 @@ Action View
 
 ### การลบ
 
-*   ลบ `Rails.config.action_view.raise_on_missing_translations` ที่ถูกยกเลิก.
+*   ลบ `Rails.config.action_view.raise_on_missing_translations` ที่ถูกเลิกใช้.
 
 ### การเลิกใช้
 
 ### การเปลี่ยนแปลงที่สำคัญ
 
-*  `button_to` สร้าง HTTP verb [method] จากออบเจกต์ Active Record หากใช้ออบเจกต์ในการสร้าง URL
+*  `button_to` สร้าง HTTP verb [method] จากออบเจกต์ Active Record หากใช้ออบเจกต์เพื่อสร้าง URL
 
     ```ruby
     button_to("Do a POST", [:do_post_action, Workshop.find(1)])
     # ก่อนหน้านี้
     #=>   <input type="hidden" name="_method" value="post" autocomplete="off" />
-    # หลังจากนี้
+    # ต่อมา
     #=>   <input type="hidden" name="_method" value="patch" autocomplete="off" />
     ```
 
@@ -114,35 +114,35 @@ Active Record
 
 ### การลบ
 
-*   ลบ `database` kwarg จาก `connected_to` ที่ถูกยกเลิก.
+*   ลบ `database` kwarg จาก `connected_to`.
 
-*   ลบ `ActiveRecord::Base.allow_unsafe_raw_sql` ที่ถูกยกเลิก.
+*   ลบ `ActiveRecord::Base.allow_unsafe_raw_sql` ที่ถูกเลิกใช้.
 
-*   ลบตัวเลือก `:spec_name` ที่ถูกยกเลิกในเมธอด `configs_for`.
+*   ลบตัวเลือก `:spec_name` ที่ถูกเลิกใช้ในเมธอด `configs_for`.
 
-*   ลบการสนับสนุนที่ถูกยกเลิกในการโหลด YAML `ActiveRecord::Base` instance ในรูปแบบของ Rails 4.2 และ 4.1.
+*   ลบการสนับสนุนที่ถูกเลิกใช้ในการโหลด YAML `ActiveRecord::Base` instance ในรูปแบบ Rails 4.2 และ 4.1.
 
-*   ลบการเตือนที่ถูกยกเลิกเมื่อใช้คอลัมน์ `:interval` ในฐานข้อมูล PostgreSQL.
+*   ลบการเตือนที่ถูกเลิกใช้เมื่อใช้คอลัมน์ `:interval` ในฐานข้อมูล PostgreSQL.
 
     ตอนนี้คอลัมน์ interval จะส่งกลับเป็นออบเจกต์ `ActiveSupport::Duration` แทนสตริง
 
-    เพื่อให้รักษาพฤติกรรมเดิม คุณสามารถเพิ่มบรรทัดนี้ในโมเดลของคุณ:
+    หากต้องการเก็บพฤติกรรมเดิม คุณสามารถเพิ่มบรรทัดนี้ในโมเดลของคุณ:
 
     ```ruby
     attribute :column, :string
     ```
 
-*   ลบการสนับสนุนที่ถูกยกเลิกในการแก้ไขการเชื่อมต่อโดยใช้ `"primary"` เป็นชื่อการกำหนดการเชื่อมต่อ.
+*   ลบการสนับสนุนที่ถูกเลิกใช้ในการแก้ไขการเชื่อมต่อโดยใช้ `"primary"` เป็นชื่อการกำหนดการเชื่อมต่อ.
 
-*   ลบการสนับสนุนที่ถูกยกเลิกในการเความ `ActiveRecord::Base` objects.
+*   ลบการสนับสนุนที่ถูกเลิกใช้ในการคำนวณค่าให้กับออบเจกต์ `ActiveRecord::Base`.
 
-*   ลบการสนับสนุนที่ถูกยกเลิกในการแปลงชนิดของค่าฐานข้อมูล `ActiveRecord::Base` objects.
+*   ลบการสนับสนุนที่ถูกเลิกใช้ในการแปลงชนิดของออบเจกต์ `ActiveRecord::Base` เป็นค่าในฐานข้อมูล.
 
-*   ลบการสนับสนุนที่ถูกยกเลิกในการส่งคอลัมน์ไปยัง `type_cast`.
+*   ลบการสนับสนุนที่ถูกเลิกใช้ในการส่งคอลัมน์ไปยัง `type_cast`.
 
-*   ลบเมธอด `DatabaseConfig#config` ที่ถูกยกเลิก.
+*   ลบเมธอด `DatabaseConfig#config` ที่ถูกเลิกใช้.
 
-*   ลบงาน rake ที่ถูกยกเลิก:
+*   ลบ rake tasks ที่ถูกเลิกใช้:
 
     * `db:schema:load_if_ruby`
     * `db:structure:dump`
@@ -153,59 +153,65 @@ Active Record
     * `db:test:load_structure`
     * `db:test:load_structure:#{name}`
 
-*   ลบการสนับสนุนที่ถูกยกเลิกในการค้นหาโดยใช้ `Model.reorder(nil).first` ด้วยการเรียงลำดับที่ไม่แน่นอน.
+*   ลบการสนับสนุนที่ถูกเลิกใช้ในการค้นหาโดยใช้ `Model.reorder(nil).first` โดยใช้ลำดับที่ไม่แน่นอน.
 
-*   ลบอาร์กิวเมนต์ `environment` และ `name` จาก `Tasks::DatabaseTasks.schema_up_to_date?` ที่ถูกยกเลิก.
+*   ลบอาร์กิวเมนต์ `environment` และ `name` จาก `Tasks::DatabaseTasks.schema_up_to_date?` ที่ถูกเลิกใช้.
 
-*   ลบ `Tasks::DatabaseTasks.dump_filename` ที่ถูกยกเลิก.
+*   ลบ `Tasks::DatabaseTasks.dump_filename` ที่ถูกเลิกใช้.
 
-*   ลบ `Tasks::DatabaseTasks.schema_file` ที่ถูกยกเลิก.
+*   ลบ `Tasks::DatabaseTasks.schema_file` ที่ถูกเลิกใช้.
 
-*   ลบ `Tasks::DatabaseTasks.spec` ที่ถูกยกเลิก.
+*   ลบ `Tasks::DatabaseTasks.spec` ที่ถูกเลิกใช้.
 
-*   ลบ `Tasks::DatabaseTasks.current_config` ที่ถูกยกเลิก.
+*   ลบ `Tasks::DatabaseTasks.current_config` ที่ถูกเลิกใช้.
 
-*   ลบ `ActiveRecord::Connection#allowed_index_name_length` ที่ถูกยกเลิก.
+*   ลบ `ActiveRecord::Connection#allowed_index_name_length` ที่ถูกเลิกใช้.
+*   ลบ `ActiveRecord::Connection#in_clause_length` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบ `ActiveRecord::Connection#in_clause_length` ที่ถูกยกเลิก.
+*   ลบ `ActiveRecord::DatabaseConfigurations::DatabaseConfig#spec_name` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบ `ActiveRecord::DatabaseConfigurations::DatabaseConfig#spec_name` ที่ถูกยกเลิก.
+*   ลบ `ActiveRecord::Base.connection_config` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบ `ActiveRecord::Base.connection_config` ที่ถูกยกเลิก.
+*   ลบ `ActiveRecord::Base.arel_attribute` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบ `ActiveRecord::Base.arel_attribute` ที่ถูกยกเลิก.
+*   ลบ `ActiveRecord::Base.configurations.default_hash` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบ `ActiveRecord::Base.configurations.default_hash` ที่ถูกยกเลิก.
+*   ลบ `ActiveRecord::Base.configurations.to_h` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบ `ActiveRecord::Base.configurations.to_h` ที่ถูกยกเลิก.
+*   ลบ `ActiveRecord::Result#map!` และ `ActiveRecord::Result#collect!` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบ `ActiveRecord::Result#map!` และ `ActiveRecord::Result#collect!` ที่ถูกยกเลิก.
-
-*   ลบ `ActiveRecord::Base#remove_connection` ที่ถูกยกเลิก.
+*   ลบ `ActiveRecord::Base#remove_connection` ที่ถูกยกเลิกไปแล้ว
 
 ### การเลิกใช้
 
-*   เลิกใช้ `Tasks::DatabaseTasks.schema_file_type`.
+*   เลิกใช้ `Tasks::DatabaseTasks.schema_file_type` 
 
 ### การเปลี่ยนแปลงที่สำคัญ
 
-*   ยกเลิกการทำธุรกร
-```ruby
-# Rails 6.1 (IN clause is replaced by merger side equality condition)
-Author.where(id: [david.id, mary.id]).merge(Author.where(id: bob)) # => [bob]
-# Rails 6.1 (both conflict conditions exists, deprecated)
-Author.where(id: david.id..mary.id).merge(Author.where(id: bob)) # => []
-# Rails 6.1 with rewhere to migrate to Rails 7.0's behavior
-Author.where(id: david.id..mary.id).merge(Author.where(id: bob), rewhere: true) # => [bob]
-# Rails 7.0 (same behavior with IN clause, mergee side condition is consistently replaced)
-Author.where(id: [david.id, mary.id]).merge(Author.where(id: bob)) # => [bob]
-Author.where(id: david.id..mary.id).merge(Author.where(id: bob)) # => [bob]
-```
+*   ยกเลิกการทำธุรกรรมเมื่อบล็อกส่งคืนก่อนที่คาดไว้
+
+    ก่อนการเปลี่ยนแปลงนี้เมื่อบล็อกธุรกรรมส่งคืนก่อนเวลาที่คาดไว้ ธุรกรรมจะถูกยืนยัน
+
+    ปัญหาคือเมื่อเกิดเวลาหมดอายุภายในบล็อกธุรกรรม ธุรกรรมที่ไม่สมบูรณ์จะถูกยืนยัน ดังนั้นเพื่อหลีกเลี่ยงข้อผิดพลาดนี้ บล็อกธุรกรรมจะถูกย้อนกลับ
+
+*   การผสานเงื่อนไขในคอลัมน์เดียวกันไม่ได้รักษาทั้งสองเงื่อนไขและจะถูกแทนที่ด้วยเงื่อนไขที่หลัง
+
+    ```ruby
+    # Rails 6.1 (IN clause is replaced by merger side equality condition)
+    Author.where(id: [david.id, mary.id]).merge(Author.where(id: bob)) # => [bob]
+    # Rails 6.1 (both conflict conditions exists, deprecated)
+    Author.where(id: david.id..mary.id).merge(Author.where(id: bob)) # => []
+    # Rails 6.1 with rewhere to migrate to Rails 7.0's behavior
+    Author.where(id: david.id..mary.id).merge(Author.where(id: bob), rewhere: true) # => [bob]
+    # Rails 7.0 (same behavior with IN clause, mergee side condition is consistently replaced)
+    Author.where(id: [david.id, mary.id]).merge(Author.where(id: bob)) # => [bob]
+    Author.where(id: david.id..mary.id).merge(Author.where(id: bob)) # => [bob]
+    ```
 
 Active Storage
 --------------
 
-โปรดอ้างอิงที่ [Changelog][active-storage] สำหรับรายละเอียดการเปลี่ยนแปลงที่ละเอียด
+โปรดอ้างอิงที่ [Changelog][active-storage] สำหรับการเปลี่ยนแปลงที่ละเอียด
 
 ### การลบ
 
@@ -216,33 +222,33 @@ Active Storage
 Active Model
 ------------
 
-โปรดอ้างอิงที่ [Changelog][active-model] สำหรับรายละเอียดการเปลี่ยนแปลงที่ละเอียด
+โปรดอ้างอิงที่ [Changelog][active-model] สำหรับการเปลี่ยนแปลงที่ละเอียด
 
 ### การลบ
 
-*   ลบการเลิกใช้การแจงองค์ประกอบของ `ActiveModel::Errors` เป็น Hash
+*   ลบการเลือก `ActiveModel::Errors` instances เป็น Hash ที่ถูกยกเลิกไปแล้ว
 
-*   ลบการเลิกใช้ `ActiveModel::Errors#to_h`
+*   ลบ `ActiveModel::Errors#to_h` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบการเลิกใช้ `ActiveModel::Errors#slice!`
+*   ลบ `ActiveModel::Errors#slice!` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบการเลิกใช้ `ActiveModel::Errors#values`
+*   ลบ `ActiveModel::Errors#values` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบการเลิกใช้ `ActiveModel::Errors#keys`
+*   ลบ `ActiveModel::Errors#keys` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบการเลิกใช้ `ActiveModel::Errors#to_xml`
+*   ลบ `ActiveModel::Errors#to_xml` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบการสนับสนุนการเชื่อมต่อข้อผิดพลาดไปยัง `ActiveModel::Errors#messages`
+*   ลบการรวมข้อผิดพลาดไปยัง `ActiveModel::Errors#messages` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบการสนับสนุนการ `clear` ข้อผิดพลาดจาก `ActiveModel::Errors#messages`
+*   ลบการรองรับการ `clear` ข้อผิดพลาดจาก `ActiveModel::Errors#messages` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบการสนับสนุนการ `delete` ข้อผิดพลาดจาก `ActiveModel::Errors#messages`
+*   ลบการรองรับการ `delete` ข้อผิดพลาดจาก `ActiveModel::Errors#messages` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบการสนับสนุนการใช้ `[]=` ใน `ActiveModel::Errors#messages`
+*   ลบการรองรับการใช้ `[]=` ใน `ActiveModel::Errors#messages` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบการสนับสนุนการโหลดรูปแบบข้อผิดพลาดของ Rails 5.x ด้วย Marshal และ YAML
+*   ลบการรองรับการ Marshal และ YAML load รูปแบบข้อผิดพลาดของ Rails 5.x
 
-*   ลบการสนับสนุนการโหลดรูปแบบของ Rails 5.x `ActiveModel::AttributeSet` ด้วย Marshal
+*   ลบการรองรับการ Marshal load รูปแบบ `ActiveModel::AttributeSet` ของ Rails 5.x
 
 ### การเลิกใช้
 
@@ -251,25 +257,25 @@ Active Model
 Active Support
 --------------
 
-โปรดอ้างอิงที่ [Changelog][active-support] สำหรับรายละเอียดการเปลี่ยนแปลงที่ละเอียด
+โปรดอ้างอิงที่ [Changelog][active-support] สำหรับการเปลี่ยนแปลงที่ละเอียด
 
 ### การลบ
 
-*   ลบการเลิกใช้ `config.active_support.use_sha1_digests`
+*   ลบ `config.active_support.use_sha1_digests` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบการเลิกใช้ `URI.parser`
+*   ลบ `URI.parser` ที่ถูกยกเลิกไปแล้ว
 
-*   ลบการสนับสนุนการใช้ `Range#include?` เพื่อตรวจสอบการรวมของค่าในช่วงวันที่และเวลาที่ถูกเลิกใช้
+*   ลบการรองรับการใช้ `Range#include?` เพื่อตรวจสอบการรวมของค่าในช่วงวันที่และเวลาที่ถูกยกเลิกไปแล้ว
 
-*   ลบการเลิกใช้ `ActiveSupport::Multibyte::Unicode.default_normalization_form`
+*   ลบ `ActiveSupport::Multibyte::Unicode.default_normalization_form` ที่ถูกยกเลิกไปแล้ว
 
 ### การเลิกใช้
 
-*   เลิกใช้การส่งรูปแบบไปยัง `#to_s` และใช้ `#to_fs` ใน `Array`, `Range`, `Date`, `DateTime`, `Time`,
-    `BigDecimal`, `Float` และ `Integer`
+*   เลิกใช้การส่งรูปแบบไปยัง `#to_s` ในการใช้งาน `Array`, `Range`, `Date`, `DateTime`, `Time`,
+    `BigDecimal`, `Float` และ `Integer` และใช้ `#to_fs` แทน
 
-    การเลิกใช้นี้เพื่อให้แอปพลิเคชัน Rails สามารถใช้ประโยชน์จากการปรับปรุงของ Ruby 3.1
-    [optimization](https://github.com/ruby/ruby/commit/b08dacfea39ad8da3f1fd7fdd0e4538cc892ec44) ที่ทำให้
+    การเลิกใช้นี้เพื่อให้แอปพลิเคชัน Rails ใช้ประโยชน์จากการปรับปรุงใน Ruby 3.1
+    [การปรับปรุง](https://github.com/ruby/ruby/commit/b08dacfea39ad8da3f1fd7fdd0e4538cc892ec44) ที่ทำให้
     การตัดต่อของบางประเภทของวัตถุเร็วขึ้น
 
     แอปพลิเคชันใหม่จะไม่มีการแทนที่เมธอด `#to_s` ในคลาสเหล่านั้น แอปพลิเคชันที่มีอยู่สามารถใช้
@@ -280,24 +286,25 @@ Active Support
 Active Job
 ----------
 
-โปรดอ้างอิงที่ [Changelog][active-job] สำหรับรายละเอียดการเปลี่ยนแปลงที่ละเอียด
+โปรดอ้างอิงที่ [Changelog][active-job] สำหรับการเปลี่ยนแปลงที่ละเอียด
 
 ### การลบ
 
-*   ลบพฤติกรรมที่เลิกใช้ที่ไม่หยุด `after_enqueue`/`after_perform` ตอนที่มีการหยุดพฤติกรรมก่อนหน้านี้ด้วย `throw :abort`
+*   ลบพฤติกรรมที่ถูกยกเลิกไปแล้วที่ไม่ได้หยุด `after_enqueue`/`after_perform` callbacks เมื่อ
+    การเรียก callback ก่อนหน้านั้นถูกหยุดด้วย `throw :abort`
 
-*   ลบตัวเลือก `:return_false_on_aborted_enqueue` ที่เลิกใช้
+*   ลบ `:return_false_on_aborted_enqueue` option ที่ถูกยกเลิกไปแล้ว
 
 ### การเลิกใช้
 
-*   เลิกใช้ `Rails.config.active_job.skip_after_callbacks_if_terminated`
+*   เลิกใช้ `Rails.config.active_job.skip_after_callbacks_if_terminated` 
 
 ### การเปลี่ยนแปลงที่สำคัญ
 
 Action Text
 ----------
 
-โปรดอ้างอิงที่ [Changelog][action-text] สำหรับรายละเอียดการเปลี่ยนแปลงที่ละเอียด
+โปรดอ้างอิงที่ [Changelog][action-text] สำหรับการเปลี่ยนแปลงที่ละเอียด
 
 ### การลบ
 
@@ -307,32 +314,40 @@ Action Text
 
 Action Mailbox
 ----------
+โปรดอ้างอิงที่ [Changelog][action-mailbox] สำหรับการเปลี่ยนแปลงที่ละเอียด
 
-โปรดอ้างอิงที่ [Changelog][action-mailbox] สำหรับรายละเอียดการเปลี่ยนแปลงที่ละเอียด
+การลบ
 
-### การลบ
+- ลบ `Rails.application.credentials.action_mailbox.mailgun_api_key` ที่ถูกยกเลิกไปแล้ว
+- ลบตัวแปรสภาพแวดล้อมที่ถูกยกเลิกไปแล้ว `MAILGUN_INGRESS_API_KEY`
 
-*   ลบการเลิกใช้ `Rails.application.credentials.action_mailbox.mailgun_api_key`
+การเลิกใช้
 
-*   ลบตัวแปรสภาพแวดล้อมที่เลิกใช้ `MAILGUN_INGRESS_API_KEY`
-
-### การเลิกใช้
-
-### การเปลี่ยนแปลงที่สำคัญ
+การเปลี่ยนแปลงที่สำคัญ
 
 Ruby on Rails Guides
 --------------------
 
-โปรดอ้างอิงที่ [Changelog][guides] สำหรับรายละเอียดการเปลี่ยนแปลงที่ละเอียด
+โปรดอ้างอิงที่ [Changelog][guides] สำหรับการเปลี่ยนแปลงที่ละเอียด
 
-### การเปลี่ยนแปลงที่สำคัญ
+การเปลี่ยนแปลงที่สำคัญ
 
-Credits
--------
+เครดิต
 
-ดู
-[รายชื่อเต็มของผู้มีส่วนร่วมใน Rails](https://contributors.rubyonrails.org/)
-สำหรับผู้ที่ใช้เวลาหลายชั่วโมงในการทำให้ Rails เป็นเฟรมเวิร์กที่เสถียรและทนทาน ยินดีด้วยทุกคน
+ดูรายชื่อเต็มของผู้มีส่วนร่วมใน Rails ได้ที่
+[รายชื่อผู้มีส่วนร่วมใน Rails](https://contributors.rubyonrails.org/)
+สำหรับผู้ที่ใช้เวลาหลายชั่วโมงในการสร้าง Rails เป็นเฟรมเวิร์คที่เสถียรและทนทาน ยินดีด้วยทุกคน
+
+[railties]:       https://github.com/rails/rails/blob/7-0-stable/railties/CHANGELOG.md
+[action-pack]:    https://github.com/rails/rails/blob/7-0-stable/actionpack/CHANGELOG.md
+[action-view]:    https://github.com/rails/rails/blob/7-0-stable/actionview/CHANGELOG.md
+[action-mailer]:  https://github.com/rails/rails/blob/7-0-stable/actionmailer/CHANGELOG.md
+[action-cable]:   https://github.com/rails/rails/blob/7-0-stable/actioncable/CHANGELOG.md
+[active-record]:  https://github.com/rails/rails/blob/7-0-stable/activerecord/CHANGELOG.md
+[active-model]:   https://github.com/rails/rails/blob/7-0-stable/activemodel/CHANGELOG.md
+[active-job]:     https://github.com/rails/rails/blob/7-0-stable/activejob/CHANGELOG.md
+[action-text]:    https://github.com/rails/rails/blob/7-0-stable/actiontext/CHANGELOG.md
+[guides]:         https://github.com/rails/rails/blob/7-0-stable/guides/CHANGELOG.md
 [active-storage]: https://github.com/rails/rails/blob/7-0-stable/activestorage/CHANGELOG.md
 [active-support]: https://github.com/rails/rails/blob/7-0-stable/activesupport/CHANGELOG.md
 [action-mailbox]: https://github.com/rails/rails/blob/7-0-stable/actionmailbox/CHANGELOG.md

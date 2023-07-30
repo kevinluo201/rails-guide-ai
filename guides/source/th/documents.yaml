@@ -1,0 +1,288 @@
+---
+- name: เริ่มต้นที่นี่
+  documents:
+  - name: เริ่มต้นใช้ Rails
+    url: getting_started.html
+    description: ทุกอย่างที่คุณต้องรู้เพื่อติดตั้ง Rails และสร้างแอปพลิเคชันครั้งแรกของคุณ
+- name: โมเดล
+  documents:
+  - name: พื้นฐานของ Active Record
+    url: active_record_basics.html
+    description: Active Record ช่วยให้โมเดลของคุณสามารถทำงานร่วมกับฐานข้อมูลของแอปพลิเคชันได้
+      คู่มือนี้จะช่วยให้คุณเริ่มต้นกับโมเดล Active Record และการบันทึกข้อมูลลงในฐานข้อมูล
+  - name: Active Record Migrations
+    url: active_record_migrations.html
+    description: การย้ายข้อมูลเป็นคุณสมบัติของ Active Record ที่ช่วยให้คุณสามารถพัฒนาโครงสร้างฐานข้อมูลของคุณได้ตลอดเวลา
+      แทนที่จะเขียนการปรับเปลี่ยนโครงสร้างของฐานข้อมูลในรูปแบบ SQL สามารถใช้ migrations
+      เพื่อใช้ Ruby DSL เพื่ออธิบายการเปลี่ยนแปลงในตารางของคุณได้
+  - name: การตรวจสอบความถูกต้องของ Active Record
+    url: active_record_validations.html
+    description: การตรวจสอบความถูกต้อง (validations) ถูกใช้เพื่อให้มั่นใจว่าข้อมูลที่ถูกต้องเท่านั้นที่จะถูกบันทึกลงในฐานข้อมูลของคุณ
+      คู่มือนี้จะสอนคุณวิธีการตรวจสอบสถานะของอ็อบเจกต์ก่อนที่จะเข้าสู่ฐานข้อมูล โดยใช้คุณสมบัติการตรวจสอบของ
+      Active Record
+  - name: Active Record Callbacks
+    url: active_record_callbacks.html
+    description: การเรียกใช้งานย่อยทำให้เป็นไปได้ที่จะเขียนโค้ดที่จะทำงานเมื่อมีการสร้างวัตถุ
+      อัปเดต ทำลาย เป็นต้น คู่มือนี้สอนวิธีการเชื่อมต่อกับวัตถุในรอบชีวิตของวัตถุ
+      Active Record
+  - name: การเชื่อมต่อ Active Record Associations
+    url: association_basics.html
+    description: ใน Active Record การสัมพันธ์คือการเชื่อมต่อระหว่างโมเดล Active Record
+      สองตัวกัน คู่มือนี้จะกล่าวถึงการสัมพันธ์ทั้งหมดที่ Active Record มีให้
+  - name: อินเตอร์เฟซการค้นหา Active Record
+    url: active_record_querying.html
+    description: แทนที่จะใช้ SQL แบบเชิงรุกในการค้นหาเร็คคอร์ดในฐานข้อมูล Active Record
+      จะให้วิธีที่ดีกว่าในการดำเนินการเดียวกัน คู่มือนี้จะอธิบายวิธีการเรียกดูข้อมูลจากฐานข้อมูลโดยใช้
+      Active Record ในวิธีที่แตกต่างกันไป
+  - name: พื้นฐานของ Active Model
+    url: active_model_basics.html
+    description: Active Model ช่วยให้คุณสร้างวัตถุ Ruby ที่เป็นเพียงวัตถุธรรมดาที่ผสมผสานกับ
+      Action Pack แต่ไม่ต้องการ Active Record สำหรับการจัดเก็บข้อมูลในฐานข้อมูล  Active
+      Model ยังช่วยในการสร้าง ORM ที่กำหนดเองสำหรับการใช้งานนอกเฟรมเวิร์กเรลส์ คู่มือนี้จะให้ข้อมูลทั้งหมดที่คุณต้องการเพื่อเริ่มต้นใช้งานคลาส
+      Active Model
+- name: มุมมอง
+  documents:
+  - name: ภาพรวมของ Action View
+    url: action_view_overview.html
+    description: Action View มีหน้าที่ในการสร้าง HTML สำหรับการตอบสนองของเว็บไซต์
+      คู่มือนี้จะให้คำแนะนำเบื้องต้นเกี่ยวกับ Action View
+  - name: การจัดเลย์และการเรนเดอร์ใน Rails
+    url: layouts_and_rendering.html
+    description: คู่มือนี้เป็นการอธิบายเกี่ยวกับคุณสมบัติพื้นฐานของ Action Controller
+      และ Action View ซึ่งรวมถึงการเรนเดอร์และการเปลี่ยนเส้นทาง การใช้บล็อก content_for
+      และการทำงานกับ partials
+  - name: Action View Helpers
+    url: action_view_helpers.html
+    description: Action View มีตัวช่วยสำหรับการจัดการทุกอย่างตั้งแต่การจัดรูปแบบวันที่และการเชื่อมโยงไปยังรูปภาพ
+      ไปจนถึงการทำให้เนื้อหาเป็นปลอดภัยและการแปลภาษาสถานที่ คู่มือนี้จะแนะนำเครื่องมือ
+      Action View บางอย่างที่ใช้บ่อยมากกว่านี้
+  - name: Action View Form Helpers
+    url: form_helpers.html
+    description: ฟอร์ม HTML สามารถกลายเป็นงานที่น่าเบื่อและยากในการเขียนและบำรุงรักษาเนื่องจากต้องจัดการการตั้งชื่อและแอตทริบิวต์ของควบคุมฟอร์มในจำนวนมาก
+      แต่ Rails ก็กำจัดความซับซ้อนนี้ด้วยการ提供เครื่องมือช่วยในการสร้างมาร์กอัปฟอร์ม
+- name: คอนโทรลเลอร์
+  documents:
+  - name: ภาพรวมของ Action Controller
+    url: action_controller_overview.html
+    description: Action Controllers เป็นส่วนหลักของการร้องขอเว็บใน Rails คู่มือนี้จะอธิบายถึงวิธีการทำงานของคอนโทรลเลอร์และวิธีการนำมาใช้ในรอบการร้องขอของแอปพลิเคชันของคุณ
+      มันรวมถึงเซสชัน ฟิลเตอร์ คุกกี้ การสตรีมข้อมูล และการจัดการกับข้อยกเว้นที่เกิดขึ้นจากการร้องขอ
+      รวมถึงหัวข้ออื่น ๆ อีกมากมาย
+  - name: การเชื่อมต่อ URL กับโค้ด
+    url: routing.html
+    description: เราสามารถใช้ Rails router เพื่อรับรู้ URL และส่งต่อไปยัง action ของ
+      controller ได้ คู่มือนี้จะอธิบายเกี่ยวกับคุณสมบัติที่เกี่ยวข้องกับการเรียกใช้งานของผู้ใช้ในการเรียกใช้งาน
+      Rails routing หากคุณต้องการเข้าใจวิธีการใช้งาน routing ในแอปพลิเคชัน Rails ของคุณเอง
+      คุณสามารถเริ่มต้นที่นี่
+- name: องค์ประกอบอื่น ๆ
+  documents:
+  - name: ส่วนขยายของ Active Support Core
+    url: active_support_core_extensions.html
+    description: Active Support ให้การเพิ่มเติมให้กับภาษา Ruby และเครื่องมือต่างๆ
+      ซึ่งเพิ่มความสมบูรณ์ให้กับภาษา Ruby สำหรับการพัฒนาแอปพลิเคชัน Rails และสำหรับการพัฒนา
+      Ruby on Rails ด้วยตัวเอง
+  - name: พื้นฐานของ Action Mailer
+    url: action_mailer_basics.html
+    description: คู่มือนี้จะให้คุณทราบทุกสิ่งที่คุณต้องการเพื่อเริ่มส่งอีเมลจากแอปพลิเคชันของคุณ
+      และรายละเอียดภายในของ Action Mailer อีกด้วย
+  - name: พื้นฐานของ Action Mailbox
+    url: action_mailbox_basics.html
+    description: คู่มือนี้อธิบายวิธีการใช้ Action Mailbox เพื่อรับอีเมล์
+  - name: ภาพรวมของ Action Text
+    url: action_text_overview.html
+    description: คู่มือนี้อธิบายวิธีการใช้ Action Text เพื่อจัดการเนื้อหา Rich Text
+  - name: พื้นฐานของ Active Job
+    url: active_job_basics.html
+    description: Active Job เป็นเฟรมเวิร์กสำหรับประกาศงานที่ทำงานในพื้นหลังและทำให้เราสามารถเรียกใช้งานในคิวที่หลากหลายได้
+      คู่มือนี้จะให้ข้อมูลทั้งหมดที่คุณต้องการเพื่อเริ่มต้นสร้างงานในพื้นหลัง นำเข้าในคิว
+      และประมวลผลงานในพื้นหลัง
+  - name: ภาพรวมของ Active Storage
+    url: active_storage_overview.html
+    description: Active Storage ช่วยให้สามารถอัปโหลดไฟล์ไปยังบริการเก็บข้อมูลในคลาวด์
+      และสามารถแปลงไฟล์และสกัดเมตาดาต้าได้ คู่มือนี้จะอธิบายวิธีการแนบไฟล์กับโมเดล
+      Active Record ของคุณ
+  - name: ภาพรวมของ Action Cable
+    url: action_cable_overview.html
+    description: Action Cable รวม WebSockets กับแอปพลิเคชัน Rails ของคุณเข้าด้วยกัน
+      มันช่วยให้คุณสามารถเขียนคุณลักษณะแบบเรียลไทม์ในรูปแบบและรูปแบบเดียวกับส่วนอื่น
+      ๆ ของแอปพลิเคชัน Rails ของคุณ คู่มือนี้อธิบายวิธีการทำงานของ Action Cable และวิธีใช้
+      WebSockets เพื่อสร้างคุณลักษณะแบบเรียลไทม์
+  - name: Webpacker
+    url: webpacker.html
+    description: คู่มือนี้จะแสดงวิธีการติดตั้งและใช้งาน Webpacker เพื่อแพ็คเกจ JavaScript,
+      CSS และทรัพยากรอื่น ๆ สำหรับส่วนของไคลเอ็นต์ในแอปพลิเคชัน Rails ของคุณ
+- name: การขุดลึกขึ้นไปอีก
+  documents:
+  - name: API การระบุภาษาสากล (I18n) ของ Rails
+    url: i18n.html
+    description: คู่มือนี้เป็นการแนะนำวิธีการเพิ่มระบบการรองรับภาษาต่างประเทศในแอปพลิเคชันของคุณ
+      แอปพลิเคชันของคุณจะสามารถแปลเนื้อหาเป็นภาษาต่างๆ ปรับเปลี่ยนกฎการเปลี่ยนรูปคำพหูพจน์
+      ใช้รูปแบบวันที่ที่ถูกต้องสำหรับแต่ละประเทศ และอื่นๆ อีกมากมาย
+  - name: การทดสอบแอปพลิเคชัน Rails
+    url: testing.html
+    description: นี่เป็นคู่มือที่ครอบคลุมทั้งหมดเกี่ยวกับสถานที่ทดสอบต่าง ๆ ใน Rails
+      อย่างละเอียดอ่อน มันครอบคลุมทุกอย่างตั้งแต่ 'ทดสอบคืออะไร?' ถึงการทดสอบการรวมกัน
+      ขอให้สนุกนะคะ
+  - name: การรักษาความปลอดภัยในแอปพลิเคชัน Rails
+    url: security.html
+    description: คู่มือนี้อธิบายปัญหาความปลอดภัยที่พบบ่อยในแอปพลิเคชันเว็บและวิธีการป้องกันด้วย
+      Rails
+  - name: การรายงานข้อผิดพลาดในแอปพลิเคชัน Rails
+    url: error_reporting.html
+    description: คู่มือนี้นำเสนอวิธีการจัดการข้อยกเว้นที่เกิดขึ้นในแอปพลิเคชัน Ruby
+      on Rails
+  - name: การแก้ปัญหาในแอปพลิเคชัน Rails
+    url: debugging_rails_applications.html
+    description: คู่มือนี้อธิบายวิธีการแก้บั๊กในแอปพลิเคชัน Rails โดยครอบคลุมวิธีการต่าง
+      ๆ ในการทำเช่นนี้และวิธีการเข้าใจว่าเกิดอะไรขึ้น "ในหลังจากที่เราเขียนโค้ด"
+  - name: การกำหนดค่าแอปพลิเคชัน Rails
+    url: configuring.html
+    description: คู่มือนี้เป็นการครอบคลุมการตั้งค่าพื้นฐานสำหรับแอปพลิเคชัน Rails
+  - name: คำสั่ง Rails Command Line
+    url: command_line.html
+    description: มีคำสั่งหลายอย่างที่สำคัญอย่างแน่นอนสำหรับการใช้งานประจำวันของคุณใน
+      Rails คู่มือนี้จะอธิบายเครื่องมือบรรทัดคำสั่งที่ Rails จัดหาให้
+  - name: ท่องทางทรัพยากร (Asset Pipeline)
+    url: asset_pipeline.html
+    description: ทาง asset pipeline ให้เฟรมเวิร์กเพื่อรวมและบีบอัดหรือบีบอัด JavaScript,
+      CSS และภาพทรัพยากร นอกจากนี้ยังเพิ่มความสามารถในการเขียนทรัพยากรเหล่านี้ในภาษาและตัวประมวลผลก่อนเช่น
+      CoffeeScript, Sass และ ERB
+  - name: การทำงานกับ JavaScript ใน Rails
+    url: working_with_javascript_in_rails.html
+    description: คู่มือนี้อธิบายวิธีการใช้ import maps หรือ jsbundling-rails เพื่อรวม
+      JavaScript เข้ากับแอปพลิเคชัน Rails และอธิบายเกี่ยวกับพื้นฐานในการทำงานกับ Turbo
+      ใน Rails
+  - name: กระบวนการเริ่มต้น Rails
+    url: initialization.html
+    description: คู่มือนี้อธิบายกระบวนการเริ่มต้นภายในของ Rails โดยละเอียดมาก และแนะนำให้นักพัฒนา
+      Rails ระดับสูงใช้งาน
+  - name: การโหลดอัตโนมัติและโหลดใหม่ของค่าคงที่
+    url: autoloading_and_reloading_constants.html
+    description: คู่มือนี้เอกสารถึงวิธีการโหลดอัตโนมัติและโหลดค่าคงที่ในโหมด Zeitwerk
+  - name: คู่มือการเปลี่ยนจากโหมด "classic" เป็นโหมด "zeitwerk"
+    url: classic_to_zeitwerk_howto.html
+    description: คู่มือนี้เอกสารถึงวิธีการย้ายแอปพลิเคชัน Rails จากโหมด `classic`
+      เป็นโหมด `zeitwerk`
+  - name: 'การใช้แคชกับ Rails: ภาพรวม'
+    url: caching_with_rails.html
+    description: คู่มือนี้เป็นการแนะนำในการเร่งความเร็วของแอปพลิเคชัน Rails ของคุณด้วยการใช้แคช
+  - name: Active Support Instrumentation
+    url: active_support_instrumentation.html
+    description: คู่มือนี้อธิบายวิธีการใช้เครื่องมือ API การตรวจวัดภายใน Active Support
+      เพื่อวัดเหตุการณ์ภายใน Rails และโค้ด Ruby อื่นๆ
+  - name: การใช้ Rails สำหรับแอปพลิเคชัน API เท่านั้น
+    url: api_app.html
+    description: คู่มือนี้อธิบายวิธีการใช้ Rails ในการพัฒนาแอปพลิเคชัน JSON API อย่างมีประสิทธิภาพ
+  - name: Active Record และ PostgreSQL
+    url: active_record_postgresql.html
+    description: คู่มือนี้เป็นการแสดงวิธีการใช้งานของ Active Record สำหรับ PostgreSQL
+      โดยเฉพาะ
+  - name: หลายฐานข้อมูลด้วย Active Record
+    url: active_record_multiple_databases.html
+    description: คู่มือนี้เป็นการแนะนำในการใช้ฐานข้อมูลหลายรายการในแอปพลิเคชันของคุณ
+  - name: การเข้ารหัส Active Record
+    url: active_record_encryption.html
+    description: คู่มือนี้อธิบายการเข้ารหัสข้อมูลฐานข้อมูลของคุณโดยใช้ Active Record
+- name: การขยายขนาด Rails
+  documents:
+  - name: พื้นฐานในการสร้างปลั๊กอิน Rails
+    url: plugins.html
+    description: คู่มือนี้เป็นการแนะนำวิธีการสร้างปลั๊กอินเพื่อเพิ่มความสามารถของ
+      Rails
+  - name: เรลส์บนแร็ก
+    url: rails_on_rack.html
+    description: คู่มือนี้เป็นการครอบคลุมการรวม Rails กับ Rack และการติดต่อกับคอมโพเนนต์
+      Rack อื่น ๆ
+  - name: การสร้างและปรับแต่งเจเนอเรเตอร์และเทมเพลตใน Rails
+    url: generators.html
+    description: คู่มือนี้เป็นการแนะนำกระบวนการเพิ่มเครื่องกำเนิดไฟฟ้าใหม่ในส่วนขยายของคุณหรือให้ตัวเลือกทางเลือกสำหรับองค์ประกอบของเครื่องกำเนิดไฟฟ้าใน
+      Rails generator ที่มีอยู่ (เช่นการให้ตัวอย่างการทดสอบทางเลือกสำหรับเครื่องกำเนิดไฟฟ้า
+      scaffold)
+  - name: เริ่มต้นใช้งาน Engines
+    url: engines.html
+    description: เครื่องมือเครื่องยนต์สามารถถือว่าเป็นแอปพลิเคชันขนาดเล็กที่ให้ฟังก์ชันพิเศษเพิ่มเติมให้กับแอปพลิเคชันหลักของพวกเขา
+      ในคู่มือนี้คุณจะเรียนรู้วิธีการสร้างเครื่องมือเครื่องยนต์ของคุณเองและรวมมันเข้ากับแอปพลิเคชันหลัก
+  - name: เทมเพลตแอปพลิเคชัน Rails
+    url: rails_application_templates.html
+    description: เทมเพลตแอปพลิเคชันเป็นไฟล์ Ruby ที่เรียบง่ายที่มี DSL สำหรับเพิ่มเจมส์
+      เริ่มต้นการทำงาน ฯลฯ เข้ากับโปรเจค Rails ที่คุณสร้างใหม่หรือโปรเจค Rails ที่มีอยู่แล้ว
+  - name: การใช้เธรดและการประมวลผลโค้ดใน Rails
+    url: threading_and_code_execution.html
+    description: คู่มือนี้อธิบายถึงข้อคิดที่จำเป็นและเครื่องมือที่ใช้ได้เมื่อทำงานโดยตรงกับความสามารถในการทำงานพร้อมกันในแอปพลิเคชัน
+      Rails
+- name: การมีส่วนร่วม
+  documents:
+  - name: การสนับสนุนในการพัฒนา Ruby on Rails
+    url: contributing_to_ruby_on_rails.html
+    description: เรลส์ไม่ใช่ "เฟรมเวิร์กของคนอื่น" คู่มือนี้จะแสดงถึงวิธีต่างๆที่คุณสามารถมีส่วนร่วมในการพัฒนาเรลส์ได้
+  - name: คู่มือเอพีไอ
+    url: api_documentation_guidelines.html
+    description: เอกสารนี้เป็นคู่มือเกี่ยวกับแนวทางการเขียนเอพีไอของ Ruby on Rails
+  - name: คู่มือ Ruby on Rails Guidelines
+    url: ruby_on_rails_guides_guidelines.html
+    description: เอกสารนี้เป็นคู่มือที่เกี่ยวข้องกับแนวทางการใช้งาน Ruby on Rails
+      guides
+  - name: การติดตั้งความขึ้นอยู่กับการพัฒนา Rails Core
+    url: development_dependencies_install.html
+    description: คู่มือนี้เป็นการแนะนำวิธีการติดตั้งสภาพแวดล้อมสำหรับการพัฒนา Ruby
+      on Rails core
+- name: นโยบาย
+  documents:
+  - name: นโยบายการบำรุงรักษาสำหรับ Ruby on Rails
+    url: maintenance_policy.html
+    description: |-
+      เวอร์ชันของ Ruby on Rails ที่รองรับในปัจจุบันคือเวอร์ชันใด และเมื่อไหร่จะมีเวอร์ชันใหม่
+
+      Ruby on Rails ปัจจุบันรองรับเวอร์ชัน 6.1.x และ 6.0.x โดยทั่วไปแล้วจะมีการอัปเดตเวอร์ชันใหม่ทุกปี โดยมักจะมีการอัปเดตใหญ่ในช่วงต้นปี และการอัปเดตระหว่างปีจะเป็นการแก้ไขบั๊กและปรับปรุงคุณภาพของระบบ
+
+      สำหรับเวอร์ชันใหม่ ยังไม่มีข้อมูลที่แน่ชัดเกี่ยวกับเวอร์ชันถัดไป แต่สามารถติดตามข่าวสารเกี่ยวกับการอัปเดตได้จากเว็บไซต์หลักของ Ruby on Rails หรือช่องทางอื่น ๆ ที่เผยแพร่ข้อมูลเกี่ยวกับการพัฒนาซอฟต์แวร์นี้
+- name: บันทึกการอัปเดต
+  documents:
+  - name: การอัปเกรด Ruby on Rails
+    url: upgrading_ruby_on_rails.html
+    description: คู่มือนี้ให้ขั้นตอนที่ต้องทำเมื่อคุณอัปเกรดแอปพลิเคชันของคุณไปยังเวอร์ชันใหม่ของ
+      Ruby on Rails
+  - name: เอกสารปล่อยตัวของ Ruby on Rails 7.1
+    url: 7_1_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 7.1
+  - name: เอกสารปล่อยตัวของ Ruby on Rails 7.0
+    url: 7_0_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 7.0
+  - name: เอกสารปล่อยตัวของ Ruby on Rails 6.1
+    url: 6_1_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 6.1
+  - name: 'เรื่องเด่นใน Rails 6.0:'
+    url: 6_0_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 6.0
+  - name: 'เรื่องเด่นใน Rails 5.2:'
+    url: 5_2_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 5.2
+  - name: 'เนื้อหาสำคัญใน Rails 5.1:'
+    url: 5_1_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 5.1
+  - name: 'เรื่องสำคัญใน Rails 5.0:'
+    url: 5_0_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 5.0
+  - name: 'เนื้อหาสำคัญใน Rails 4.2:'
+    url: 4_2_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 4.2
+  - name: เอกสารปล่อยตัวของ Ruby on Rails 4.1
+    url: 4_1_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 4.1
+  - name: เอกสารปล่อยตัวของ Ruby on Rails 4.0
+    url: 4_0_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 4.0
+  - name: เอกสารปล่อยตัวของ Ruby on Rails 3.2
+    url: 3_2_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 3.2
+  - name: เอกสารปล่อยตัวของ Ruby on Rails 3.1
+    url: 3_1_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 3.1
+  - name: บันทึกการเปิดตัวของ Ruby on Rails 3.0
+    url: 3_0_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 3.0
+  - name: เอกสารปล่อยตัวของ Ruby on Rails 2.3
+    url: 2_3_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 2.3.
+  - name: เอกสารปล่อยตัวของ Ruby on Rails 2.2
+    url: 2_2_release_notes.html
+    description: บันทึกการอัปเดตสำหรับ Rails 2.2

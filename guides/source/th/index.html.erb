@@ -1,0 +1,29 @@
+<% content_for :page_title, "คู่มือ Ruby on Rails" %>
+<% content_for :description, "คู่มือ Ruby on Rails" %>
+
+<% content_for :header_section do %>
+<%= render 'welcome' %>
+<% end %>
+
+<% content_for :index_section do %>
+<div id="subCol">
+  <dl>
+    <dt></dt>
+    <% unless @edge -%>
+      <dd class="kindle">คู่มือ Rails ยังสามารถใช้ได้สำหรับ <%= link_to 'Kindle', @epub %>.</dd>
+    <% end -%>
+    <dd class="work-in-progress">คู่มือที่มีไอคอนนี้คือคู่มือที่กำลังถูกพัฒนาอยู่และจะไม่ปรากฏในเมนูดัชนีคู่มือ แม้ว่าจะยังมีประโยชน์ แต่อาจมีข้อมูลที่ไม่สมบูรณ์และข้อผิดพลาด คุณสามารถช่วยเราได้โดยตรวจสอบและแสดงความคิดเห็นและการแก้ไขข้อผิดพลาด</dd>
+  </dl>
+</div>
+<% end %>
+
+<% documents_by_section.each do |section| %>
+  <h2><%= section['name'] %></h2>
+  <dl>
+    <% section['documents'].each do |document| %>
+      <%= guide(document['name'], document['url'], work_in_progress: document['work_in_progress']) do %>
+        <p><%= document['description'] %></p>
+      <% end %>
+    <% end %>
+  </dl>
+<% end %>

@@ -2,15 +2,15 @@
 เอกสารปล่อยตัวของ Ruby on Rails 7.1
 ===============================
 
-เนื้อหาสำคัญใน Rails 7.1:
+จุดเด่นใน Rails 7.1:
 
 --------------------------------------------------------------------------------
 
-การอัพเกรดไปยัง Rails 7.1
+การอัปเกรดไปยัง Rails 7.1
 ----------------------
 
-หากคุณกำลังอัพเกรดแอปพลิเคชันที่มีอยู่อยู่ ควรมีการทดสอบที่ดีก่อนที่จะเริ่มต้น คุณควรอัพเกรดเป็น Rails 7.0 ก่อนหากคุณยังไม่ได้ทำ และตรวจสอบให้แน่ใจว่าแอปพลิเคชันของคุณยังทำงานตามที่คาดหวังก่อนที่จะพยายามอัพเดตไปยัง Rails 7.1 มีรายการสิ่งที่ควรระมัดระวังเมื่ออัพเกรดใน
-[การอัพเกรด Ruby on Rails](upgrading_ruby_on_rails.html#upgrading-from-rails-7-0-to-rails-7-1)
+หากคุณกำลังอัปเกรดแอปพลิเคชันที่มีอยู่อยู่ ควรมีการทดสอบที่ดีก่อนที่จะเริ่มต้น คุณควรอัปเกรดเป็น Rails 7.0 ก่อนหากคุณยังไม่ได้ทำ และตรวจสอบให้แน่ใจว่าแอปพลิเคชันของคุณยังทำงานตามที่คาดหวังก่อนที่จะพยายามอัปเดตเป็น Rails 7.1 มีรายการสิ่งที่ควรระมัดระวังเมื่ออัปเกรดใน
+[การอัปเกรด Ruby on Rails](upgrading_ruby_on_rails.html#upgrading-from-rails-7-0-to-rails-7-1)
 คู่มือ
 
 คุณสมบัติหลัก
@@ -47,9 +47,9 @@ Action Pack
 
 *   ลบพฤติกรรมที่ถูกยกเลิกบน `Request#content_type`
 
-*   ลบความสามารถที่ถูกยกเลิกในการกำหนดค่าค่าเดียวให้กับ `config.action_dispatch.trusted_proxies`.
+*   ลบความสามารถที่ถูกยกเลิกในการกำหนดค่าค่าเดียวสำหรับ `config.action_dispatch.trusted_proxies`.
 
-*   ลบการลงทะเบียนของ `poltergeist` และ `webkit` (capybara-webkit) driver สำหรับการทดสอบระบบ
+*   ลบการลงทะเบียนไดรเวอร์ `poltergeist` และ `webkit` (capybara-webkit) ที่ถูกยกเลิกสำหรับการทดสอบระบบ.
 
 ### การเลิกใช้
 
@@ -70,7 +70,7 @@ Action View
 
 *   ลบค่าคงที่ที่ถูกยกเลิก `ActionView::Path`.
 
-*   ลบการสนับสนุนที่ถูกยกเลิกในการส่งตัวแปรอินสแตนซ์เป็นตัวแปรท้องถิ่นไปยังพาร์ทช่วย.
+*   ลบการสนับสนุนที่ถูกยกเลิกในการส่งตัวแปรอินสแตนซ์เป็นตัวแปรท้องถิ่นไปยัง partials.
 
 ### การเลิกใช้
 
@@ -96,9 +96,9 @@ Active Record
 
 *   ลบการสนับสนุนสำหรับ `ActiveRecord.legacy_connection_handling`.
 
-*   ลบการเข้าถึงค่าการกำหนดค่าของ `ActiveRecord::Base`
+*   ลบการเข้าถึงการกำหนดค่า `ActiveRecord::Base` ที่ถูกยกเลิก
 
-*   ลบการสนับสนุนสำหรับ `:include_replicas` ใน `configs_for`. ใช้ `:include_hidden` แทน
+*   ลบการสนับสนุนสำหรับ `:include_replicas` ใน `configs_for`. ใช้ `:include_hidden` แทน.
 
 *   ลบการกำหนดค่าที่ถูกยกเลิก `config.active_record.partial_writes`.
 
@@ -119,10 +119,10 @@ Active Storage
 
 *   ลบเมธอด `ActiveStorage::Current#host` และ `ActiveStorage::Current#host=` ที่ถูกยกเลิก.
 
-*   ลบพฤติกรรมที่ถูกยกเลิกเมื่อกำหนดค่าให้กับคอลเลกชันของ attachment แทนที่จะเพิ่มไปยังคอลเลกชัน
-    คอลเลกชันจะถูกแทนที่
+*   ลบพฤติกรรมที่ถูกยกเลิกเมื่อกำหนดค่าให้กับคอลเลกชันของ attachment แทนที่จะเพิ่มเข้าไปในคอลเลกชัน
+    คอลเลกชันจะถูกแทนที่.
 
-*   ลบเมธอด `purge` และ `purge_later` จากความสัมพันธ์ของ attachment.
+*   ลบเมธอด `purge` และ `purge_later` จากความสัมพันธ์ attachments.
 
 ### การเลิกใช้
 
@@ -146,14 +146,14 @@ Active Support
 
 ### การลบ
 
-*   ลบการเขียนทับที่ถูกยกเลิกของ `Enumerable#sum`.
+*   ลบการแทนที่ที่ถูกยกเลิกของ `Enumerable#sum`.
 
 *   ลบ `ActiveSupport::PerThreadRegistry` ที่ถูกยกเลิก.
 
 *   ลบตัวเลือกที่ถูกยกเลิกในการส่งรูปแบบไปยัง `#to_s` ใน `Array`, `Range`, `Date`, `DateTime`, `Time`,
     `BigDecimal`, `Float` และ `Integer`.
 
-*   ลบการเขียนทับที่ถูกยกเลิกของ `ActiveSupport::TimeWithZone.name`.
+*   ลบการแทนที่ที่ถูกยกเลิกของ `ActiveSupport::TimeWithZone.name`.
 
 *   ลบไฟล์ `active_support/core_ext/uri` ที่ถูกยกเลิก.
 
@@ -161,8 +161,8 @@ Active Support
 
 *   ลบการแปลงอัตโนมัติของออบเจ็กต์เป็น `String` โดย `ActiveSupport::SafeBuffer`.
 
-*   ลบการสนับสนุนที่ถูกยกเลิกในการสร้าง UUID RFC 4122 ไม่ถูกต้องเมื่อให้รหัสเนมสเปซที่ไม่ใช่หนึ่งใน
-    ค่าคงที่ที่กำหนดไว้ใน `Digest::UUID`.
+*   ลบการสนับสนุนที่ถูกยกเลิกในการสร้าง UUID RFC 4122 ที่ไม่ถูกต้องเมื่อให้รหัสเนมสเปซที่ไม่ใช่หนึ่งใน
+    ค่าคงที่ที่กำหนดไว้บน `Digest::UUID`.
 
 ### การเลิกใช้
 
@@ -215,9 +215,7 @@ Action Mailbox
 ### การเปลี่ยนแปลงที่สำคัญ
 
 เครดิต
--------
 
-ดูรายชื่อ
 [active-storage]: https://github.com/rails/rails/blob/main/activestorage/CHANGELOG.md
 [active-support]: https://github.com/rails/rails/blob/main/activesupport/CHANGELOG.md
 [action-mailbox]: https://github.com/rails/rails/blob/main/actionmailbox/CHANGELOG.md
