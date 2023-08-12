@@ -1,0 +1,31 @@
+<h1>Ruby on Rails 가이드 (<%= @edge ? @edge[0, 7] : @version %>)</h1>
+
+<% if @edge %>
+<p>
+  이것은 <b>Edge 가이드</b>입니다. <a href="https://github.com/rails/rails/tree/<%= @edge %>">main@<%= @edge[0, 7] %></a>를 기반으로 합니다.
+</p>
+<p>
+  안정 버전을 찾고 있다면, 대신 <a href="https://guides.rubyonrails.org">https://guides.rubyonrails.org</a>를 확인해주세요.
+</p>
+<% else %>
+<p>
+  이것은 Rails 7.1을 기반으로 한 새로운 가이드입니다. <a href="https://github.com/rails/rails/tree/<%= @version %>"><%= @version %></a>를 기반으로 합니다.
+  이 가이드는 당신이 즉시 Rails로 생산적이 되도록 도와주고, 모든 부분이 어떻게 맞물려 있는지 이해하는 데 도움을 줍니다.
+</p>
+<% end %>
+<p>
+이전 버전의 가이드:
+<a href="https://guides.rubyonrails.org/v7.0/" data-turbo="false">Rails 7.0</a>,
+<a href="https://guides.rubyonrails.org/v6.1/" data-turbo="false">Rails 6.1</a>,
+<a href="https://guides.rubyonrails.org/v6.0/" data-turbo="false">Rails 6.0</a>,
+<a href="https://guides.rubyonrails.org/v5.2/" data-turbo="false">Rails 5.2</a>,
+<a href="https://guides.rubyonrails.org/v5.1/" data-turbo="false">Rails 5.1</a>,
+<a href="https://guides.rubyonrails.org/v5.0/" data-turbo="false">Rails 5.0</a>,
+<a href="https://guides.rubyonrails.org/v4.2/" data-turbo="false">Rails 4.2</a>,
+<a href="https://guides.rubyonrails.org/v4.1/" data-turbo="false">Rails 4.1</a>,
+<a href="https://guides.rubyonrails.org/v4.0/" data-turbo="false">Rails 4.0</a>,
+<a href="https://guides.rubyonrails.org/v3.2/" data-turbo="false">Rails 3.2</a>,
+<a href="https://guides.rubyonrails.org/v3.1/" data-turbo="false">Rails 3.1</a>,
+<a href="https://guides.rubyonrails.org/v3.0/" data-turbo="false">Rails 3.0</a>, 그리고
+<a href="https://guides.rubyonrails.org/v2.3/" data-turbo="false">Rails 2.3</a>.
+</p>

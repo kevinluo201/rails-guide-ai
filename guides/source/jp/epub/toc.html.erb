@@ -1,0 +1,24 @@
+<% content_for :page_title do %>
+Ruby on Rails ガイド
+<% end %>
+
+<h1>目次</h1>
+<div id="toc">
+  <ul><li><a href="welcome.html">ようこそ</a></li></ul>
+
+  <% documents_by_section.each_with_index do |section, i| %>
+    <h3><%= "#{i + 1}." %> <%= section['name'] %></h3>
+    <ul>
+      <% section['documents'].each do |document| %>
+        <li>
+          <a href="<%= document['url'] %>"><%= document['name'] %></a>
+          <% if document['work_in_progress']%>(WIP)<% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<hr />
+<ul>
+  <li><a href="copyright.html">著作権とライセンス</a></li>
+</ul>
+</div>

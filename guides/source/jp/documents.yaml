@@ -1,0 +1,232 @@
+---
+- name: ここから始めてください
+  documents:
+  - name: Railsのはじめ方
+    url: getting_started.html
+    description: 最初のアプリケーションを作成するためにRailsをインストールするために必要なすべての情報。
+- name: モデル
+  documents:
+  - name: Active Recordの基礎
+    url: active_record_basics.html
+    description: Active Recordは、モデルがアプリケーションのデータベースとやり取りすることを可能にします。このガイドでは、Active
+      Recordモデルとデータベースへの永続性の開始方法について説明します。
+  - name: Active Record Migrations
+    url: active_record_migrations.html
+    description: マイグレーションはActive Recordの機能であり、データベースのスキーマを時間とともに進化させることができます。純粋なSQLではなく、マイグレーションを使用することで、RubyのDSLを使ってテーブルの変更を記述することができます。
+  - name: Active Recordのバリデーション
+    url: active_record_validations.html
+    description: バリデーションは、データベースに保存されるのは有効なデータのみであることを保証するために使用されます。このガイドでは、Active
+      Recordのバリデーション機能を使用して、オブジェクトがデータベースに保存される前の状態を検証する方法を教えます。
+  - name: Active Record コールバック
+    url: active_record_callbacks.html
+    description: コールバックは、オブジェクトが作成されたとき、更新されたとき、破棄されたときなどに実行されるコードを記述することができるようにします。このガイドでは、Active
+      Recordオブジェクトのライフサイクルにフックする方法を教えます。
+  - name: Active Recordの関連付け
+    url: association_basics.html
+    description: Active Recordでは、関連付けは2つのActive Recordモデル間の接続です。このガイドでは、Active Recordが提供するすべての関連付けについて説明します。
+  - name: Active Record クエリインターフェース
+    url: active_record_querying.html
+    description: Active Recordは、データベースのレコードを検索するために生のSQLを使用する代わりに、同じ操作を行うためのより良い方法を提供します。このガイドでは、Active
+      Recordを使用してデータベースからデータを取得するさまざまな方法について説明します。
+  - name: Active Modelの基礎
+    url: active_model_basics.html
+    description: Active Modelは、Action Packと統合されるプレーンなRubyオブジェクトを作成することができますが、データベースの永続性にはActive
+      Recordは必要ありません。Active Modelはまた、Railsフレームワークの外部で使用するためのカスタムORMの構築もサポートしています。このガイドでは、Active
+      Modelクラスの使用を開始するために必要なすべての情報を提供します。
+- name: ビュー
+  documents:
+  - name: Action Viewの概要
+    url: action_view_overview.html
+    description: Action Viewは、WebのレスポンスのためのHTMLを生成する責任を持っています。このガイドでは、Action Viewの紹介を提供します。
+  - name: Railsにおけるレイアウトとレンダリング
+    url: layouts_and_rendering.html
+    description: このガイドでは、Action ControllerとAction Viewの基本的なレイアウト機能について説明します。レンダリングやリダイレクト、content_forブロックの使用、パーシャルの操作などが含まれます。
+  - name: アクションビューヘルパー
+    url: action_view_helpers.html
+    description: Action Viewには、日付のフォーマットや画像へのリンク、コンテンツのサニタイズやローカライズなど、さまざまなことを処理するためのヘルパーがあります。このガイドでは、より一般的なAction
+      Viewヘルパーのいくつかを紹介します。
+  - name: Action Viewフォームヘルパー
+    url: form_helpers.html
+    description: HTMLフォームは、フォームコントロールの名前付けとその多くの属性を処理する必要があるため、書くことやメンテナンスすることが面倒になることがあります。Railsは、フォームマークアップを生成するためのビューヘルパーを提供することで、この複雑さを排除します。
+- name: コントローラー
+  documents:
+  - name: Action Controllerの概要
+    url: action_controller_overview.html
+    description: アクションコントローラーは、RailsにおけるWebリクエストの中核です。このガイドでは、コントローラーの動作方法やアプリケーションのリクエストサイクルへの組み込み方法について説明します。セッション、フィルター、クッキー、データストリーミング、リクエストによって発生した例外の処理など、さまざまなトピックをカバーしています。
+  - name: 外部からのRailsルーティング
+    url: routing.html
+    description: RailsのルーターはURLを認識し、それらをコントローラーのアクションにディスパッチします。このガイドでは、Railsのルーティングのユーザー向けの機能について説明します。自分自身のRailsアプリケーションでルーティングを使用する方法を理解したい場合は、ここから始めてください。
+- name: 他のコンポーネント
+  documents:
+  - name: Active Supportコア拡張機能
+    url: active_support_core_extensions.html
+    description: Active Supportは、Ruby言語の拡張機能やユーティリティを提供します。これにより、Railsアプリケーションの開発やRuby
+      on Rails自体の開発において、Ruby言語を豊かにすることができます。
+  - name: Action Mailerの基本
+    url: action_mailer_basics.html
+    description: このガイドでは、アプリケーションからメールを送信するために必要なすべての情報と、Action Mailerの内部について説明します。
+  - name: Action Mailboxの基本
+    url: action_mailbox_basics.html
+    description: このガイドでは、Action Mailboxを使用してメールを受信する方法について説明しています。
+  - name: Action Textの概要
+    url: action_text_overview.html
+    description: このガイドでは、リッチテキストコンテンツを扱うためにAction Textを使用する方法について説明しています。
+  - name: Active Jobの基本
+    url: active_job_basics.html
+    description: Active Jobは、バックグラウンドジョブを宣言し、さまざまなキューのバックエンドで実行するためのフレームワークです。このガイドでは、バックグラウンドジョブの作成、エンキュー、実行に必要なすべての情報を提供します。
+  - name: Active Storageの概要
+    url: active_storage_overview.html
+    description: Active Storageは、クラウドストレージサービスへのファイルのアップロード、アップロードの変換、メタデータの抽出を容易にします。このガイドでは、Active
+      Recordモデルにファイルを添付する方法について説明します。
+  - name: Action Cableの概要
+    url: action_cable_overview.html
+    description: Action CableはWebSocketsをRailsアプリケーションの他の部分と統合します。これにより、リアルタイムの機能をRailsアプリケーションの他の部分と同じスタイルと形式でRubyで記述することができます。このガイドでは、Action
+      Cableの動作方法とWebSocketsを使用してリアルタイムの機能を作成する方法について説明します。
+  - name: Webpacker
+    url: webpacker.html
+    description: このガイドでは、Webpackerをインストールして使用する方法を説明します。Webpackerは、RailsアプリケーションのクライアントサイドにおけるJavaScript、CSS、その他のアセットをパッケージ化するためのツールです。
+- name: 深く掘り下げる
+  documents:
+  - name: Rails国際化（I18n）API
+    url: i18n.html
+    description: このガイドでは、アプリケーションに国際化を追加する方法について説明します。アプリケーションは、異なる言語にコンテンツを翻訳したり、複数形のルールを変更したり、各国の正しい日付形式を使用したりすることができます。
+  - name: Railsアプリケーションのテスト
+    url: testing.html
+    description: これはRailsのさまざまなテスト施設についての包括的なガイドです。テストとは何かから統合テストまで、すべてを網羅しています。お楽しみください。
+  - name: Railsアプリケーションのセキュリティ確保
+    url: security.html
+    description: このガイドでは、ウェブアプリケーションにおける一般的なセキュリティの問題と、Railsを使用してそれらを回避する方法について説明します。
+  - name: Railsアプリケーションにおけるエラーレポート
+    url: error_reporting.html
+    description: このガイドでは、Ruby on Railsアプリケーションで発生する例外を管理する方法について紹介します。
+  - name: Railsアプリケーションのデバッグ
+    url: debugging_rails_applications.html
+    description: このガイドでは、Railsアプリケーションのデバッグ方法について説明します。さまざまな方法と、コードの「裏側」で何が起こっているかを理解する方法についてカバーしています。
+  - name: Railsアプリケーションの設定
+    url: configuring.html
+    description: このガイドでは、Railsアプリケーションの基本的な設定について説明します。
+  - name: Railsコマンドライン
+    url: command_line.html
+    description: Railsの日常的な使用には、いくつかのコマンドが絶対に重要です。このガイドでは、Railsが提供するコマンドラインツールについて説明します。
+  - name: アセットパイプライン
+    url: asset_pipeline.html
+    description: アセットパイプラインは、JavaScript、CSS、および画像アセットを連結し、圧縮または圧縮するためのフレームワークを提供します。また、CoffeeScript、Sass、ERBなどの他の言語やプリプロセッサでこれらのアセットを書くこともできる機能も追加されています。
+  - name: RailsでJavaScriptを使用する
+    url: working_with_javascript_in_rails.html
+    description: このガイドでは、import mapsやjsbundling-railsを使用して、RailsアプリケーションにJavaScriptを含める方法について説明し、RailsでTurboを使用する基本的な操作についてもカバーしています。
+  - name: Railsの初期化プロセス
+    url: initialization.html
+    description: このガイドは、Railsの初期化プロセスの内部について説明しています。非常に詳細なガイドであり、上級のRails開発者におすすめです。
+  - name: 自動読み込みと定数の再読み込み
+    url: autoloading_and_reloading_constants.html
+    description: このガイドは、オートロードと定数のリロードがどのように機能するかを文書化しています（Zeitwerkモード）。
+  - name: ClassicからZeitwerkへの移行のHOWTO
+    url: classic_to_zeitwerk_howto.html
+    description: このガイドでは、Railsアプリケーションを「classic」モードから「zeitwerk」モードに移行する方法について説明します。
+  - name: Railsでのキャッシュ：概要
+    url: caching_with_rails.html
+    description: このガイドは、キャッシュを使用してRailsアプリケーションの高速化を行うための入門です。
+  - name: アクティブサポートインストゥルメンテーション
+    url: active_support_instrumentation.html
+    description: このガイドでは、Active Support内の計測APIを使用して、Railsや他のRubyコード内のイベントを計測する方法について説明します。
+  - name: API専用アプリケーションに対してRailsを使用する方法
+    url: api_app.html
+    description: このガイドでは、JSON APIアプリケーションを効果的に開発するためにRailsをどのように使用するかを説明します。
+  - name: Active RecordとPostgreSQL
+    url: active_record_postgresql.html
+    description: このガイドは、Active RecordのPostgreSQL固有の使用方法について説明しています。
+  - name: 複数のデータベースをActive Recordで使用する
+    url: active_record_multiple_databases.html
+    description: このガイドでは、アプリケーションで複数のデータベースを使用する方法について説明します。
+  - name: Active Recordの暗号化
+    url: active_record_encryption.html
+    description: このガイドでは、Active Recordを使用してデータベース情報を暗号化する方法について説明します。
+- name: Railsの拡張
+  documents:
+  - name: Railsプラグインの基礎
+    url: plugins.html
+    description: このガイドでは、Railsの機能を拡張するためのプラグインの作成方法について説明します。
+  - name: Rack上のRails
+    url: rails_on_rack.html
+    description: このガイドでは、RailsのRackとの統合と他のRackコンポーネントとのインターフェースについて説明します。
+  - name: Railsジェネレータとテンプレートの作成とカスタマイズ
+    url: generators.html
+    description: このガイドでは、新しいジェネレータを拡張に追加する方法や、組み込みのRailsジェネレータの要素に代替手段を提供する方法（例えば、スキャフォールドジェネレータの代替テストスタブを提供する方法）について説明します。
+  - name: エンジンを使い始める
+    url: engines.html
+    description: エンジンは、ホストアプリケーションに追加の機能を提供するミニアチュアアプリケーションと考えることができます。このガイドでは、自分自身のエンジンを作成し、ホストアプリケーションと統合する方法を学びます。
+  - name: Railsアプリケーションテンプレート
+    url: rails_application_templates.html
+    description: アプリケーションテンプレートは、新しく作成したRailsプロジェクトまたは既存のRailsプロジェクトに、ジェム、イニシャライザなどを追加するためのDSLを含むシンプルなRubyファイルです。
+  - name: Railsでのスレッドとコードの実行
+    url: threading_and_code_execution.html
+    description: このガイドでは、Railsアプリケーションで直接並行処理を行う際に必要な考慮事項と利用可能なツールについて説明します。
+- name: 貢献する
+  documents:
+  - name: Ruby on Railsへの貢献
+    url: contributing_to_ruby_on_rails.html
+    description: Railsは「他人のフレームワーク」ではありません。このガイドでは、Railsの進行中の開発に参加するさまざまな方法について説明しています。
+  - name: APIドキュメントガイドライン
+    url: api_documentation_guidelines.html
+    description: このガイドは、Ruby on RailsのAPIドキュメンテーションのガイドラインを文書化しています。
+  - name: Ruby on Railsガイドライン
+    url: ruby_on_rails_guides_guidelines.html
+    description: このガイドは、Ruby on Railsガイドのガイドラインを文書化しています。
+  - name: Railsコア開発の依存関係のインストール
+    url: development_dependencies_install.html
+    description: このガイドでは、Ruby on Railsのコア開発のための環境のセットアップ方法について説明します。
+- name: 政策
+  documents:
+  - name: Ruby on Railsのメンテナンスポリシー
+    url: maintenance_policy.html
+    description: 現在サポートされているRuby on Railsのバージョンと、新しいバージョンの予定はありますか。
+- name: リリースノート
+  documents:
+  - name: Ruby on Railsのアップグレード
+    url: upgrading_ruby_on_rails.html
+    description: このガイドでは、アプリケーションを新しいバージョンのRuby on Railsにアップグレードする際に実行する手順を提供します。
+  - name: Ruby on Rails 7.1 リリースノート
+    url: 7_1_release_notes.html
+    description: Rails 7.1 のリリースノート
+  - name: Ruby on Rails 7.0 リリースノート
+    url: 7_0_release_notes.html
+    description: Rails 7.0 のリリースノート
+  - name: Ruby on Rails 6.1 リリースノート
+    url: 6_1_release_notes.html
+    description: Rails 6.1 のリリースノート
+  - name: Ruby on Rails 6.0 リリースノート
+    url: 6_0_release_notes.html
+    description: Rails 6.0のリリースノート
+  - name: Ruby on Rails 5.2 リリースノート
+    url: 5_2_release_notes.html
+    description: Rails 5.2 のリリースノート
+  - name: Ruby on Rails 5.1 リリースノート
+    url: 5_1_release_notes.html
+    description: Rails 5.1のリリースノート
+  - name: Ruby on Rails 5.0 リリースノート
+    url: 5_0_release_notes.html
+    description: Rails 5.0のリリースノート
+  - name: Ruby on Rails 4.2 リリースノート
+    url: 4_2_release_notes.html
+    description: Rails 4.2のリリースノート
+  - name: Ruby on Rails 4.1 リリースノート
+    url: 4_1_release_notes.html
+    description: Rails 4.1のリリースノート
+  - name: Ruby on Rails 4.0 リリースノート
+    url: 4_0_release_notes.html
+    description: Rails 4.0のリリースノート
+  - name: Ruby on Rails 3.2 リリースノート
+    url: 3_2_release_notes.html
+    description: Rails 3.2 のリリースノート
+  - name: Ruby on Rails 3.1 リリースノート
+    url: 3_1_release_notes.html
+    description: Rails 3.1のリリースノート
+  - name: Ruby on Rails 3.0 リリースノート
+    url: 3_0_release_notes.html
+    description: Rails 3.0のリリースノート
+  - name: Ruby on Rails 2.3 リリースノート
+    url: 2_3_release_notes.html
+    description: Rails 2.3のリリースノート
+  - name: Ruby on Rails 2.2 リリースノート
+    url: 2_2_release_notes.html
+    description: Rails 2.2のリリースノート

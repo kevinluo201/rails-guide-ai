@@ -16,6 +16,8 @@ module RailsGuides
 
     LANGUAGES = {
       'zh-TW' => "Traditional Chinese used in Taiwan(台灣繁體中文).",
+      'jp' => 'Japanese',
+      'ko' => 'Korean',
       'pt-BR' => 'Brazilian Portuguese',
       'fr' => 'French',
       'th' => 'Thai',
@@ -56,15 +58,24 @@ module RailsGuides
 
     def translate_file(file, buffer_size: @buffer_size, force_update: false)
       if file.end_with?('.md')
-        translate_markdown(file, buffer_size: buffer_size, force_update: force_update)
+        loop do
+          begin
+            translate_markdown(file, buffer_size: buffer_size, force_update: force_update)
+            break
+          rescue ExceedTokensLimitError
+            if buffer_size <= 0
+              raise 'Buffer size too small' if buffer_size <= 0
+            else
+              buffer_size -= 100
+              puts "decrease buffer size: #{buffer_size}"
+            end
+          end
+        end
       else
         translate_plain_file(file)
       end
 
       true
-    rescue ExceedTokensLimitError => e
-      puts "Exceed Token Limit: #{OPENAI_MAX_TOKENS}"
-      false
     end
 
     def translate_plain_file(file)

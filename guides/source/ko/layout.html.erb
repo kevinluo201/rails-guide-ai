@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= yield(:page_title) %></title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css" data-turbo-track="reload">
+  <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+  <link rel="stylesheet" type="text/css" href="stylesheets/highlight.css" data-turbo-track="reload">
+  <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+  <script src="javascripts/@hotwired--turbo.js" data-turbo-track="reload"></script>
+  <script src="javascripts/clipboard.js" data-turbo-track="reload"></script>
+  <script src="javascripts/guides.js" data-turbo-track="reload"></script>
+  <meta property="og:title" content="<%= yield(:page_title) %>" />
+  <meta name="description" content="<%= yield(:description) %>" />
+  <meta property="og:description" content="<%= yield(:description) %>" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Ruby on Rails Guides" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/4223" />
+  <meta property="og:type" content="website" />
+</head>
+<body dir="<%= @direction %>" class="guide">
+  <% if badge_version = @edge ? "edge" : @version %>
+  <div>
+    <div id="version-badge"><%= badge_version %></div>
+  </div>
+  <% end %>
+  <div id="topNav">
+    <div class="wrapper">
+      <strong class="more-info-label">더 많은 정보: <a href="https://rubyonrails.org/">rubyonrails.org에서 확인하세요:</a> </strong>
+      <span class="red-button more-info-button">
+        더 많은 Ruby on Rails
+      </span>
+      <ul class="more-info-links s-hidden">
+        <li class="more-info"><a href="https://rubyonrails.org/blog">블로그</a></li>
+        <li class="more-info"><a href="https://guides.rubyonrails.org/">가이드</a></li>
+        <li class="more-info"><a href="https://api.rubyonrails.org/">API</a></li>
+        <li class="more-info"><a href="https://discuss.rubyonrails.org/">포럼</a></li>
+        <li class="more-info"><a href="https://github.com/rails/rails">GitHub에서 기여하기</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="header">
+    <div class="wrapper clearfix">
+      <div class="header-logo"><a href="index.html" title="홈페이지로 돌아가기">Guides.rubyonrails.org</a></div>
+      <ul class="nav">
+        <li><a class="nav-item" href="index.html">홈</a></li>
+        <li class="guides-index guides-index-large">
+          <a href="index.html" id="guidesMenu" class="guides-index-item nav-item">가이드 목차</a>
+          <div id="guides" class="clearfix" style="display: none;">
+            <hr />
+            <dl class="guides-section-container">
+              <% documents_by_section.each do |section| %>
+                <div class="guides-section">
+                  <dt><%= section['name'] %></dt>
+                  <% finished_documents(section['documents']).each do |document| %>
+                  <dd><a href="<%= document['url'] %>"><%= document['name'] %></a></dd>
+                  <% end %>
+                </div>
+              <% end %>
+            </dl>
+          </div>
+        </li>
+        <li><a class="nav-item" href="contributing_to_ruby_on_rails.html">기여하기</a></li>
+        <li class="guides-index guides-index-small">
+          <select class="guides-index-item nav-item">
+            <option value="index.html">가이드 목차</option>
+            <% docs_for_menu.each do |section| %>
+              <optgroup label="<%= section['name'] %>">
+                <% finished_documents(section['documents']).each do |document| %>
+                  <option value="<%= document['url'] %>"><%= document['name'] %></option>
+                <% end %>
+              </optgroup>
+            <% end %>
+          </select>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr class="hide" />
+
+  <div id="feature">
+    <div class="wrapper">
+      <%= yield :header_section %>
+
+      <%= yield :index_section %>
+    </div>
+  </div>
+
+  <div id="container">
+    <div class="wrapper">
+      <div id="mainCol">
+        <%= yield %>
+
+        <h3>피드백</h3>
+        <p>
+          이 가이드의 품질을 개선하는 데 도움을 주시기를 권장합니다.
+        </p>
+        <p>
+          오타나 사실적인 오류를 발견하면 기여해주십시오.
+          시작하려면 <%= link_to '문서 기여', 'https://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html#contributing-to-the-rails-documentation' %> 섹션을 읽어보세요.
+        </p>
+        <p>
+          불완전한 내용이나 최신 정보가 아닌 내용을 발견할 수도 있습니다.
+          주요한 부분에 누락된 문서를 추가해주세요. <%= link_to 'Edge 가이드', 'https://edgeguides.rubyonrails.org' %>에서
+          이미 문제가 해결되었는지 확인하세요.
+          스타일과 규칙은 <%= link_to 'Ruby on Rails 가이드 지침', 'ruby_on_rails_guides_guidelines.html' %>을 확인하세요.
+        </p>
+        <p>
+          수정할 내용을 발견했지만 직접 수정할 수 없는 경우 <%= link_to '이슈를 열어주세요', 'https://github.com/rails/rails/issues' %>.
+        </p>
+        <p>마지막으로, Ruby on Rails 문서에 관한 모든 토론은 <%= link_to '공식 Ruby on Rails 포럼', 'https://discuss.rubyonrails.org/c/rubyonrails-docs' %>에서 환영합니다.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hide" />
+  <div id="footer">
+    <div class="wrapper">
+      <%= render 'license' %>
+    </div>
+  </div>
+</body>
+</html>

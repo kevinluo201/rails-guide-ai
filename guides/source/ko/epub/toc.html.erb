@@ -1,0 +1,24 @@
+<% content_for :page_title do %>
+루비 온 레일스 가이드
+<% end %>
+
+<h1>목차</h1>
+<div id="toc">
+  <ul><li><a href="welcome.html">환영합니다</a></li></ul>
+
+  <% documents_by_section.each_with_index do |section, i| %>
+    <h3><%= "#{i + 1}." %> <%= section['name'] %></h3>
+    <ul>
+      <% section['documents'].each do |document| %>
+        <li>
+          <a href="<%= document['url'] %>"><%= document['name'] %></a>
+          <% if document['work_in_progress']%>(WIP)<% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<hr />
+<ul>
+  <li><a href="copyright.html">저작권 및 라이선스</a></li>
+</ul>
+</div>

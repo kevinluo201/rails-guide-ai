@@ -1,0 +1,48 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="RailsGuides">
+ <metadata xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dc:identifier id="RailsGuides" opf:scheme="uuid"><%= @uuid %></dc:identifier>
+  <dc:title>Ruby on Rails 가이드 (<%= @version || "main@#{@edge[0, 7]}" %>)</dc:title>
+  <dc:language>en</dc:language>
+  <dc:creator>Ruby on Rails</dc:creator>
+  <dc:publisher>Ruby on Rails</dc:publisher>
+  <dc:subject>참고자료</dc:subject>
+  <dc:date><%= Time.now.strftime('%Y-%m-%dT%H:%M:%SZ') %></dc:date>
+  <dc:description>이 가이드는 당신이 Rails로 즉시 생산적으로 일할 수 있도록 설계되었으며, 모든 부분이 어떻게 맞물려 있는지 이해하는 데 도움을 줍니다.</dc:description>
+  <meta name="cover" content="cover"/>
+</metadata>
+
+<manifest>
+  <!-- HTML content files [mandatory] -->
+  <% documents_flat.each do |document| %>
+    <item id="<%= document['url'] %>" media-type="application/xhtml+xml" href="<%= document['url'] %>" />
+  <% end %>
+
+  <% %w{toc.html welcome.html copyright.html}.each do |url| %>
+    <item id="<%= url %>" media-type="application/xhtml+xml" href="<%= url %>" />
+  <% end %>
+
+  <item id="toc" media-type="application/x-dtbncx+xml" href="toc.ncx"/>
+
+  <item id="cover" media-type="image/jpeg" href="images/rails_guides_kindle_cover.jpg"/>
+  <item id="stylesheet" href="stylesheets/epub.css" media-type="text/css"/>
+
+   <!-- Images -->
+   <% all_images.each do |image| %>
+   <item id="<%= image %>" media-type="image/<%= image.split('.').last %>" href="<%= image %>" />
+   <% end %>
+</manifest>
+
+<spine toc="toc">
+  <itemref idref="toc.html" />
+  <itemref idref="welcome.html" />
+  <itemref idref="copyright.html" />
+  <% documents_flat.each do |document| %>
+    <itemref idref="<%= document['url'] %>" />
+  <% end %>
+</spine>
+
+<guide>
+	<reference type="toc" title="목차" href="toc.html"></reference>
+</guide>
+</package>

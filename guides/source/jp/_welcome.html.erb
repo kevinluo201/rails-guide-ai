@@ -1,0 +1,32 @@
+<h1>Ruby on Railsガイド（<%= @edge ? @edge[0, 7] : @version %>）</h1>
+
+<% if @edge %>
+<p>
+  これらは<b>エッジガイド</b>であり、<a href="https://github.com/rails/rails/tree/<%= @edge %>">main@<%= @edge[0, 7] %></a>に基づいています。
+</p>
+<p>
+  安定版のガイドをお探しの場合は、
+  <a href="https://guides.rubyonrails.org">https://guides.rubyonrails.org</a>をご覧ください。
+</p>
+<% else %>
+<p>
+  これらはRails 7.1の新しいガイドであり、<a href="https://github.com/rails/rails/tree/<%= @version %>"><%= @version %></a>に基づいています。
+  これらのガイドは、Railsをすぐに使い始めることができ、全体の構成を理解するのに役立ちます。
+</p>
+<% end %>
+<p>
+以前のリリースのガイド：
+<a href="https://guides.rubyonrails.org/v7.0/" data-turbo="false">Rails 7.0</a>,
+<a href="https://guides.rubyonrails.org/v6.1/" data-turbo="false">Rails 6.1</a>,
+<a href="https://guides.rubyonrails.org/v6.0/" data-turbo="false">Rails 6.0</a>,
+<a href="https://guides.rubyonrails.org/v5.2/" data-turbo="false">Rails 5.2</a>,
+<a href="https://guides.rubyonrails.org/v5.1/" data-turbo="false">Rails 5.1</a>,
+<a href="https://guides.rubyonrails.org/v5.0/" data-turbo="false">Rails 5.0</a>,
+<a href="https://guides.rubyonrails.org/v4.2/" data-turbo="false">Rails 4.2</a>,
+<a href="https://guides.rubyonrails.org/v4.1/" data-turbo="false">Rails 4.1</a>,
+<a href="https://guides.rubyonrails.org/v4.0/" data-turbo="false">Rails 4.0</a>,
+<a href="https://guides.rubyonrails.org/v3.2/" data-turbo="false">Rails 3.2</a>,
+<a href="https://guides.rubyonrails.org/v3.1/" data-turbo="false">Rails 3.1</a>,
+<a href="https://guides.rubyonrails.org/v3.0/" data-turbo="false">Rails 3.0</a>、および
+<a href="https://guides.rubyonrails.org/v2.3/" data-turbo="false">Rails 2.3</a>。
+</p>
