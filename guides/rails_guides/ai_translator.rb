@@ -18,6 +18,7 @@ module RailsGuides
       'zh-TW' => "Traditional Chinese used in Taiwan(台灣繁體中文).",
       'jp' => 'Japanese',
       'ko' => 'Korean',
+      'es' => 'Spanish',
       'pt-BR' => 'Brazilian Portuguese',
       'fr' => 'French',
       'th' => 'Thai',
